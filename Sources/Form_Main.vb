@@ -100,7 +100,7 @@ Public Class Form_Main
     End Sub
 
     Private Sub UpdateUserInterface()
-        ' ready for language string not laready updated
+        ' ready for language strings not already updated
         Refresh()
     End Sub
 

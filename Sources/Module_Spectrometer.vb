@@ -75,8 +75,8 @@ Module Spectrometer
     Private ScalePen3 As Pen = New Pen(Color.FromArgb(220, 220, 220))
     Private ScaleFont As Font = New Font("Arial", 8)
 
-    Friend NanometersMin As Single
-    Friend NanometersMax As Single
+    Friend NanometersMin As Single = 270
+    Friend NanometersMax As Single = 1200
     Private NanometersDelta As Single
 
     Private NmStart As Single
@@ -92,6 +92,7 @@ Module Spectrometer
 
     Friend Sub Spectrometer_SetSourceParams()
         If SrcImage Is Nothing Then Return
+
         ' ---------------------------------------------------------------------
         SrcW = SrcImage.Width
         SrcH = SrcImage.Height
@@ -137,9 +138,9 @@ Module Spectrometer
     End Sub
 
     Friend Sub Spectrometer_SetScaleTrimParams()
-        If NanometersMin < 100 Then NanometersMin = 100
-        If NanometersMax > 1500 Then NanometersMax = 1500
-        If NanometersMax < NanometersMin + 500 Then NanometersMax = NanometersMin + 500
+        If NanometersMin < 50 Then NanometersMin = 50
+        If NanometersMax > 2000 Then NanometersMax = 2000
+        If NanometersMax < NanometersMin + 300 Then NanometersMax = NanometersMin + 300
         NanometersDelta = NanometersMax - NanometersMin
         ' ---------------------------------------------------------------------
         NmStart = NanometersMin + NanometersDelta * SrcX0 / SrcW

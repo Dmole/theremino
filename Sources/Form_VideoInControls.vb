@@ -320,8 +320,13 @@ Public Class Form_VideoInControls
             button.Visible = True
             tbar.Visible = True
             lbl.Visible = True
-            tbar.Minimum = param._Min
-            tbar.Maximum = param._Max
+            If param._Min < param._Max Then
+                tbar.Minimum = param._Min
+                tbar.Maximum = param._Max
+            Else
+                tbar.Minimum = param._Max
+                tbar.Maximum = param._Min
+            End If
             tbar.SmallChange = param._Step
             tbar.TickFrequency = CInt(Math.Abs(param._Max - param._Min) / 10)
             If param._Value > param._Max Then param._Value = param._Max

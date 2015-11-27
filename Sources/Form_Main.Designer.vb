@@ -239,7 +239,7 @@ Partial Class Form_Main
         '
         Me.Menu_File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator3, Me.Menu_File_Exit})
         Me.Menu_File.Name = "Menu_File"
-        Me.Menu_File.Size = New System.Drawing.Size(35, 20)
+        Me.Menu_File.Size = New System.Drawing.Size(37, 20)
         Me.Menu_File.Text = "File"
         '
         'ToolStripSeparator3
@@ -257,146 +257,146 @@ Partial Class Form_Main
         '
         Me.Menu_Tools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Tools_VideoinControls, Me.Menu_Tools_TrimPoints})
         Me.Menu_Tools.Name = "Menu_Tools"
-        Me.Menu_Tools.Size = New System.Drawing.Size(44, 20)
+        Me.Menu_Tools.Size = New System.Drawing.Size(47, 20)
         Me.Menu_Tools.Text = "Tools"
         '
         'Menu_Tools_VideoinControls
         '
         Me.Menu_Tools_VideoinControls.Image = CType(resources.GetObject("Menu_Tools_VideoinControls.Image"), System.Drawing.Image)
         Me.Menu_Tools_VideoinControls.Name = "Menu_Tools_VideoinControls"
-        Me.Menu_Tools_VideoinControls.Size = New System.Drawing.Size(155, 22)
+        Me.Menu_Tools_VideoinControls.Size = New System.Drawing.Size(167, 22)
         Me.Menu_Tools_VideoinControls.Text = "Video-in Controls"
         '
         'Menu_Tools_TrimPoints
         '
         Me.Menu_Tools_TrimPoints.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Tools_Trim1, Me.Menu_Tools_Trim2, Me.Menu_Tools_TrimSelect})
         Me.Menu_Tools_TrimPoints.Name = "Menu_Tools_TrimPoints"
-        Me.Menu_Tools_TrimPoints.Size = New System.Drawing.Size(155, 22)
+        Me.Menu_Tools_TrimPoints.Size = New System.Drawing.Size(167, 22)
         Me.Menu_Tools_TrimPoints.Text = "Trim points"
         '
         'Menu_Tools_Trim1
         '
         Me.Menu_Tools_Trim1.Name = "Menu_Tools_Trim1"
-        Me.Menu_Tools_Trim1.Size = New System.Drawing.Size(201, 22)
+        Me.Menu_Tools_Trim1.Size = New System.Drawing.Size(218, 22)
         Me.Menu_Tools_Trim1.Text = "Fluorescent 436 546"
         '
         'Menu_Tools_Trim2
         '
         Me.Menu_Tools_Trim2.Name = "Menu_Tools_Trim2"
-        Me.Menu_Tools_Trim2.Size = New System.Drawing.Size(201, 22)
+        Me.Menu_Tools_Trim2.Size = New System.Drawing.Size(218, 22)
         Me.Menu_Tools_Trim2.Text = "Fluorescent 436 692"
         '
         'Menu_Tools_TrimSelect
         '
         Me.Menu_Tools_TrimSelect.Name = "Menu_Tools_TrimSelect"
-        Me.Menu_Tools_TrimSelect.Size = New System.Drawing.Size(201, 22)
+        Me.Menu_Tools_TrimSelect.Size = New System.Drawing.Size(218, 22)
         Me.Menu_Tools_TrimSelect.Text = "Select trim points manually"
         '
         'Menu_Language
         '
         Me.Menu_Language.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Language_ENG, Me.Menu_Language_ITA, Me.Menu_Language_FRA, Me.Menu_Language_ESP, Me.Menu_Language_DEU, Me.Menu_Language_JPN})
         Me.Menu_Language.Name = "Menu_Language"
-        Me.Menu_Language.Size = New System.Drawing.Size(66, 20)
+        Me.Menu_Language.Size = New System.Drawing.Size(71, 20)
         Me.Menu_Language.Text = "Language"
         '
         'Menu_Language_ENG
         '
         Me.Menu_Language_ENG.Image = CType(resources.GetObject("Menu_Language_ENG.Image"), System.Drawing.Image)
         Me.Menu_Language_ENG.Name = "Menu_Language_ENG"
-        Me.Menu_Language_ENG.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_ENG.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_ENG.Text = "English"
         '
         'Menu_Language_ITA
         '
         Me.Menu_Language_ITA.Image = CType(resources.GetObject("Menu_Language_ITA.Image"), System.Drawing.Image)
         Me.Menu_Language_ITA.Name = "Menu_Language_ITA"
-        Me.Menu_Language_ITA.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_ITA.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_ITA.Text = "Italiano"
         '
         'Menu_Language_FRA
         '
         Me.Menu_Language_FRA.Image = CType(resources.GetObject("Menu_Language_FRA.Image"), System.Drawing.Image)
         Me.Menu_Language_FRA.Name = "Menu_Language_FRA"
-        Me.Menu_Language_FRA.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_FRA.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_FRA.Text = "Francais"
         '
         'Menu_Language_ESP
         '
         Me.Menu_Language_ESP.Image = CType(resources.GetObject("Menu_Language_ESP.Image"), System.Drawing.Image)
         Me.Menu_Language_ESP.Name = "Menu_Language_ESP"
-        Me.Menu_Language_ESP.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_ESP.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_ESP.Text = "Espanol"
         '
         'Menu_Language_DEU
         '
         Me.Menu_Language_DEU.Image = CType(resources.GetObject("Menu_Language_DEU.Image"), System.Drawing.Image)
         Me.Menu_Language_DEU.Name = "Menu_Language_DEU"
-        Me.Menu_Language_DEU.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_DEU.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_DEU.Text = "Deutsch"
         '
         'Menu_Language_JPN
         '
         Me.Menu_Language_JPN.Image = CType(resources.GetObject("Menu_Language_JPN.Image"), System.Drawing.Image)
         Me.Menu_Language_JPN.Name = "Menu_Language_JPN"
-        Me.Menu_Language_JPN.Size = New System.Drawing.Size(120, 22)
+        Me.Menu_Language_JPN.Size = New System.Drawing.Size(121, 22)
         Me.Menu_Language_JPN.Text = "Japanese"
         '
         'Menu_Help
         '
         Me.Menu_Help.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Help_ProgramHelp, Me.ToolStripSeparator4, Me.Menu_Help_Technology, Me.Menu_Help_Construction, Me.Menu_Help_Spectrums, Me.ToolStripSeparator6, Me.Menu_Help_OpenProgramFolder})
         Me.Menu_Help.Name = "Menu_Help"
-        Me.Menu_Help.Size = New System.Drawing.Size(40, 20)
+        Me.Menu_Help.Size = New System.Drawing.Size(44, 20)
         Me.Menu_Help.Text = "Help"
         '
         'Menu_Help_ProgramHelp
         '
         Me.Menu_Help_ProgramHelp.Image = CType(resources.GetObject("Menu_Help_ProgramHelp.Image"), System.Drawing.Image)
         Me.Menu_Help_ProgramHelp.Name = "Menu_Help_ProgramHelp"
-        Me.Menu_Help_ProgramHelp.Size = New System.Drawing.Size(174, 22)
+        Me.Menu_Help_ProgramHelp.Size = New System.Drawing.Size(186, 22)
         Me.Menu_Help_ProgramHelp.Text = "Program help"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(171, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(183, 6)
         '
         'Menu_Help_Technology
         '
         Me.Menu_Help_Technology.Image = CType(resources.GetObject("Menu_Help_Technology.Image"), System.Drawing.Image)
         Me.Menu_Help_Technology.Name = "Menu_Help_Technology"
-        Me.Menu_Help_Technology.Size = New System.Drawing.Size(174, 22)
+        Me.Menu_Help_Technology.Size = New System.Drawing.Size(186, 22)
         Me.Menu_Help_Technology.Text = "Technology"
         '
         'Menu_Help_Construction
         '
         Me.Menu_Help_Construction.Image = CType(resources.GetObject("Menu_Help_Construction.Image"), System.Drawing.Image)
         Me.Menu_Help_Construction.Name = "Menu_Help_Construction"
-        Me.Menu_Help_Construction.Size = New System.Drawing.Size(174, 22)
+        Me.Menu_Help_Construction.Size = New System.Drawing.Size(186, 22)
         Me.Menu_Help_Construction.Text = "Construction"
         '
         'Menu_Help_Spectrums
         '
         Me.Menu_Help_Spectrums.Image = CType(resources.GetObject("Menu_Help_Spectrums.Image"), System.Drawing.Image)
         Me.Menu_Help_Spectrums.Name = "Menu_Help_Spectrums"
-        Me.Menu_Help_Spectrums.Size = New System.Drawing.Size(174, 22)
+        Me.Menu_Help_Spectrums.Size = New System.Drawing.Size(186, 22)
         Me.Menu_Help_Spectrums.Text = "Example spectrums"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(171, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(183, 6)
         '
         'Menu_Help_OpenProgramFolder
         '
         Me.Menu_Help_OpenProgramFolder.Image = CType(resources.GetObject("Menu_Help_OpenProgramFolder.Image"), System.Drawing.Image)
         Me.Menu_Help_OpenProgramFolder.Name = "Menu_Help_OpenProgramFolder"
-        Me.Menu_Help_OpenProgramFolder.Size = New System.Drawing.Size(174, 22)
+        Me.Menu_Help_OpenProgramFolder.Size = New System.Drawing.Size(186, 22)
         Me.Menu_Help_OpenProgramFolder.Text = "Open program folder"
         '
         'Menu_About
         '
         Me.Menu_About.Name = "Menu_About"
-        Me.Menu_About.Size = New System.Drawing.Size(48, 20)
+        Me.Menu_About.Size = New System.Drawing.Size(52, 20)
         Me.Menu_About.Text = "About"
         '
         'ToolStrip1
@@ -414,7 +414,7 @@ Partial Class Form_Main
         Me.Tool_VideoControls.Image = CType(resources.GetObject("Tool_VideoControls.Image"), System.Drawing.Image)
         Me.Tool_VideoControls.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tool_VideoControls.Name = "Tool_VideoControls"
-        Me.Tool_VideoControls.Size = New System.Drawing.Size(94, 22)
+        Me.Tool_VideoControls.Size = New System.Drawing.Size(103, 22)
         Me.Tool_VideoControls.Text = "Video controls"
         '
         'ToolStripSeparator2
@@ -427,7 +427,7 @@ Partial Class Form_Main
         Me.Tools_SaveSpectrum.Image = CType(resources.GetObject("Tools_SaveSpectrum.Image"), System.Drawing.Image)
         Me.Tools_SaveSpectrum.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveSpectrum.Name = "Tools_SaveSpectrum"
-        Me.Tools_SaveSpectrum.Size = New System.Drawing.Size(103, 22)
+        Me.Tools_SaveSpectrum.Size = New System.Drawing.Size(114, 22)
         Me.Tools_SaveSpectrum.Text = "Spectrum image"
         '
         'ToolStripSeparator1
@@ -440,7 +440,7 @@ Partial Class Form_Main
         Me.Tools_SaveCamera.Image = CType(resources.GetObject("Tools_SaveCamera.Image"), System.Drawing.Image)
         Me.Tools_SaveCamera.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveCamera.Name = "Tools_SaveCamera"
-        Me.Tools_SaveCamera.Size = New System.Drawing.Size(95, 22)
+        Me.Tools_SaveCamera.Size = New System.Drawing.Size(104, 22)
         Me.Tools_SaveCamera.Text = "Camera image"
         '
         'Tools_SaveTotal
@@ -448,7 +448,7 @@ Partial Class Form_Main
         Me.Tools_SaveTotal.Image = CType(resources.GetObject("Tools_SaveTotal.Image"), System.Drawing.Image)
         Me.Tools_SaveTotal.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveTotal.Name = "Tools_SaveTotal"
-        Me.Tools_SaveTotal.Size = New System.Drawing.Size(82, 22)
+        Me.Tools_SaveTotal.Size = New System.Drawing.Size(89, 22)
         Me.Tools_SaveTotal.Text = "Total image"
         '
         'Timer_1Hz
@@ -491,8 +491,8 @@ Partial Class Form_Main
         Me.txt_SizeY.MinValue = 1
         Me.txt_SizeY.Multiline = True
         Me.txt_SizeY.Name = "txt_SizeY"
-        Me.txt_SizeY.NumericValue = 10
-        Me.txt_SizeY.NumericValueInteger = 10
+        Me.txt_SizeY.NumericValue = 40
+        Me.txt_SizeY.NumericValueInteger = 40
         Me.txt_SizeY.RectangleColor = System.Drawing.Color.PowderBlue
         Me.txt_SizeY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
         Me.txt_SizeY.RoundingStep = 0
@@ -500,7 +500,7 @@ Partial Class Form_Main
         Me.txt_SizeY.Size = New System.Drawing.Size(36, 16)
         Me.txt_SizeY.SuppressZeros = True
         Me.txt_SizeY.TabIndex = 100
-        Me.txt_SizeY.Text = "10"
+        Me.txt_SizeY.Text = "40"
         Me.txt_SizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_StartX
@@ -541,14 +541,15 @@ Partial Class Form_Main
         Me.txt_EndX.MinValue = 0
         Me.txt_EndX.Multiline = True
         Me.txt_EndX.Name = "txt_EndX"
-        Me.txt_EndX.NumericValue = 0
+        Me.txt_EndX.NumericValue = 1000
+        Me.txt_EndX.NumericValueInteger = 1000
         Me.txt_EndX.RectangleColor = System.Drawing.Color.PowderBlue
         Me.txt_EndX.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
         Me.txt_EndX.RoundingStep = 0
         Me.txt_EndX.ShadowColor = System.Drawing.Color.LightGray
         Me.txt_EndX.Size = New System.Drawing.Size(36, 16)
         Me.txt_EndX.TabIndex = 94
-        Me.txt_EndX.Text = "0"
+        Me.txt_EndX.Text = "1000"
         Me.txt_EndX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_StartY
@@ -564,7 +565,8 @@ Partial Class Form_Main
         Me.txt_StartY.MinValue = 0
         Me.txt_StartY.Multiline = True
         Me.txt_StartY.Name = "txt_StartY"
-        Me.txt_StartY.NumericValue = 0
+        Me.txt_StartY.NumericValue = 30
+        Me.txt_StartY.NumericValueInteger = 30
         Me.txt_StartY.RectangleColor = System.Drawing.Color.PowderBlue
         Me.txt_StartY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
         Me.txt_StartY.RoundingStep = 0
@@ -572,7 +574,7 @@ Partial Class Form_Main
         Me.txt_StartY.Size = New System.Drawing.Size(36, 16)
         Me.txt_StartY.SuppressZeros = True
         Me.txt_StartY.TabIndex = 96
-        Me.txt_StartY.Text = "0"
+        Me.txt_StartY.Text = "30"
         Me.txt_StartY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label_SizeY

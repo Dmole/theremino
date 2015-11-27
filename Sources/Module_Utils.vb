@@ -4,9 +4,6 @@ Imports System.Management
 
 Module Module_Utils
 
-
-
-
     Friend Function CreateFillBrush(ByVal pbox As PictureBox, _
                                 ByVal angle As Single, _
                                 ByVal blend As Int32) As LinearGradientBrush
