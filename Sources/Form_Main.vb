@@ -1,10 +1,7 @@
 ﻿
-
 Public Class Form_Main
 
     Private Sub Form_Main_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.Visible = False
-        Me.Opacity = 0
         ' ----------------------------------------------------------------
         Me.Text = AppTitleAndVersion()
         ' ---------------------------------------------------------------- 
@@ -37,12 +34,12 @@ Public Class Form_Main
         ' ---------------------------------------------------------------- Timer 1Hz
         Timer_1Hz.Interval = 1000
         Timer_1Hz.Start()
-        ' ---------------------------------------------------------------- SHOW
-        Me.Visible = True
-        Forms_FadeTo(1, 400)
         ' ----------------------------------------------------------------
         SetDefaultFocus()
         EventsAreEnabled = True
+        ' ---------------------------------------------------------------- SHOW
+        Refresh()
+        Forms_FadeTo(1, 400)
     End Sub
 
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
