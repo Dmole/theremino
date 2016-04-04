@@ -383,7 +383,7 @@ Public Class Form_Main
     End Sub
     Private Sub ComboBox_VideoInputDevice_DropDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox_VideoInputDevice.DropDown
         Dim fnames() As String
-        fnames = EnumFiltersByCategory(DirectShowLib.FilterCategory.VideoInputDevice)
+        fnames = EnumFiltersByCategory(FilterCategory.VideoInputDevice)
         With ComboBox_VideoInputDevice
             .Items.Clear()
             For Each fltName As String In fnames

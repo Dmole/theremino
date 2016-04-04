@@ -4,7 +4,6 @@ Imports System.IO
 Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Diagnostics
-Imports DirectShowLib
 
 Public Module DirecShow_Utils
 
@@ -14,17 +13,18 @@ Public Module DirecShow_Utils
                                           ByVal hwnd As IntPtr) As Boolean
 
         Dim comObj As Object = Nothing
-        '
-        Dim iid As Guid = GetType(IAMVfwCaptureDialogs).GUID
-        CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, iid, comObj)
-        Dim VfwDialogs As IAMVfwCaptureDialogs = CType(comObj, IAMVfwCaptureDialogs)
-        '
-        If VfwDialogs IsNot Nothing Then
-            VfwDialogs.ShowDialog(VfwCaptureDialogs.Source, hwnd)
-            Show_SourceDialog_VFW = True
-        Else
-            Show_SourceDialog_VFW = False
-        End If
+        ' TODO
+        ''
+        'Dim iid As Guid = GetType(IAMVfwCaptureDialogs).GUID
+        'CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, iid, comObj)
+        'Dim VfwDialogs As IAMVfwCaptureDialogs = CType(comObj, IAMVfwCaptureDialogs)
+        ''
+        'If VfwDialogs IsNot Nothing Then
+        '    VfwDialogs.ShowDialog(VfwCaptureDialogs.Source, hwnd)
+        '    Show_SourceDialog_VFW = True
+        'Else
+        '    Show_SourceDialog_VFW = False
+        'End If
         '
         If comObj IsNot Nothing Then Marshal.ReleaseComObject(comObj) : comObj = Nothing
     End Function
@@ -34,16 +34,17 @@ Public Module DirecShow_Utils
                                           ByVal hwnd As IntPtr) As Boolean
 
         Dim comObj As Object = Nothing
+        ' TODO
         '
-        CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, GetType(IAMVfwCaptureDialogs).GUID, comObj)
-        Dim VfwDialogs As IAMVfwCaptureDialogs = CType(comObj, IAMVfwCaptureDialogs)
-        '
-        If VfwDialogs IsNot Nothing Then
-            VfwDialogs.ShowDialog(VfwCaptureDialogs.Format, hwnd)
-            Show_FormatDialog_VFW = True
-        Else
-            Show_FormatDialog_VFW = False
-        End If
+        'CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, GetType(IAMVfwCaptureDialogs).GUID, comObj)
+        'Dim VfwDialogs As IAMVfwCaptureDialogs = CType(comObj, IAMVfwCaptureDialogs)
+        ''
+        'If VfwDialogs IsNot Nothing Then
+        '    VfwDialogs.ShowDialog(VfwCaptureDialogs.Format, hwnd)
+        '    Show_FormatDialog_VFW = True
+        'Else
+        '    Show_FormatDialog_VFW = False
+        'End If
         '
         If comObj IsNot Nothing Then Marshal.ReleaseComObject(comObj) : comObj = Nothing
     End Function
@@ -58,7 +59,7 @@ Public Module DirecShow_Utils
         Dim cauuid As New DsCAUUID()
         '
         '                                                                         IAMVideoControl or IAMVideoProcAmp  
-        CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, GetType(IAMVideoControl).GUID, comObj)
+        CaptureGraphBuilder.FindInterface(PIN_CATEGORY_CAPTURE, Nothing, captureFilter, GetType(IAMVideoControl).GUID, comObj)
         Dim spec As ISpecifyPropertyPages = TryCast(comObj, ISpecifyPropertyPages)
         '
         If spec IsNot Nothing Then
@@ -80,7 +81,7 @@ Public Module DirecShow_Utils
         Dim comObj As Object = Nothing
         Dim cauuid As New DsCAUUID()
         '
-        CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, GetType(IAMStreamConfig).GUID, comObj)
+        CaptureGraphBuilder.FindInterface(PIN_CATEGORY_CAPTURE, Nothing, captureFilter, GetType(IAMStreamConfig).GUID, comObj)
         '
         If comobj IsNot Nothing Then
             TryCast(comObj, ISpecifyPropertyPages).GetPages(cauuid)
@@ -141,7 +142,7 @@ Public Module DirecShow_Utils
     'End Function
 
 
- 
+
 
     <DllImport("olepro32.dll", CharSet:=CharSet.Unicode, ExactSpelling:=True)> _
     Private Function OleCreatePropertyFrame(ByVal hwndOwner As IntPtr, _
@@ -158,7 +159,10 @@ Public Module DirecShow_Utils
     End Function
 
 
-
+    ' Not working formats
+    ' ----------------------------------------
+    'YUY2	0x32595559	16	YUV 4:2:2 as for UYVY but with different ordering in the u_int32 macropixel
+    'NV12	0x3231564E	12	8-bit Y plane followed by an interleaved U/V plane with 2x2 subsampling
 
 
     Friend Function MediaSubTypeToString(ByVal guid As Guid) As String
@@ -175,6 +179,7 @@ Public Module DirecShow_Utils
             Case "59565955-0000-0010-8000-00aa00389b71" : Return "UYVY"
             Case "32595559-0000-0010-8000-00aa00389b71" : Return "YUY2"
             Case "31313259-0000-0010-8000-00aa00389b71" : Return "YV12"
+            Case "3231564e-0000-0010-8000-00aa00389b71" : Return "NV12"
             Case "39555659-0000-0010-8000-00aa00389b71" : Return "YVU9"
             Case "55595659-0000-0010-8000-00aa00389b71" : Return "YVYU"
             Case "47504a4d-0000-0010-8000-00aa00389b71" : Return "MJPG"
@@ -197,6 +202,7 @@ Public Module DirecShow_Utils
             Case "UYVY" : g = "{59565955-0000-0010-8000-00aa00389b71}"
             Case "YUY2" : g = "{32595559-0000-0010-8000-00aa00389b71}"
             Case "YV12" : g = "{31313259-0000-0010-8000-00aa00389b71}"
+            Case "NV12" : g = "{3231564e-0000-0010-8000-00aa00389b71}"
             Case "YVU9" : g = "{39555659-0000-0010-8000-00aa00389b71}"
             Case "YVYU" : g = "{55595659-0000-0010-8000-00aa00389b71}"
             Case "MJPG" : g = "{47504a4d-0000-0010-8000-00aa00389b71}"

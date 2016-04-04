@@ -23,76 +23,76 @@ Partial Class Form_VideoInControls
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim DesignerRectTracker1 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
+        Dim DesignerRectTracker1 As DesignerRectTracker = New DesignerRectTracker
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_VideoInControls))
-        Dim CBlendItems1 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems2 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker2 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker3 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems3 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems4 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker4 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker5 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems5 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems6 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker6 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker7 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems7 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems8 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker8 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker9 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems9 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems10 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker10 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker11 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems11 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems12 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker12 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker13 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems13 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems14 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker14 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker15 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems15 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems16 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker16 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker17 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems17 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems18 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker18 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker19 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems19 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems20 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker20 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker21 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems21 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems22 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker22 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker23 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems23 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems24 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker24 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker25 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems25 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems26 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker26 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker27 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems27 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems28 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker28 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker29 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems29 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems30 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker30 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker31 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems31 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems32 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker32 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker33 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems33 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems34 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker34 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Me.btn_Close = New CustomControlsLib.MyButton
+        Dim CBlendItems1 As cBlendItems = New cBlendItems
+        Dim CBlendItems2 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker2 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker3 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems3 As cBlendItems = New cBlendItems
+        Dim CBlendItems4 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker4 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker5 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems5 As cBlendItems = New cBlendItems
+        Dim CBlendItems6 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker6 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker7 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems7 As cBlendItems = New cBlendItems
+        Dim CBlendItems8 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker8 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker9 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems9 As cBlendItems = New cBlendItems
+        Dim CBlendItems10 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker10 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker11 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems11 As cBlendItems = New cBlendItems
+        Dim CBlendItems12 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker12 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker13 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems13 As cBlendItems = New cBlendItems
+        Dim CBlendItems14 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker14 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker15 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems15 As cBlendItems = New cBlendItems
+        Dim CBlendItems16 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker16 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker17 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems17 As cBlendItems = New cBlendItems
+        Dim CBlendItems18 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker18 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker19 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems19 As cBlendItems = New cBlendItems
+        Dim CBlendItems20 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker20 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker21 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems21 As cBlendItems = New cBlendItems
+        Dim CBlendItems22 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker22 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker23 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems23 As cBlendItems = New cBlendItems
+        Dim CBlendItems24 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker24 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker25 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems25 As cBlendItems = New cBlendItems
+        Dim CBlendItems26 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker26 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker27 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems27 As cBlendItems = New cBlendItems
+        Dim CBlendItems28 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker28 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker29 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems29 As cBlendItems = New cBlendItems
+        Dim CBlendItems30 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker30 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker31 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems31 As cBlendItems = New cBlendItems
+        Dim CBlendItems32 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker32 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker33 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems33 As cBlendItems = New cBlendItems
+        Dim CBlendItems34 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker34 As DesignerRectTracker = New DesignerRectTracker
+        Me.btn_Close = New MyButton
         Me.TrackBar_Brightness = New System.Windows.Forms.TrackBar
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
@@ -121,17 +121,17 @@ Partial Class Form_VideoInControls
         Me.TrackBar_Tilt = New System.Windows.Forms.TrackBar
         Me.Label_Hue = New System.Windows.Forms.Label
         Me.TrackBar_Hue = New System.Windows.Forms.TrackBar
-        Me.MyButton_Exposure = New CustomControlsLib.MyButton
-        Me.MyButton_Brightness = New CustomControlsLib.MyButton
-        Me.MyButton_Contrast = New CustomControlsLib.MyButton
-        Me.MyButton_Gamma = New CustomControlsLib.MyButton
-        Me.MyButton_Saturation = New CustomControlsLib.MyButton
-        Me.MyButton_WhiteBalance = New CustomControlsLib.MyButton
-        Me.MyButton_Hue = New CustomControlsLib.MyButton
-        Me.MyButton_Sharpness = New CustomControlsLib.MyButton
-        Me.MyButton_Zoom = New CustomControlsLib.MyButton
-        Me.MyButton_Pan = New CustomControlsLib.MyButton
-        Me.MyButton_Tilt = New CustomControlsLib.MyButton
+        Me.MyButton_Exposure = New MyButton
+        Me.MyButton_Brightness = New MyButton
+        Me.MyButton_Contrast = New MyButton
+        Me.MyButton_Gamma = New MyButton
+        Me.MyButton_Saturation = New MyButton
+        Me.MyButton_WhiteBalance = New MyButton
+        Me.MyButton_Hue = New MyButton
+        Me.MyButton_Sharpness = New MyButton
+        Me.MyButton_Zoom = New MyButton
+        Me.MyButton_Pan = New MyButton
+        Me.MyButton_Tilt = New MyButton
         Me.Label_Default = New System.Windows.Forms.Label
         Me.CheckBox_Exposure = New System.Windows.Forms.CheckBox
         Me.Label_Auto = New System.Windows.Forms.Label
@@ -145,29 +145,29 @@ Partial Class Form_VideoInControls
         Me.CheckBox_Zoom = New System.Windows.Forms.CheckBox
         Me.CheckBox_Pan = New System.Windows.Forms.CheckBox
         Me.CheckBox_Tilt = New System.Windows.Forms.CheckBox
-        Me.ComboBox_VideoFormat = New CustomControlsLib.MyComboBox
-        Me.ComboBox_VideoSize = New CustomControlsLib.MyComboBox
-        Me.ComboBox_VideoFPS = New CustomControlsLib.MyComboBox
+        Me.ComboBox_VideoFormat = New MyComboBox
+        Me.ComboBox_VideoSize = New MyComboBox
+        Me.ComboBox_VideoFPS = New MyComboBox
         Me.Label_Compression = New System.Windows.Forms.Label
         Me.Label_VideoSize = New System.Windows.Forms.Label
         Me.Label_MaxFps = New System.Windows.Forms.Label
-        Me.btn_DefaultAll = New CustomControlsLib.MyButton
+        Me.btn_DefaultAll = New MyButton
         Me.TrackBar_Focus = New System.Windows.Forms.TrackBar
         Me.CheckBox_Focus = New System.Windows.Forms.CheckBox
         Me.Label_Focus = New System.Windows.Forms.Label
         Me.CheckBox_Gain = New System.Windows.Forms.CheckBox
-        Me.MyButton_Gain = New CustomControlsLib.MyButton
+        Me.MyButton_Gain = New MyButton
         Me.Label_Gain = New System.Windows.Forms.Label
         Me.TrackBar_BackLight = New System.Windows.Forms.TrackBar
         Me.TrackBar_ColorEnable = New System.Windows.Forms.TrackBar
         Me.CheckBox_ColorEnable = New System.Windows.Forms.CheckBox
         Me.CheckBox_BackLight = New System.Windows.Forms.CheckBox
-        Me.MyButton_ColorEnable = New CustomControlsLib.MyButton
-        Me.MyButton_BackLight = New CustomControlsLib.MyButton
+        Me.MyButton_ColorEnable = New MyButton
+        Me.MyButton_BackLight = New MyButton
         Me.Label_ColorEnable = New System.Windows.Forms.Label
         Me.Label_BackLight = New System.Windows.Forms.Label
         Me.TrackBar_Gain = New System.Windows.Forms.TrackBar
-        Me.MyButton_Focus = New CustomControlsLib.MyButton
+        Me.MyButton_Focus = New MyButton
         CType(Me.TrackBar_Brightness, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.TrackBar_Contrast, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -207,8 +207,8 @@ Partial Class Form_VideoInControls
         Me.btn_Close.Corners.UpperLeft = CType(6, Short)
         Me.btn_Close.Corners.UpperRight = CType(6, Short)
         Me.btn_Close.DimFactorOver = 30
-        Me.btn_Close.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_Close.FillTypeChecked = CustomControlsLib.MyButton.eFillType.LinearHorizontal
+        Me.btn_Close.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_Close.FillTypeChecked = MyButton.eFillType.LinearHorizontal
         Me.btn_Close.FocalPoints.CenterPtX = 0.3787879!
         Me.btn_Close.FocalPoints.CenterPtY = 0.3181818!
         Me.btn_Close.FocalPoints.FocusPtX = 0.0!
@@ -227,7 +227,7 @@ Partial Class Form_VideoInControls
         Me.btn_Close.ImageSize = New System.Drawing.Size(16, 16)
         Me.btn_Close.Location = New System.Drawing.Point(148, 535)
         Me.btn_Close.Name = "btn_Close"
-        Me.btn_Close.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_Close.Shape = MyButton.eShape.Rectangle
         Me.btn_Close.SideImage = Nothing
         Me.btn_Close.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Close.SideImageSize = New System.Drawing.Size(48, 48)
@@ -579,8 +579,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Exposure.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Exposure.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Exposure.DimFactorOver = -40
-        Me.MyButton_Exposure.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Exposure.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Exposure.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Exposure.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Exposure.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Exposure.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Exposure.FocalPoints.FocusPtX = 0.0!
@@ -598,7 +598,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Exposure.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Exposure.Location = New System.Drawing.Point(7, 109)
         Me.MyButton_Exposure.Name = "MyButton_Exposure"
-        Me.MyButton_Exposure.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Exposure.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Exposure.SideImage = CType(resources.GetObject("MyButton_Exposure.SideImage"), System.Drawing.Image)
         Me.MyButton_Exposure.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Exposure.SideImageSize = New System.Drawing.Size(30, 26)
@@ -631,8 +631,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Brightness.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Brightness.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Brightness.DimFactorOver = -40
-        Me.MyButton_Brightness.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Brightness.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Brightness.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Brightness.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Brightness.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Brightness.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Brightness.FocalPoints.FocusPtX = 0.0!
@@ -650,7 +650,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Brightness.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Brightness.Location = New System.Drawing.Point(7, 163)
         Me.MyButton_Brightness.Name = "MyButton_Brightness"
-        Me.MyButton_Brightness.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Brightness.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Brightness.SideImage = CType(resources.GetObject("MyButton_Brightness.SideImage"), System.Drawing.Image)
         Me.MyButton_Brightness.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Brightness.SideImageSize = New System.Drawing.Size(30, 26)
@@ -683,8 +683,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Contrast.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Contrast.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Contrast.DimFactorOver = -40
-        Me.MyButton_Contrast.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Contrast.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Contrast.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Contrast.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Contrast.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Contrast.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Contrast.FocalPoints.FocusPtX = 0.0!
@@ -702,7 +702,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Contrast.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Contrast.Location = New System.Drawing.Point(7, 190)
         Me.MyButton_Contrast.Name = "MyButton_Contrast"
-        Me.MyButton_Contrast.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Contrast.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Contrast.SideImage = CType(resources.GetObject("MyButton_Contrast.SideImage"), System.Drawing.Image)
         Me.MyButton_Contrast.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Contrast.SideImageSize = New System.Drawing.Size(30, 26)
@@ -735,8 +735,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Gamma.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Gamma.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Gamma.DimFactorOver = -40
-        Me.MyButton_Gamma.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Gamma.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Gamma.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Gamma.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Gamma.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Gamma.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Gamma.FocalPoints.FocusPtX = 0.0!
@@ -754,7 +754,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Gamma.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Gamma.Location = New System.Drawing.Point(7, 217)
         Me.MyButton_Gamma.Name = "MyButton_Gamma"
-        Me.MyButton_Gamma.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Gamma.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Gamma.SideImage = CType(resources.GetObject("MyButton_Gamma.SideImage"), System.Drawing.Image)
         Me.MyButton_Gamma.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Gamma.SideImageSize = New System.Drawing.Size(30, 26)
@@ -787,8 +787,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Saturation.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Saturation.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Saturation.DimFactorOver = -40
-        Me.MyButton_Saturation.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Saturation.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Saturation.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Saturation.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Saturation.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Saturation.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Saturation.FocalPoints.FocusPtX = 0.0!
@@ -806,7 +806,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Saturation.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Saturation.Location = New System.Drawing.Point(7, 274)
         Me.MyButton_Saturation.Name = "MyButton_Saturation"
-        Me.MyButton_Saturation.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Saturation.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Saturation.SideImage = CType(resources.GetObject("MyButton_Saturation.SideImage"), System.Drawing.Image)
         Me.MyButton_Saturation.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Saturation.SideImageSize = New System.Drawing.Size(30, 26)
@@ -839,8 +839,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_WhiteBalance.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_WhiteBalance.Corners.UpperRight = CType(11, Short)
         Me.MyButton_WhiteBalance.DimFactorOver = -40
-        Me.MyButton_WhiteBalance.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_WhiteBalance.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_WhiteBalance.FillType = MyButton.eFillType.Solid
+        Me.MyButton_WhiteBalance.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_WhiteBalance.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_WhiteBalance.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_WhiteBalance.FocalPoints.FocusPtX = 0.0!
@@ -858,7 +858,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_WhiteBalance.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_WhiteBalance.Location = New System.Drawing.Point(7, 301)
         Me.MyButton_WhiteBalance.Name = "MyButton_WhiteBalance"
-        Me.MyButton_WhiteBalance.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_WhiteBalance.Shape = MyButton.eShape.Rectangle
         Me.MyButton_WhiteBalance.SideImage = CType(resources.GetObject("MyButton_WhiteBalance.SideImage"), System.Drawing.Image)
         Me.MyButton_WhiteBalance.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_WhiteBalance.SideImageSize = New System.Drawing.Size(30, 26)
@@ -891,8 +891,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Hue.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Hue.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Hue.DimFactorOver = -40
-        Me.MyButton_Hue.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Hue.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Hue.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Hue.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Hue.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Hue.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Hue.FocalPoints.FocusPtX = 0.0!
@@ -910,7 +910,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Hue.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Hue.Location = New System.Drawing.Point(7, 328)
         Me.MyButton_Hue.Name = "MyButton_Hue"
-        Me.MyButton_Hue.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Hue.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Hue.SideImage = CType(resources.GetObject("MyButton_Hue.SideImage"), System.Drawing.Image)
         Me.MyButton_Hue.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Hue.SideImageSize = New System.Drawing.Size(30, 26)
@@ -943,8 +943,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Sharpness.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Sharpness.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Sharpness.DimFactorOver = -40
-        Me.MyButton_Sharpness.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Sharpness.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Sharpness.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Sharpness.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Sharpness.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Sharpness.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Sharpness.FocalPoints.FocusPtX = 0.0!
@@ -962,7 +962,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Sharpness.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Sharpness.Location = New System.Drawing.Point(7, 473)
         Me.MyButton_Sharpness.Name = "MyButton_Sharpness"
-        Me.MyButton_Sharpness.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Sharpness.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Sharpness.SideImage = CType(resources.GetObject("MyButton_Sharpness.SideImage"), System.Drawing.Image)
         Me.MyButton_Sharpness.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Sharpness.SideImageSize = New System.Drawing.Size(30, 26)
@@ -995,8 +995,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Zoom.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Zoom.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Zoom.DimFactorOver = -40
-        Me.MyButton_Zoom.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Zoom.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Zoom.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Zoom.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Zoom.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Zoom.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Zoom.FocalPoints.FocusPtX = 0.0!
@@ -1014,7 +1014,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Zoom.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Zoom.Location = New System.Drawing.Point(7, 387)
         Me.MyButton_Zoom.Name = "MyButton_Zoom"
-        Me.MyButton_Zoom.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Zoom.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Zoom.SideImage = CType(resources.GetObject("MyButton_Zoom.SideImage"), System.Drawing.Image)
         Me.MyButton_Zoom.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Zoom.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1047,8 +1047,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Pan.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Pan.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Pan.DimFactorOver = -40
-        Me.MyButton_Pan.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Pan.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Pan.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Pan.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Pan.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Pan.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Pan.FocalPoints.FocusPtX = 0.0!
@@ -1066,7 +1066,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Pan.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Pan.Location = New System.Drawing.Point(7, 414)
         Me.MyButton_Pan.Name = "MyButton_Pan"
-        Me.MyButton_Pan.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Pan.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Pan.SideImage = CType(resources.GetObject("MyButton_Pan.SideImage"), System.Drawing.Image)
         Me.MyButton_Pan.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Pan.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1099,8 +1099,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Tilt.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Tilt.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Tilt.DimFactorOver = -40
-        Me.MyButton_Tilt.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Tilt.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Tilt.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Tilt.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Tilt.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Tilt.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Tilt.FocalPoints.FocusPtX = 0.0!
@@ -1118,7 +1118,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Tilt.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Tilt.Location = New System.Drawing.Point(7, 441)
         Me.MyButton_Tilt.Name = "MyButton_Tilt"
-        Me.MyButton_Tilt.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Tilt.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Tilt.SideImage = CType(resources.GetObject("MyButton_Tilt.SideImage"), System.Drawing.Image)
         Me.MyButton_Tilt.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Tilt.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1398,8 +1398,8 @@ Partial Class Form_VideoInControls
         Me.btn_DefaultAll.Corners.UpperLeft = CType(3, Short)
         Me.btn_DefaultAll.Corners.UpperRight = CType(11, Short)
         Me.btn_DefaultAll.DimFactorOver = -40
-        Me.btn_DefaultAll.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.btn_DefaultAll.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.btn_DefaultAll.FillType = MyButton.eFillType.Solid
+        Me.btn_DefaultAll.FillTypeChecked = MyButton.eFillType.Solid
         Me.btn_DefaultAll.FocalPoints.CenterPtX = 0.0!
         Me.btn_DefaultAll.FocalPoints.CenterPtY = 0.40625!
         Me.btn_DefaultAll.FocalPoints.FocusPtX = 0.0!
@@ -1418,7 +1418,7 @@ Partial Class Form_VideoInControls
         Me.btn_DefaultAll.ImageSize = New System.Drawing.Size(31, 31)
         Me.btn_DefaultAll.Location = New System.Drawing.Point(7, 535)
         Me.btn_DefaultAll.Name = "btn_DefaultAll"
-        Me.btn_DefaultAll.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_DefaultAll.Shape = MyButton.eShape.Rectangle
         Me.btn_DefaultAll.SideImage = CType(resources.GetObject("btn_DefaultAll.SideImage"), System.Drawing.Image)
         Me.btn_DefaultAll.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_DefaultAll.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1496,8 +1496,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Gain.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Gain.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Gain.DimFactorOver = -40
-        Me.MyButton_Gain.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Gain.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Gain.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Gain.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Gain.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Gain.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Gain.FocalPoints.FocusPtX = 0.0!
@@ -1515,7 +1515,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Gain.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Gain.Location = New System.Drawing.Point(7, 136)
         Me.MyButton_Gain.Name = "MyButton_Gain"
-        Me.MyButton_Gain.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Gain.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Gain.SideImage = CType(resources.GetObject("MyButton_Gain.SideImage"), System.Drawing.Image)
         Me.MyButton_Gain.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Gain.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1606,8 +1606,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_ColorEnable.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_ColorEnable.Corners.UpperRight = CType(11, Short)
         Me.MyButton_ColorEnable.DimFactorOver = -40
-        Me.MyButton_ColorEnable.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_ColorEnable.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_ColorEnable.FillType = MyButton.eFillType.Solid
+        Me.MyButton_ColorEnable.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_ColorEnable.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_ColorEnable.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_ColorEnable.FocalPoints.FocusPtX = 0.0!
@@ -1625,7 +1625,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_ColorEnable.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_ColorEnable.Location = New System.Drawing.Point(7, 355)
         Me.MyButton_ColorEnable.Name = "MyButton_ColorEnable"
-        Me.MyButton_ColorEnable.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_ColorEnable.Shape = MyButton.eShape.Rectangle
         Me.MyButton_ColorEnable.SideImage = CType(resources.GetObject("MyButton_ColorEnable.SideImage"), System.Drawing.Image)
         Me.MyButton_ColorEnable.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_ColorEnable.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1658,8 +1658,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_BackLight.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_BackLight.Corners.UpperRight = CType(11, Short)
         Me.MyButton_BackLight.DimFactorOver = -40
-        Me.MyButton_BackLight.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_BackLight.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_BackLight.FillType = MyButton.eFillType.Solid
+        Me.MyButton_BackLight.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_BackLight.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_BackLight.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_BackLight.FocalPoints.FocusPtX = 0.0!
@@ -1677,7 +1677,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_BackLight.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_BackLight.Location = New System.Drawing.Point(7, 244)
         Me.MyButton_BackLight.Name = "MyButton_BackLight"
-        Me.MyButton_BackLight.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_BackLight.Shape = MyButton.eShape.Rectangle
         Me.MyButton_BackLight.SideImage = CType(resources.GetObject("MyButton_BackLight.SideImage"), System.Drawing.Image)
         Me.MyButton_BackLight.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_BackLight.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1747,8 +1747,8 @@ Partial Class Form_VideoInControls
         Me.MyButton_Focus.Corners.UpperLeft = CType(3, Short)
         Me.MyButton_Focus.Corners.UpperRight = CType(11, Short)
         Me.MyButton_Focus.DimFactorOver = -40
-        Me.MyButton_Focus.FillType = CustomControlsLib.MyButton.eFillType.Solid
-        Me.MyButton_Focus.FillTypeChecked = CustomControlsLib.MyButton.eFillType.Solid
+        Me.MyButton_Focus.FillType = MyButton.eFillType.Solid
+        Me.MyButton_Focus.FillTypeChecked = MyButton.eFillType.Solid
         Me.MyButton_Focus.FocalPoints.CenterPtX = 0.0!
         Me.MyButton_Focus.FocalPoints.CenterPtY = 0.40625!
         Me.MyButton_Focus.FocalPoints.FocusPtX = 0.0!
@@ -1766,7 +1766,7 @@ Partial Class Form_VideoInControls
         Me.MyButton_Focus.ImageSize = New System.Drawing.Size(31, 31)
         Me.MyButton_Focus.Location = New System.Drawing.Point(7, 500)
         Me.MyButton_Focus.Name = "MyButton_Focus"
-        Me.MyButton_Focus.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.MyButton_Focus.Shape = MyButton.eShape.Rectangle
         Me.MyButton_Focus.SideImage = CType(resources.GetObject("MyButton_Focus.SideImage"), System.Drawing.Image)
         Me.MyButton_Focus.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MyButton_Focus.SideImageSize = New System.Drawing.Size(30, 26)
@@ -1885,7 +1885,7 @@ Partial Class Form_VideoInControls
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btn_Close As CustomControlsLib.MyButton
+    Friend WithEvents btn_Close As MyButton
     Friend WithEvents TrackBar_Brightness As System.Windows.Forms.TrackBar
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents Tool_OpenSourcePanel As System.Windows.Forms.ToolStripButton
@@ -1914,17 +1914,17 @@ Partial Class Form_VideoInControls
     Friend WithEvents TrackBar_Tilt As System.Windows.Forms.TrackBar
     Friend WithEvents Label_Hue As System.Windows.Forms.Label
     Friend WithEvents TrackBar_Hue As System.Windows.Forms.TrackBar
-    Friend WithEvents MyButton_Exposure As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Brightness As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Contrast As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Gamma As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Saturation As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_WhiteBalance As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Hue As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Sharpness As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Zoom As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Pan As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_Tilt As CustomControlsLib.MyButton
+    Friend WithEvents MyButton_Exposure As MyButton
+    Friend WithEvents MyButton_Brightness As MyButton
+    Friend WithEvents MyButton_Contrast As MyButton
+    Friend WithEvents MyButton_Gamma As MyButton
+    Friend WithEvents MyButton_Saturation As MyButton
+    Friend WithEvents MyButton_WhiteBalance As MyButton
+    Friend WithEvents MyButton_Hue As MyButton
+    Friend WithEvents MyButton_Sharpness As MyButton
+    Friend WithEvents MyButton_Zoom As MyButton
+    Friend WithEvents MyButton_Pan As MyButton
+    Friend WithEvents MyButton_Tilt As MyButton
     Friend WithEvents Label_Default As System.Windows.Forms.Label
     Friend WithEvents CheckBox_Exposure As System.Windows.Forms.CheckBox
     Friend WithEvents Label_Auto As System.Windows.Forms.Label
@@ -1938,27 +1938,27 @@ Partial Class Form_VideoInControls
     Friend WithEvents CheckBox_Zoom As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_Pan As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_Tilt As System.Windows.Forms.CheckBox
-    Friend WithEvents ComboBox_VideoFormat As CustomControlsLib.MyComboBox
-    Friend WithEvents ComboBox_VideoSize As CustomControlsLib.MyComboBox
-    Friend WithEvents ComboBox_VideoFPS As CustomControlsLib.MyComboBox
+    Friend WithEvents ComboBox_VideoFormat As MyComboBox
+    Friend WithEvents ComboBox_VideoSize As MyComboBox
+    Friend WithEvents ComboBox_VideoFPS As MyComboBox
     Friend WithEvents Label_Compression As System.Windows.Forms.Label
     Friend WithEvents Label_VideoSize As System.Windows.Forms.Label
     Friend WithEvents Label_MaxFps As System.Windows.Forms.Label
-    Friend WithEvents btn_DefaultAll As CustomControlsLib.MyButton
+    Friend WithEvents btn_DefaultAll As MyButton
     Friend WithEvents TrackBar_Focus As System.Windows.Forms.TrackBar
     Friend WithEvents CheckBox_Focus As System.Windows.Forms.CheckBox
     Friend WithEvents Label_Focus As System.Windows.Forms.Label
     Friend WithEvents CheckBox_Gain As System.Windows.Forms.CheckBox
-    Friend WithEvents MyButton_Gain As CustomControlsLib.MyButton
+    Friend WithEvents MyButton_Gain As MyButton
     Friend WithEvents Label_Gain As System.Windows.Forms.Label
     Friend WithEvents TrackBar_BackLight As System.Windows.Forms.TrackBar
     Friend WithEvents TrackBar_ColorEnable As System.Windows.Forms.TrackBar
     Friend WithEvents CheckBox_ColorEnable As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_BackLight As System.Windows.Forms.CheckBox
-    Friend WithEvents MyButton_ColorEnable As CustomControlsLib.MyButton
-    Friend WithEvents MyButton_BackLight As CustomControlsLib.MyButton
+    Friend WithEvents MyButton_ColorEnable As MyButton
+    Friend WithEvents MyButton_BackLight As MyButton
     Friend WithEvents Label_ColorEnable As System.Windows.Forms.Label
     Friend WithEvents Label_BackLight As System.Windows.Forms.Label
     Friend WithEvents TrackBar_Gain As System.Windows.Forms.TrackBar
-    Friend WithEvents MyButton_Focus As CustomControlsLib.MyButton
+    Friend WithEvents MyButton_Focus As MyButton
 End Class

@@ -62,25 +62,13 @@
     <RemoveIntegerChecks>true</RemoveIntegerChecks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CustomControlsLib, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\CustomControlsLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DirectShowLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\DirectShowLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -97,7 +85,85 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class_MeterBar.vb" />
+    <Compile Include="Class_ThereminoSlots.vb" />
     <Compile Include="Class_VideoCapabilities.vb" />
+    <Compile Include="CustomControls\dlgCorners.designer.vb">
+      <DependentUpon>dlgCorners.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\dlgCorners.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\DropdownColorBlender.designer.vb">
+      <DependentUpon>DropdownColorBlender.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\DropdownColorBlender.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyButton.Designer.vb">
+      <DependentUpon>MyButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\MyButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyButtonDesigner.vb" />
+    <Compile Include="CustomControls\MyComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyGroupBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyListView.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\MyTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DirectShow\amstream.vb" />
+    <Compile Include="DirectShow\amvideo.vb" />
+    <Compile Include="DirectShow\atscpsipparser.vb" />
+    <Compile Include="DirectShow\austream.vb" />
+    <Compile Include="DirectShow\AxCore.vb" />
+    <Compile Include="DirectShow\AXExtend.vb" />
+    <Compile Include="DirectShow\BDAIface.vb" />
+    <Compile Include="DirectShow\Bdatif.vb" />
+    <Compile Include="DirectShow\BDATypes.vb" />
+    <Compile Include="DirectShow\Control.vb" />
+    <Compile Include="DirectShow\DES.vb" />
+    <Compile Include="DirectShow\DevEnum.vb" />
+    <Compile Include="DirectShow\DMODShow.vb" />
+    <Compile Include="DirectShow\dsattrib.vb" />
+    <Compile Include="DirectShow\DsUtils.vb" />
+    <Compile Include="DirectShow\dvbsiparser.vb" />
+    <Compile Include="DirectShow\DVDIf.vb" />
+    <Compile Include="DirectShow\DynGraph.vb" />
+    <Compile Include="DirectShow\encdec.vb" />
+    <Compile Include="DirectShow\EvCode.vb" />
+    <Compile Include="DirectShow\IL21Dec.vb" />
+    <Compile Include="DirectShow\MediaObj.vb" />
+    <Compile Include="DirectShow\MediaParam.vb" />
+    <Compile Include="DirectShow\Misc.vb" />
+    <Compile Include="DirectShow\Mixerocx.vb" />
+    <Compile Include="DirectShow\mmstream.vb" />
+    <Compile Include="DirectShow\mpconfig.vb" />
+    <Compile Include="DirectShow\Mpeg2Data.vb" />
+    <Compile Include="DirectShow\mpeg2psiparser.vb" />
+    <Compile Include="DirectShow\Mpeg2Structs.vb" />
+    <Compile Include="DirectShow\other.vb" />
+    <Compile Include="DirectShow\PlayList.vb" />
+    <Compile Include="DirectShow\QEdit.vb" />
+    <Compile Include="DirectShow\qnetwork.vb" />
+    <Compile Include="DirectShow\RegBag.vb" />
+    <Compile Include="DirectShow\Sbe.vb" />
+    <Compile Include="DirectShow\Tuner.vb" />
+    <Compile Include="DirectShow\TvRatings.vb" />
+    <Compile Include="DirectShow\Uuids.vb" />
+    <Compile Include="DirectShow\Vidcap.vb" />
+    <Compile Include="DirectShow\VidPort.vb" />
+    <Compile Include="DirectShow\Vmr9.vb" />
+    <Compile Include="DirectShow\VmRender.vb" />
     <Compile Include="Form_VideoInControls.Designer.vb">
       <DependentUpon>Form_VideoInControls.vb</DependentUpon>
     </Compile>
@@ -131,11 +197,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -146,6 +207,15 @@
     <Compile Include="Utils_Timers_Precision.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomControls\dlgCorners.resx">
+      <DependentUpon>dlgCorners.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\DropdownColorBlender.resx">
+      <DependentUpon>DropdownColorBlender.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\MyButton.resx">
+      <DependentUpon>MyButton.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Main.resx">
       <DependentUpon>Form_Main.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -156,12 +226,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_VideoInControls.resx">
       <DependentUpon>Form_VideoInControls.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
@@ -178,6 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Colors.ico" />
+    <Content Include="CustomControls\MyButton.bmp" />
     <Content Include="Unused.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -3,8 +3,6 @@ Imports System.Security.Permissions
 Imports System.Runtime.InteropServices
 Imports System.Runtime.InteropServices.ComTypes
 
-Imports DirectShowLib
-
 Public NotInheritable Class GraphTools
 
     Private Sub New()
@@ -112,7 +110,7 @@ Public NotInheritable Class GraphTools
         If (hr = 0) Then
             Dim filters(0) As IBaseFilter
 
-            While (enumFilters.Next(filters.Length, filters, 0) = 0)
+            While (enumFilters.Next(filters.Length, filters, IntPtr.Zero) = 0)
                 Dim filterInfo As FilterInfo = Nothing
                 hr = filters(0).QueryFilterInfo(filterInfo)
                 If (hr = 0) Then
@@ -143,7 +141,7 @@ Public NotInheritable Class GraphTools
         If (hr = 0) Then
             Dim filters(0) As IBaseFilter
 
-            While (enumFilters.Next(filters.Length, filters, 0) = 0)
+            While (enumFilters.Next(filters.Length, filters, IntPtr.Zero) = 0)
                 Dim clsid As Guid
                 hr = filters(0).GetClassID(clsid)
                 If ((hr = 0) AndAlso (clsid = filterClsid)) Then
@@ -191,7 +189,7 @@ Public NotInheritable Class GraphTools
         DsError.ThrowExceptionForHR(hr)
         Try
 
-            While (enumPins.Next(pins.Length, pins, 0) = 0)
+            While (enumPins.Next(pins.Length, pins, IntPtr.Zero) = 0)
                 Try
                     hr = pins(0).Disconnect
                     DsError.ThrowExceptionForHR(hr)
@@ -218,7 +216,7 @@ Public NotInheritable Class GraphTools
         Try
             Dim filters(0) As IBaseFilter
 
-            While (enumFilters.Next(filters.Length, filters, 0) = 0)
+            While (enumFilters.Next(filters.Length, filters, IntPtr.Zero) = 0)
                 Try
                     DisconnectPins(filters(0))
                 Catch e As System.Exception
@@ -244,7 +242,7 @@ Public NotInheritable Class GraphTools
         Try
             Dim filters(0) As IBaseFilter
 
-            While (enumFilters.Next(filters.Length, filters, 0) = 0)
+            While (enumFilters.Next(filters.Length, filters, IntPtr.Zero) = 0)
                 filtersArray.Add(filters(0))
 
             End While
@@ -724,13 +722,13 @@ Module GraphHelperFunctions
     ' ====================================================================================================
     '  RELEASE COM OBJECT - SPECIALIZED CALLS    ( AUTOMATIC "Obj = Nothing" )
     ' ====================================================================================================
-    Friend Sub Release_IbaseFilter(ByRef obj As DirectShowLib.IBaseFilter)
+    Friend Sub Release_IbaseFilter(ByRef obj As IBaseFilter)
         If obj IsNot Nothing Then
             Marshal.ReleaseComObject(obj)
             obj = Nothing
         End If
     End Sub
-    Friend Sub Release_IPin(ByRef obj As DirectShowLib.IPin)
+    Friend Sub Release_IPin(ByRef obj As IPin)
         If obj IsNot Nothing Then
             Marshal.ReleaseComObject(obj)
             obj = Nothing

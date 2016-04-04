@@ -1,6 +1,5 @@
 ﻿
 Imports System.Runtime.InteropServices
-Imports DirectShowLib
 Imports System.Drawing
 
 Module Module_DirectShow_VideoInput
@@ -65,6 +64,9 @@ Module Module_DirectShow_VideoInput
 
             ' --------------------------------------------------------------------- START
             MediaControl.Run()
+
+            ' TODO - USING BmiHeader - Needs a accurate test
+            'Capture_GetVideoFormatParams()
 
         Catch ex As Exception
             'MsgBox(ex.ToString)
@@ -311,6 +313,11 @@ Module Module_DirectShow_VideoInput
         ' ----------------------------------------------------- read VideoInfoHeader
         Dim vih As VideoInfoHeader = New VideoInfoHeader
         Marshal.PtrToStructure(AMMedia.formatPtr, vih)
+
+        ' ----------------------------------------------------- set SampleGrabbeeCallBack Width and Height 
+        ' TODO - USING BmiHeader - Needs a accurate test
+        sgcb.Width = vih.BmiHeader.Width
+        sgcb.Height = vih.BmiHeader.Height
 
         ' ----------------------------------------------------- MEDIA SUBTYPE
         VideoFormatParams.VideoFormat = MediaSubTypeToString(AMMedia.subType)

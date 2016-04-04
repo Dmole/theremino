@@ -1,5 +1,4 @@
 ﻿
-Imports DirectShowLib
 
 Public Class Form_VideoInControls
 
@@ -288,7 +287,7 @@ Public Class Form_VideoInControls
     End Sub
 
 
-    Private Sub InitTrackBarAndLabel(ByVal button As CustomControlsLib.MyButton, _
+    Private Sub InitTrackBarAndLabel(ByVal button As MyButton, _
                                      ByVal chkbox As CheckBox, _
                                      ByVal tbar As TrackBar, _
                                      ByVal lbl As Label, _

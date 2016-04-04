@@ -24,33 +24,33 @@ Partial Class Form_Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_Main))
-        Dim DesignerRectTracker1 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems1 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems2 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker2 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker3 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems3 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems4 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker4 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker5 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems5 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems6 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker6 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker7 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems7 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems8 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker8 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim DesignerRectTracker9 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
-        Dim CBlendItems9 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim CBlendItems10 As CustomControlsLib.cBlendItems = New CustomControlsLib.cBlendItems
-        Dim DesignerRectTracker10 As CustomControlsLib.DesignerRectTracker = New CustomControlsLib.DesignerRectTracker
+        Dim DesignerRectTracker1 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems1 As cBlendItems = New cBlendItems
+        Dim CBlendItems2 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker2 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker3 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems3 As cBlendItems = New cBlendItems
+        Dim CBlendItems4 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker4 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker5 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems5 As cBlendItems = New cBlendItems
+        Dim CBlendItems6 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker6 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker7 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems7 As cBlendItems = New cBlendItems
+        Dim CBlendItems8 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker8 As DesignerRectTracker = New DesignerRectTracker
+        Dim DesignerRectTracker9 As DesignerRectTracker = New DesignerRectTracker
+        Dim CBlendItems9 As cBlendItems = New cBlendItems
+        Dim CBlendItems10 As cBlendItems = New cBlendItems
+        Dim DesignerRectTracker10 As DesignerRectTracker = New DesignerRectTracker
         Me.PBox_Camera = New System.Windows.Forms.PictureBox
         Me.Label_FramesPerSec = New System.Windows.Forms.Label
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox_VideoInDevice = New System.Windows.Forms.GroupBox
         Me.Label_Millisec = New System.Windows.Forms.Label
         Me.Label_Resolution = New System.Windows.Forms.Label
-        Me.ComboBox_VideoInputDevice = New CustomControlsLib.MyComboBox
+        Me.ComboBox_VideoInputDevice = New MyComboBox
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.Menu_File = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
@@ -86,37 +86,37 @@ Partial Class Form_Main
         Me.Tools_SaveTotal = New System.Windows.Forms.ToolStripButton
         Me.Timer_1Hz = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox_Input = New System.Windows.Forms.GroupBox
-        Me.txt_SizeY = New CustomControlsLib.MyTextBox
-        Me.txt_StartX = New CustomControlsLib.MyTextBox
-        Me.txt_EndX = New CustomControlsLib.MyTextBox
-        Me.txt_StartY = New CustomControlsLib.MyTextBox
+        Me.txt_SizeY = New MyTextBox
+        Me.txt_StartX = New MyTextBox
+        Me.txt_EndX = New MyTextBox
+        Me.txt_StartY = New MyTextBox
         Me.Label_SizeY = New System.Windows.Forms.Label
         Me.Label_StartX = New System.Windows.Forms.Label
         Me.Label_StartY = New System.Windows.Forms.Label
         Me.Label_EndX = New System.Windows.Forms.Label
         Me.chk_Flip = New System.Windows.Forms.CheckBox
-        Me.txt_Speed = New CustomControlsLib.MyTextBox
+        Me.txt_Speed = New MyTextBox
         Me.Label_Speed = New System.Windows.Forms.Label
-        Me.txt_JpegQuality = New CustomControlsLib.MyTextBox
+        Me.txt_JpegQuality = New MyTextBox
         Me.Label_JpegQuality = New System.Windows.Forms.Label
         Me.Label_Path = New System.Windows.Forms.Label
-        Me.ComboBox_FileType = New CustomControlsLib.MyComboBox
+        Me.ComboBox_FileType = New MyComboBox
         Me.Label_Name = New System.Windows.Forms.Label
-        Me.txt_FilePath = New CustomControlsLib.MyTextBox
+        Me.txt_FilePath = New MyTextBox
         Me.LabelDot = New System.Windows.Forms.Label
         Me.GroupBox_SaveImage = New System.Windows.Forms.GroupBox
-        Me.txt_FileName = New CustomControlsLib.MyTextBox
+        Me.txt_FileName = New MyTextBox
         Me.PBox_Spectrum = New System.Windows.Forms.PictureBox
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.btn_TrimScale = New CustomControlsLib.MyButton
+        Me.btn_TrimScale = New MyButton
         Me.PictureBox3 = New System.Windows.Forms.PictureBox
-        Me.txt_Filter = New CustomControlsLib.MyTextBox
+        Me.txt_Filter = New MyTextBox
         Me.Label_Filter = New System.Windows.Forms.Label
-        Me.btn_Peaks = New CustomControlsLib.MyButton
-        Me.btn_Dips = New CustomControlsLib.MyButton
-        Me.btn_Colors = New CustomControlsLib.MyButton
+        Me.btn_Peaks = New MyButton
+        Me.btn_Dips = New MyButton
+        Me.btn_Colors = New MyButton
         Me.Panel1 = New System.Windows.Forms.Panel
-        Me.btn_Reference = New CustomControlsLib.MyButton
+        Me.btn_Reference = New MyButton
         Me.Label_MaxPeak = New System.Windows.Forms.Label
         CType(Me.PBox_Camera, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_VideoInDevice.SuspendLayout()
@@ -881,8 +881,8 @@ Partial Class Form_Main
         Me.btn_TrimScale.Corners.UpperLeft = CType(4, Short)
         Me.btn_TrimScale.Corners.UpperRight = CType(4, Short)
         Me.btn_TrimScale.DimFactorOver = 30
-        Me.btn_TrimScale.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_TrimScale.FillTypeChecked = CustomControlsLib.MyButton.eFillType.GradientPath
+        Me.btn_TrimScale.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_TrimScale.FillTypeChecked = MyButton.eFillType.GradientPath
         Me.btn_TrimScale.FocalPoints.CenterPtX = 0.5606061!
         Me.btn_TrimScale.FocalPoints.CenterPtY = 0.5!
         Me.btn_TrimScale.FocalPoints.FocusPtX = 0.0!
@@ -902,7 +902,7 @@ Partial Class Form_Main
         Me.btn_TrimScale.ImageSize = New System.Drawing.Size(48, 48)
         Me.btn_TrimScale.Location = New System.Drawing.Point(501, 5)
         Me.btn_TrimScale.Name = "btn_TrimScale"
-        Me.btn_TrimScale.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_TrimScale.Shape = MyButton.eShape.Rectangle
         Me.btn_TrimScale.SideImage = Nothing
         Me.btn_TrimScale.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_TrimScale.SideImageSize = New System.Drawing.Size(32, 32)
@@ -989,8 +989,8 @@ Partial Class Form_Main
         Me.btn_Peaks.Corners.UpperLeft = CType(4, Short)
         Me.btn_Peaks.Corners.UpperRight = CType(4, Short)
         Me.btn_Peaks.DimFactorOver = 30
-        Me.btn_Peaks.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_Peaks.FillTypeChecked = CustomControlsLib.MyButton.eFillType.GradientPath
+        Me.btn_Peaks.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_Peaks.FillTypeChecked = MyButton.eFillType.GradientPath
         Me.btn_Peaks.FocalPoints.CenterPtX = 0.1363636!
         Me.btn_Peaks.FocalPoints.CenterPtY = 1.0!
         Me.btn_Peaks.FocalPoints.FocusPtX = 0.0!
@@ -1010,7 +1010,7 @@ Partial Class Form_Main
         Me.btn_Peaks.ImageSize = New System.Drawing.Size(48, 48)
         Me.btn_Peaks.Location = New System.Drawing.Point(258, 5)
         Me.btn_Peaks.Name = "btn_Peaks"
-        Me.btn_Peaks.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_Peaks.Shape = MyButton.eShape.Rectangle
         Me.btn_Peaks.SideImage = Nothing
         Me.btn_Peaks.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Peaks.SideImageSize = New System.Drawing.Size(32, 32)
@@ -1044,8 +1044,8 @@ Partial Class Form_Main
         Me.btn_Dips.Corners.UpperLeft = CType(4, Short)
         Me.btn_Dips.Corners.UpperRight = CType(4, Short)
         Me.btn_Dips.DimFactorOver = 30
-        Me.btn_Dips.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_Dips.FillTypeChecked = CustomControlsLib.MyButton.eFillType.GradientPath
+        Me.btn_Dips.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_Dips.FillTypeChecked = MyButton.eFillType.GradientPath
         Me.btn_Dips.FocalPoints.CenterPtX = 0.1363636!
         Me.btn_Dips.FocalPoints.CenterPtY = 1.0!
         Me.btn_Dips.FocalPoints.FocusPtX = 0.0!
@@ -1065,7 +1065,7 @@ Partial Class Form_Main
         Me.btn_Dips.ImageSize = New System.Drawing.Size(48, 48)
         Me.btn_Dips.Location = New System.Drawing.Point(215, 5)
         Me.btn_Dips.Name = "btn_Dips"
-        Me.btn_Dips.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_Dips.Shape = MyButton.eShape.Rectangle
         Me.btn_Dips.SideImage = Nothing
         Me.btn_Dips.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Dips.SideImageSize = New System.Drawing.Size(32, 32)
@@ -1100,8 +1100,8 @@ Partial Class Form_Main
         Me.btn_Colors.Corners.UpperLeft = CType(4, Short)
         Me.btn_Colors.Corners.UpperRight = CType(4, Short)
         Me.btn_Colors.DimFactorOver = 30
-        Me.btn_Colors.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_Colors.FillTypeChecked = CustomControlsLib.MyButton.eFillType.GradientPath
+        Me.btn_Colors.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_Colors.FillTypeChecked = MyButton.eFillType.GradientPath
         Me.btn_Colors.FocalPoints.CenterPtX = 0.1363636!
         Me.btn_Colors.FocalPoints.CenterPtY = 1.0!
         Me.btn_Colors.FocalPoints.FocusPtX = 0.0!
@@ -1121,7 +1121,7 @@ Partial Class Form_Main
         Me.btn_Colors.ImageSize = New System.Drawing.Size(48, 48)
         Me.btn_Colors.Location = New System.Drawing.Point(304, 5)
         Me.btn_Colors.Name = "btn_Colors"
-        Me.btn_Colors.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_Colors.Shape = MyButton.eShape.Rectangle
         Me.btn_Colors.SideImage = Nothing
         Me.btn_Colors.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Colors.SideImageSize = New System.Drawing.Size(32, 32)
@@ -1175,8 +1175,8 @@ Partial Class Form_Main
         Me.btn_Reference.Corners.UpperLeft = CType(4, Short)
         Me.btn_Reference.Corners.UpperRight = CType(4, Short)
         Me.btn_Reference.DimFactorOver = 30
-        Me.btn_Reference.FillType = CustomControlsLib.MyButton.eFillType.LinearVertical
-        Me.btn_Reference.FillTypeChecked = CustomControlsLib.MyButton.eFillType.GradientPath
+        Me.btn_Reference.FillType = MyButton.eFillType.LinearVertical
+        Me.btn_Reference.FillTypeChecked = MyButton.eFillType.GradientPath
         Me.btn_Reference.FocalPoints.CenterPtX = 0.1363636!
         Me.btn_Reference.FocalPoints.CenterPtY = 1.0!
         Me.btn_Reference.FocalPoints.FocusPtX = 0.0!
@@ -1196,7 +1196,7 @@ Partial Class Form_Main
         Me.btn_Reference.ImageSize = New System.Drawing.Size(48, 48)
         Me.btn_Reference.Location = New System.Drawing.Point(143, 5)
         Me.btn_Reference.Name = "btn_Reference"
-        Me.btn_Reference.Shape = CustomControlsLib.MyButton.eShape.Rectangle
+        Me.btn_Reference.Shape = MyButton.eShape.Rectangle
         Me.btn_Reference.SideImage = Nothing
         Me.btn_Reference.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Reference.SideImageSize = New System.Drawing.Size(32, 32)
@@ -1261,7 +1261,7 @@ Partial Class Form_Main
     Friend WithEvents PBox_Camera As System.Windows.Forms.PictureBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents Label_FramesPerSec As System.Windows.Forms.Label
-    Friend WithEvents ComboBox_VideoInputDevice As CustomControlsLib.MyComboBox
+    Friend WithEvents ComboBox_VideoInputDevice As MyComboBox
     Friend WithEvents GroupBox_VideoInDevice As System.Windows.Forms.GroupBox
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents Menu_File As System.Windows.Forms.ToolStripMenuItem
@@ -1276,30 +1276,30 @@ Partial Class Form_Main
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents Menu_File_Exit As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GroupBox_Input As System.Windows.Forms.GroupBox
-    Friend WithEvents ComboBox_FileType As CustomControlsLib.MyComboBox
+    Friend WithEvents ComboBox_FileType As MyComboBox
     Friend WithEvents LabelDot As System.Windows.Forms.Label
     Friend WithEvents chk_Flip As System.Windows.Forms.CheckBox
     Friend WithEvents Label_Path As System.Windows.Forms.Label
     Friend WithEvents Label_Name As System.Windows.Forms.Label
-    Friend WithEvents txt_FilePath As CustomControlsLib.MyTextBox
-    Friend WithEvents txt_JpegQuality As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_FilePath As MyTextBox
+    Friend WithEvents txt_JpegQuality As MyTextBox
     Friend WithEvents Label_JpegQuality As System.Windows.Forms.Label
     Friend WithEvents GroupBox_SaveImage As System.Windows.Forms.GroupBox
     Friend WithEvents Label_StartX As System.Windows.Forms.Label
-    Friend WithEvents txt_StartX As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_StartX As MyTextBox
     Friend WithEvents Label_StartY As System.Windows.Forms.Label
-    Friend WithEvents txt_StartY As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_StartY As MyTextBox
     Friend WithEvents Label_EndX As System.Windows.Forms.Label
-    Friend WithEvents txt_EndX As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_EndX As MyTextBox
     Friend WithEvents PBox_Spectrum As System.Windows.Forms.PictureBox
     Friend WithEvents Label_SizeY As System.Windows.Forms.Label
-    Friend WithEvents txt_SizeY As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_SizeY As MyTextBox
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents txt_Speed As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_Speed As MyTextBox
     Friend WithEvents Label_Speed As System.Windows.Forms.Label
-    Friend WithEvents btn_TrimScale As CustomControlsLib.MyButton
+    Friend WithEvents btn_TrimScale As MyButton
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents txt_Filter As CustomControlsLib.MyTextBox
+    Friend WithEvents txt_Filter As MyTextBox
     Friend WithEvents Label_Filter As System.Windows.Forms.Label
     Friend WithEvents Label_Millisec As System.Windows.Forms.Label
     Friend WithEvents Menu_Language As System.Windows.Forms.ToolStripMenuItem
@@ -1318,16 +1318,16 @@ Partial Class Form_Main
     Friend WithEvents Menu_Help_OpenProgramFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_About As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Tools_SaveSpectrum As System.Windows.Forms.ToolStripButton
-    Friend WithEvents txt_FileName As CustomControlsLib.MyTextBox
-    Friend WithEvents btn_Peaks As CustomControlsLib.MyButton
-    Friend WithEvents btn_Dips As CustomControlsLib.MyButton
-    Friend WithEvents btn_Colors As CustomControlsLib.MyButton
+    Friend WithEvents txt_FileName As MyTextBox
+    Friend WithEvents btn_Peaks As MyButton
+    Friend WithEvents btn_Dips As MyButton
+    Friend WithEvents btn_Colors As MyButton
     Friend WithEvents Menu_Help_Technology As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Tools_SaveCamera As System.Windows.Forms.ToolStripButton
     Friend WithEvents Tools_SaveTotal As System.Windows.Forms.ToolStripButton
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label_MaxPeak As System.Windows.Forms.Label
-    Friend WithEvents btn_Reference As CustomControlsLib.MyButton
+    Friend WithEvents btn_Reference As MyButton
     Friend WithEvents Menu_Tools_TrimPoints As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_Trim1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_Trim2 As System.Windows.Forms.ToolStripMenuItem

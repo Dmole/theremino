@@ -15,31 +15,6 @@ Module Module_SaveLoad
         Return Title & " - V" & s(0) & "." & s(1)
     End Function
 
-
-    ' =======================================================================================================
-    '   Platform selection
-    ' =======================================================================================================
-    Friend Function CanUseWindowsDlls() As Boolean
-        Select Case Environment.OSVersion.Platform
-            Case PlatformID.Win32NT, PlatformID.Win32S, PlatformID.Win32Windows, PlatformID.WinCE
-                Return True
-            Case Else
-                Return False
-        End Select
-    End Function
-    Friend Function PlatformAdjustedFileName(ByVal FileName As String, _
-                                             Optional ByVal DefaultName As String = "") As String
-        If CanUseWindowsDlls() Then
-            FileName = Replace(FileName, "/", "\")
-            Return FileName
-        Else
-            If FileName.Contains(":") Then FileName = DefaultName
-            FileName = Replace(FileName, "\", "/")
-            Return FileName
-        End If
-    End Function
-
-
     ' =======================================================================================
     '  FORM FUNCTIONS
     ' =======================================================================================

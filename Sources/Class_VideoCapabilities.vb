@@ -3,7 +3,6 @@ Imports System
 Imports System.Diagnostics
 Imports System.Drawing
 Imports System.Runtime.InteropServices
-Imports DirectShowLib
 
 
 Friend Class VideoCapabilities
