@@ -262,6 +262,8 @@ Module Module_Utils
                 'Debug.Print(v.ToString)
             Loop Until k >= 1
         Catch
+            Form_Main.Opacity = 1
+            Form_VideoInControls.Opacity = 1
         End Try
     End Sub
 

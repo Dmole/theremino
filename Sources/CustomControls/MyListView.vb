@@ -6,6 +6,7 @@
 
 Imports System.ComponentModel
 Imports System.Runtime.InteropServices
+Imports System.Drawing
 
 Public Class MyListView
     Inherits System.Windows.Forms.ListView

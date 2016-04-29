@@ -1,6 +1,8 @@
 Imports System.Windows.Forms.Design
 Imports System.Drawing.Drawing2D
 Imports System.ComponentModel
+Imports System.Drawing
+Imports System.Windows.Forms
 
 <ToolboxItem(False), ToolboxItemFilter("Prevent", ToolboxItemFilterType.Prevent)> _
 Public Class DropdownColorBlender
@@ -229,12 +231,12 @@ Public Class DropdownColorBlender
         Dim blend As ColorBlend = New ColorBlend()
         blend.Colors = BlendColors
         blend.Positions = BlendPositions
-        br.interpolationColors = blend
+        br.InterpolationColors = blend
         Return br
     End Function
 
     Private Sub BuildABlend()
-        Dim lColors As New List(Of Color)
+        Dim lColors As New Collections.Generic.List(Of Color)
         lColors.Add(StartPointer.pColor)
         If MiddlePointers IsNot Nothing Then
             For Each ptr As cblPointer In MiddlePointers
@@ -245,7 +247,7 @@ Public Class DropdownColorBlender
         BlendColors = lColors.ToArray
         lColors = Nothing
 
-        Dim lPos As New List(Of Single)
+        Dim lPos As New Collections.Generic.List(Of Single)
         lPos.Add(StartPointer.pPos)
         If MiddlePointers IsNot Nothing Then
             For Each ptr As cblPointer In MiddlePointers

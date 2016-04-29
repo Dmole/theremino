@@ -1,6 +1,7 @@
 
 Imports System.ComponentModel
-
+Imports System.Windows.Forms
+Imports System.Drawing
 
 Public Class MyComboBox
     Inherits ComboBox

@@ -4,6 +4,8 @@ Imports System.Drawing.Design
 Imports System.Drawing.Drawing2D
 Imports System.Windows.Forms.Design
 Imports System.Drawing.Imaging
+Imports System.Drawing
+Imports System.Windows.Forms
 
 
 #Region "MyButton Class"
@@ -1327,7 +1329,7 @@ Public Class MyButton
             'Designer Manual Selection is needed
             Dim selectservice As ISelectionService = _
                  CType(GetService(GetType(ISelectionService)), ISelectionService)
-            Dim selection As New ArrayList
+            Dim selection As New Collections.ArrayList
             selection.Clear()
             selectservice.SetSelectedComponents(selection, SelectionTypes.Replace)
             selection.Add(Me)

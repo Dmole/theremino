@@ -4,6 +4,8 @@ Imports System.ComponentModel
 Imports System.ComponentModel.Design
 Imports System.Drawing.Design
 Imports System.Drawing.Drawing2D
+Imports System.Drawing
+Imports System.Windows.Forms
 
 #Region "MyButtonDesigner"
 

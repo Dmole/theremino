@@ -589,9 +589,9 @@ Public Class Form_Main
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         If Not EventsAreEnabled Then Return
         If Capture_Image Is Nothing OrElse Capture_Image.PixelFormat = Imaging.PixelFormat.Undefined Then
+            Capture_NewImageIsReady = False
             Return
         End If
-        If Capture_Image Is Nothing Then Exit Sub
         If Timer1_Working Then Exit Sub
         Timer1_Working = True
         ProcessCapturedImage()

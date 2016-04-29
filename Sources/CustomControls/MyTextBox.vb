@@ -1,4 +1,4 @@
-﻿
+
 
 
 ' ================================================================================================================
@@ -6,7 +6,8 @@
 ' ================================================================================================================
 
 Imports System.ComponentModel
-
+Imports System.Drawing
+Imports System.Windows.Forms
 
 
 Public Class MyTextBox
@@ -469,7 +470,12 @@ Public Class MyTextBox
 
     Private Sub MyTextBox_MouseWheel(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseWheel
         If Me.Enabled And _ArrowsIncrement > 0 Then
-            Me.NumericValue += _ArrowsIncrement * (e.Delta / 120)
+            ' -------------------------------------- this method works also with micrometric mouses like Microsoft Mouse
+            Dim n As Double = e.Delta / 120.0F
+            If n > 0 And n < 1 Then n = 1
+            If n < 0 And n > -1 Then n = -1
+            Me.NumericValue += _ArrowsIncrement * n
+            ' -------------------------------------- 
             'HideCaret()
             Me.SelectionStart = 999
         End If
