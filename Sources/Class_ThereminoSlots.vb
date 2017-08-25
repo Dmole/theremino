@@ -12,9 +12,10 @@ Module Theremino
     Friend NAN_Recognize As Single
     Friend NAN_ReconnectUSB As Single
     Friend NAN_Calibrate As Single
+    Friend NAN_MasterError As Single
     ' ----------------------------------- 
     Friend OperatingSystemIsWindows As Boolean
-    Friend OperatingSystemIsXP As Boolean
+    Friend OperatingSystemIs_XP_or_Vista As Boolean
     ' ----------------------------------- 
     Friend Slots As ThereminoSlots = New ThereminoSlots
 
@@ -35,6 +36,8 @@ Module Theremino
         b(0) = 6 : NAN_ReconnectUSB = BitConverter.ToSingle(b, 0)
         ' ------------------------------------------------------- QNAN 7 = CALIBRATE
         b(0) = 7 : NAN_Calibrate = BitConverter.ToSingle(b, 0)
+        ' ------------------------------------------------------- QNAN 100 = MASTER ERROR (one or more master disconneected)
+        b(0) = 100 : NAN_MasterError = BitConverter.ToSingle(b, 0)
     End Sub
 
     Friend Function IsNanSleep(ByVal n As Single) As Boolean
@@ -77,14 +80,17 @@ Module Theremino
 
     Friend Sub InitPlatformData()
         OperatingSystemIsWindows = True
-        OperatingSystemIsXP = False
+        OperatingSystemIs_XP_or_Vista = False
         Select Case Environment.OSVersion.Platform
-            Case PlatformID.Win32NT, PlatformID.Win32S, PlatformID.Win32Windows, PlatformID.WinCE
+            Case PlatformID.Win32NT, _
+                 PlatformID.Win32S, _
+                 PlatformID.Win32Windows, _
+                 PlatformID.WinCE
             Case Else
                 OperatingSystemIsWindows = False
         End Select
-        If OperatingSystemIsWindows AndAlso Environment.OSVersion.Version.Major <= 5 Then
-            OperatingSystemIsXP = True
+        If OperatingSystemIsWindows AndAlso Environment.OSVersion.Version.Major <= 6 Then
+            OperatingSystemIs_XP_or_Vista = True
         End If
     End Sub
 
@@ -176,6 +182,14 @@ Class ThereminoSlots
             MMF1.WriteSingle(Slot * 4, Value)
         Else
             MMF1_Unix.WriteSlot(Slot, Value)
+        End If
+    End Sub
+
+    Friend Sub WriteSlot(ByVal Slot As Int32, ByVal Value As Double)
+        If OperatingSystemIsWindows Then
+            MMF1.WriteSingle(Slot * 4, CSng(Value))
+        Else
+            MMF1_Unix.WriteSlot(Slot, CSng(Value))
         End If
     End Sub
 

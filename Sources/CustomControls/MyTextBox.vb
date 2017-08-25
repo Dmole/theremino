@@ -1,8 +1,9 @@
 
-
-
 ' ================================================================================================================
 '  MY TEXT BOX  -  Implements: "Mouse edit", "BorderColor", "BorderStyle" and "BackColor_Over"
+' ----------------------------------------------------------------------------------------------------------------
+'  Version with "MyTextBox_MouseMove" corrected the 2016/12/11 for tablet errors
+'  
 ' ================================================================================================================
 
 Imports System.ComponentModel
@@ -316,7 +317,6 @@ Public Class MyTextBox
     Private _EditingPos As Point
     Private _StartEditPos As Point
     Private _DeltaY As Int32
-    Private _DeltaY_old As Int32
     Private _StartValue As Double
 
 
@@ -327,6 +327,9 @@ Public Class MyTextBox
 
     Private Sub MyTextBox_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseMove
 
+        ' CursorPosOldY is used for tablet errors (continuous increment also whith mouse not moving)
+        Static CursorPositionOld As Point
+
         If Not _TrimmingValue And Me.Enabled And _Increment > 0 And e.Button = Windows.Forms.MouseButtons.Left Then
             If Math.Abs(Cursor.Position.Y - _EditingPos.Y) > Math.Abs(Cursor.Position.X - _EditingPos.X) + 1 Then
                 _DeltaY = 0
@@ -335,40 +338,37 @@ Public Class MyTextBox
                 LimitValue_Double(_StartValue, _MinValue, _MaxValue)
                 _TrimmingValue = True
                 HideCursor()
+                CursorPositionOld = Cursor.Position
             End If
         End If
 
         If _TrimmingValue Then
-            If Cursor.Position <> _EditingPos Then
-                '
-                _DeltaY_old = _DeltaY
-                _DeltaY += (Cursor.Position.Y - _EditingPos.Y)
-                '
+            If Cursor.Position <> CursorPositionOld Then
+                CursorPositionOld = Cursor.Position
+                ' ---------------------------------------------------- fixed speed
+                '_DeltaY += (Cursor.Position.Y - _EditingPos.Y)
+                ' ---------------------------------------------------- variable speed
+                Dim dy As Int32 = Cursor.Position.Y - _EditingPos.Y
+                Dim absdy As Double = Math.Abs(dy)
+                Dim signdy As Int32 = Math.Sign(dy)
+                If absdy > 150 Then absdy = 150
+                _DeltaY += CInt(signdy * absdy ^ 1.4)
+                ' ---------------------------------------------------- calc the new value
                 Dim v As Double = _StartValue - _DeltaY * _Increment
-                '
+                ' ---------------------------------------------------- limit the value
                 If LimitValue_Double(v, _MinValue, _MaxValue) Then
-                    _DeltaY = _DeltaY_old
+                    _DeltaY = CInt((_StartValue - v) / _Increment)
                 End If
-                '
+                ' ---------------------------------------------------- set the value and draw it
                 Me.NumericValue = v
                 Me.Refresh()
                 Me.DrawAll(Me.CreateGraphics())
-                '
+                ' ---------------------------------------------------- cursor position to the right of the textbox 
                 Me.SelectionStart = 99
-
-                ' ----------------------------------------------------------- method 1
-                'If OperatingSystemIsWindows Then
-                '    Dim pt As Point
-                '    GetCaretPos(pt)
-                '    _StartPos.X = Me.PointToScreen(pt).X + 2
-                'End If
-                ' ----------------------------------------------------------- method 2 - for LINUX - not working
                 _EditingPos.X = Me.PointToScreen(New Point(Me.Width, 0)).X
-
-
                 Cursor.Position = _EditingPos
-                '
-                System.Threading.Thread.Sleep(1)
+                ' ---------------------------------------------------- wait
+                System.Threading.Thread.Sleep(10)
             End If
         End If
     End Sub
@@ -511,7 +511,6 @@ Public Class MyTextBox
     ' ------------------------------------------------------------------------------------------
     '  CURSOR CONTROL ( HIDE and SHOW )
     ' ------------------------------------------------------------------------------------------
-    ' TODO
     'Private BlankCursor As Cursor = New Cursor(New IO.MemoryStream(My.Resources.Blank))
     Private Sub HideCursor()
         Cursor.Hide()

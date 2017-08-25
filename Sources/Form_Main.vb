@@ -430,9 +430,14 @@ Public Class Form_Main
             If btn_TrimScale.Checked AndAlso e.Y < 15 Then
                 If Math.Abs(e.X - X_From_Nanometers(TrimPoint1)) < 15 Then
                     TrimmingPoint = 1
-                End If
-                If Math.Abs(e.X - X_From_Nanometers(TrimPoint2)) < 15 Then
+                ElseIf Math.Abs(e.X - X_From_Nanometers(TrimPoint2)) < 15 Then
                     TrimmingPoint = 2
+                Else
+                    If e.X < PBox_Spectrum.Width / 2 Then
+                        TrimmingPoint = 3
+                    Else
+                        TrimmingPoint = 4
+                    End If
                 End If
             End If
             CursorStartX = e.X
@@ -449,17 +454,21 @@ Public Class Form_Main
             Dim dx As Int32
             If TrimmingPoint <> 0 Then
                 dx = e.X - CursorStartX
-                If TrimmingPoint = 1 Then
-                    ' --------------------------------------------------------
-                    'Dim k1 As Single = CSng(e.X / PBox_Spectrum.Width)
-                    'Dim k2 As Single = 1 - k1
-
-                    NanometersMin = InitialMinNm - dx * 0.436F
-                    NanometersMax = InitialMaxNm + dx * 0.936F
-                Else
-                    NanometersMax = InitialMaxNm - dx * 0.546F
-                    NanometersMin = InitialMinNm + dx * 0.092F
-                End If
+                Select TrimmingPoint
+                    Case 1
+                        ' --------------------------------------------------------
+                        'Dim k1 As Single = CSng(e.X / PBox_Spectrum.Width)
+                        'Dim k2 As Single = 1 - k1
+                        NanometersMin = InitialMinNm - dx * 0.436F
+                        NanometersMax = InitialMaxNm + dx * 0.936F
+                    Case 2
+                        NanometersMax = InitialMaxNm - dx * 0.546F
+                        NanometersMin = InitialMinNm + dx * 0.092F
+                    Case 3
+                        NanometersMin = InitialMinNm - dx * 0.436F
+                    Case 4
+                        NanometersMax = InitialMaxNm - dx * 0.546F
+                End Select
                 Spectrometer_SetScaleTrimParams()
                 ShowSpectrumGraph()
                 PBox_Spectrum.Refresh()
