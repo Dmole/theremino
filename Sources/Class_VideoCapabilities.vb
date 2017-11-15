@@ -82,6 +82,7 @@ Friend Class VideoCapabilities
     End Sub
 
     Friend Function ValidFormats(ByVal VideoSize As String) As String()
+        If VideoCaps Is Nothing Then Return New String() {""}
         Dim strArray(-1) As String
         For i As Int32 = 0 To VideoCaps.Count - 1
             If VideoSize = VideoCaps(i).StringInputSize And Not strArray.Contains(VideoCaps(i).MediaSubType) Then
@@ -94,6 +95,7 @@ Friend Class VideoCapabilities
     End Function
 
     Friend Function ValidSizes(ByVal MediaSubType As String) As String()
+        If VideoCaps Is Nothing Then Return New String() {""}
         Dim strArray(-1) As String
         For i As Int32 = 0 To VideoCaps.Count - 1
             If MediaSubType = VideoCaps(i).MediaSubType Then
@@ -109,6 +111,7 @@ Friend Class VideoCapabilities
     End Function
 
     Friend Function ValidFPS(ByVal MediaSubType As String, ByVal VideoSize As String) As String()
+        If VideoCaps Is Nothing Then Return New String() {""}
         Dim strArray(-1) As String
         For i As Int32 = 0 To VideoCaps.Count - 1
             If MediaSubType = VideoCaps(i).MediaSubType And VideoSize = VideoCaps(i).StringInputSize Then
