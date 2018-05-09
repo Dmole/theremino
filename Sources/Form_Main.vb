@@ -226,6 +226,12 @@ Public Class Form_Main
         Save_INI()
         UpdateUserInterface()
     End Sub
+    Private Sub Menu_Language_POR_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Menu_Language_POR.Click
+        Language = "POR"
+        SetLocales()
+        Save_INI()
+        UpdateUserInterface()
+    End Sub
     Private Sub Menu_Language_FRA_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Menu_Language_FRA.Click
         Language = "FRA"
         SetLocales()
@@ -240,6 +246,12 @@ Public Class Form_Main
     End Sub
     Private Sub Menu_Language_JPN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_Language_JPN.Click
         Language = "JPN"
+        SetLocales()
+        Save_INI()
+        UpdateUserInterface()
+    End Sub
+    Private Sub Menu_Language_Chinese_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_Language_CHI.Click
+        Language = "CHI"
         SetLocales()
         Save_INI()
         UpdateUserInterface()

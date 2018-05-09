@@ -65,8 +65,10 @@ Partial Class Form_Main
         Me.Menu_Language_ITA = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Language_FRA = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Language_ESP = New System.Windows.Forms.ToolStripMenuItem
+        Me.Menu_Language_POR = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Language_DEU = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Language_JPN = New System.Windows.Forms.ToolStripMenuItem
+        Me.Menu_Language_CHI = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Help = New System.Windows.Forms.ToolStripMenuItem
         Me.Menu_Help_ProgramHelp = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator
@@ -264,7 +266,7 @@ Partial Class Form_Main
         '
         'Menu_Language
         '
-        Me.Menu_Language.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Language_ENG, Me.Menu_Language_ITA, Me.Menu_Language_FRA, Me.Menu_Language_ESP, Me.Menu_Language_DEU, Me.Menu_Language_JPN})
+        Me.Menu_Language.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Language_ENG, Me.Menu_Language_ITA, Me.Menu_Language_FRA, Me.Menu_Language_ESP, Me.Menu_Language_POR, Me.Menu_Language_DEU, Me.Menu_Language_JPN, Me.Menu_Language_CHI})
         Me.Menu_Language.Name = "Menu_Language"
         Me.Menu_Language.Size = New System.Drawing.Size(71, 20)
         Me.Menu_Language.Text = "Language"
@@ -273,43 +275,57 @@ Partial Class Form_Main
         '
         Me.Menu_Language_ENG.Image = CType(resources.GetObject("Menu_Language_ENG.Image"), System.Drawing.Image)
         Me.Menu_Language_ENG.Name = "Menu_Language_ENG"
-        Me.Menu_Language_ENG.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_ENG.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ENG.Text = "English"
         '
         'Menu_Language_ITA
         '
         Me.Menu_Language_ITA.Image = CType(resources.GetObject("Menu_Language_ITA.Image"), System.Drawing.Image)
         Me.Menu_Language_ITA.Name = "Menu_Language_ITA"
-        Me.Menu_Language_ITA.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_ITA.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ITA.Text = "Italiano"
         '
         'Menu_Language_FRA
         '
         Me.Menu_Language_FRA.Image = CType(resources.GetObject("Menu_Language_FRA.Image"), System.Drawing.Image)
         Me.Menu_Language_FRA.Name = "Menu_Language_FRA"
-        Me.Menu_Language_FRA.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_FRA.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_FRA.Text = "Francais"
         '
         'Menu_Language_ESP
         '
         Me.Menu_Language_ESP.Image = CType(resources.GetObject("Menu_Language_ESP.Image"), System.Drawing.Image)
         Me.Menu_Language_ESP.Name = "Menu_Language_ESP"
-        Me.Menu_Language_ESP.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_ESP.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ESP.Text = "Espanol"
+        '
+        'Menu_Language_POR
+        '
+        Me.Menu_Language_POR.Image = CType(resources.GetObject("Menu_Language_POR.Image"), System.Drawing.Image)
+        Me.Menu_Language_POR.Name = "Menu_Language_POR"
+        Me.Menu_Language_POR.Size = New System.Drawing.Size(134, 22)
+        Me.Menu_Language_POR.Text = "Portoguese"
         '
         'Menu_Language_DEU
         '
         Me.Menu_Language_DEU.Image = CType(resources.GetObject("Menu_Language_DEU.Image"), System.Drawing.Image)
         Me.Menu_Language_DEU.Name = "Menu_Language_DEU"
-        Me.Menu_Language_DEU.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_DEU.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_DEU.Text = "Deutsch"
         '
         'Menu_Language_JPN
         '
         Me.Menu_Language_JPN.Image = CType(resources.GetObject("Menu_Language_JPN.Image"), System.Drawing.Image)
         Me.Menu_Language_JPN.Name = "Menu_Language_JPN"
-        Me.Menu_Language_JPN.Size = New System.Drawing.Size(121, 22)
+        Me.Menu_Language_JPN.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_JPN.Text = "Japanese"
+        '
+        'Menu_Language_CHI
+        '
+        Me.Menu_Language_CHI.Image = CType(resources.GetObject("Menu_Language_CHI.Image"), System.Drawing.Image)
+        Me.Menu_Language_CHI.Name = "Menu_Language_CHI"
+        Me.Menu_Language_CHI.Size = New System.Drawing.Size(134, 22)
+        Me.Menu_Language_CHI.Text = "Chinese"
         '
         'Menu_Help
         '
@@ -451,9 +467,9 @@ Partial Class Form_Main
         'Label_SizeY
         '
         Me.Label_SizeY.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_SizeY.Location = New System.Drawing.Point(5, 78)
+        Me.Label_SizeY.Location = New System.Drawing.Point(3, 78)
         Me.Label_SizeY.Name = "Label_SizeY"
-        Me.Label_SizeY.Size = New System.Drawing.Size(47, 13)
+        Me.Label_SizeY.Size = New System.Drawing.Size(53, 13)
         Me.Label_SizeY.TabIndex = 101
         Me.Label_SizeY.Text = "Size Y"
         Me.Label_SizeY.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -462,9 +478,9 @@ Partial Class Form_Main
         '
         Me.Label_StartX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label_StartX.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_StartX.Location = New System.Drawing.Point(49, 189)
+        Me.Label_StartX.Location = New System.Drawing.Point(29, 189)
         Me.Label_StartX.Name = "Label_StartX"
-        Me.Label_StartX.Size = New System.Drawing.Size(52, 13)
+        Me.Label_StartX.Size = New System.Drawing.Size(72, 13)
         Me.Label_StartX.TabIndex = 99
         Me.Label_StartX.Text = "Start X"
         Me.Label_StartX.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -474,7 +490,7 @@ Partial Class Form_Main
         Me.Label_StartY.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_StartY.Location = New System.Drawing.Point(5, 137)
         Me.Label_StartY.Name = "Label_StartY"
-        Me.Label_StartY.Size = New System.Drawing.Size(47, 13)
+        Me.Label_StartY.Size = New System.Drawing.Size(52, 13)
         Me.Label_StartY.TabIndex = 97
         Me.Label_StartY.Text = "Start Y"
         Me.Label_StartY.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -483,9 +499,9 @@ Partial Class Form_Main
         '
         Me.Label_EndX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label_EndX.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_EndX.Location = New System.Drawing.Point(212, 189)
+        Me.Label_EndX.Location = New System.Drawing.Point(192, 189)
         Me.Label_EndX.Name = "Label_EndX"
-        Me.Label_EndX.Size = New System.Drawing.Size(47, 13)
+        Me.Label_EndX.Size = New System.Drawing.Size(67, 13)
         Me.Label_EndX.TabIndex = 95
         Me.Label_EndX.Text = "End X"
         Me.Label_EndX.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -494,9 +510,9 @@ Partial Class Form_Main
         '
         Me.chk_Flip.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chk_Flip.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chk_Flip.Location = New System.Drawing.Point(10, 33)
+        Me.chk_Flip.Location = New System.Drawing.Point(6, 33)
         Me.chk_Flip.Name = "chk_Flip"
-        Me.chk_Flip.Size = New System.Drawing.Size(42, 17)
+        Me.chk_Flip.Size = New System.Drawing.Size(46, 17)
         Me.chk_Flip.TabIndex = 92
         Me.chk_Flip.Text = "Flip"
         Me.chk_Flip.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -1332,5 +1348,7 @@ Partial Class Form_Main
     Friend WithEvents Menu_Tools_Trim1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_Trim2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_TrimSelect As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Menu_Language_POR As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Menu_Language_CHI As System.Windows.Forms.ToolStripMenuItem
 
 End Class

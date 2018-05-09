@@ -251,7 +251,10 @@ Module Spectrometer
         Dim SourceStride As Int32 = SourceData.Stride
         Dim byteCount As Integer = (SourceData.Stride * SourceData.Height)
         Dim bmpBytes(byteCount - 1) As Byte
-        Marshal.Copy(SourceData.Scan0, bmpBytes, 0, byteCount)
+        Try
+            Marshal.Copy(SourceData.Scan0, bmpBytes, 0, byteCount)
+        Catch
+        End Try
         SrcBmp.UnlockBits(SourceData)
         Dim sumr As Int32 = 0
         Dim sumg As Int32 = 0

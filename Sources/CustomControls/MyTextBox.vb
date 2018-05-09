@@ -361,8 +361,8 @@ Public Class MyTextBox
                 End If
                 ' ---------------------------------------------------- set the value and draw it
                 Me.NumericValue = v
-                Me.Refresh()
-                Me.DrawAll(Me.CreateGraphics())
+                Me.Invalidate()
+                'Me.DrawAll(Me.CreateGraphics())
                 ' ---------------------------------------------------- cursor position to the right of the textbox 
                 Me.SelectionStart = 99
                 _EditingPos.X = Me.PointToScreen(New Point(Me.Width, 0)).X
@@ -447,15 +447,24 @@ Public Class MyTextBox
         Return False
     End Function
 
-
     Private Sub MyTextBox_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If Me.Enabled And _ArrowsIncrement > 0 Then
-            If e.KeyValue = Keys.Up Then
-                Me.NumericValue += _ArrowsIncrement
-                HideCaret()
-            End If
-            If e.KeyValue = Keys.Down Then
-                Me.NumericValue -= _ArrowsIncrement
+            Dim n As Single = 0
+            Select Case e.KeyCode
+                ' ------------------------------------------------- Up and Down = *1
+                Case Keys.Up : n = 1
+                Case Keys.Down : n = -1
+                    ' --------------------------------------------- PageUp and PageDown = *10
+                Case Keys.PageUp : n = 10
+                Case Keys.PageDown : n = -10
+            End Select
+            If n <> 0 Then
+                ' ------------------------------------------------- SHIFT, CTRL and ALT modifiers
+                If e.Shift Then n *= 100
+                If e.Control Then n *= 10
+                If e.Alt Then n /= 10
+                ' ------------------------------------------------- 
+                Me.NumericValue += n
                 HideCaret()
             End If
         End If
@@ -474,8 +483,13 @@ Public Class MyTextBox
             Dim n As Double = e.Delta / 120.0F
             If n > 0 And n < 1 Then n = 1
             If n < 0 And n > -1 Then n = -1
+            ' ------------------------------------------------- SHIFT, CTRL and ALT modifiers
+            If My.Computer.Keyboard.ShiftKeyDown Then n *= 100
+            If My.Computer.Keyboard.CtrlKeyDown Then n *= 10
+            If My.Computer.Keyboard.AltKeyDown Then n /= 10
+            ' -------------------------------------------------
             Me.NumericValue += _ArrowsIncrement * n
-            ' -------------------------------------- 
+            ' ------------------------------------------------- 
             'HideCaret()
             Me.SelectionStart = 999
         End If
@@ -528,7 +542,7 @@ Public Class MyTextBox
 #Region "Drawing"
 
 
-
+    <System.Diagnostics.DebuggerStepThrough()> _
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
         MyBase.WndProc(m)
         '
