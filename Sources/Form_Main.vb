@@ -6,6 +6,7 @@ Public Class Form_Main
         Me.Text = AppTitleAndVersion()
         ' ---------------------------------------------------------------- 
         Load_INI()
+        Menu_Tools_Separator_UpdateChecks()
         Spectrometer_SetRunningModeParams()
         ComboBox_VideoInputDevice_InitWithCurrentDeviceName()
         ComboBox_FileFormat_InitWithCurrentFileFormat()
@@ -198,6 +199,24 @@ Public Class Form_Main
         Spectrometer_SetRunningModeParams()
     End Sub
 
+    Private Sub Menu_Tools_SeparatorTab_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_Tools_SeparatorTab.Click
+        SpectrumFileSeparator = vbTab
+        Menu_Tools_Separator_UpdateChecks()
+    End Sub
+    Private Sub Menu_Tools_SeparatorSemicolon_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_Tools_SeparatorSemicolon.Click
+        SpectrumFileSeparator = ";"
+        Menu_Tools_Separator_UpdateChecks()
+    End Sub
+    Private Sub Menu_Tools_SeparatorComma_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_Tools_SeparatorComma.Click
+        SpectrumFileSeparator = ","
+        Menu_Tools_Separator_UpdateChecks()
+    End Sub
+    Private Sub Menu_Tools_Separator_UpdateChecks()
+        Menu_Tools_SeparatorTab.Checked = SpectrumFileSeparator = vbTab
+        Menu_Tools_SeparatorSemicolon.Checked = SpectrumFileSeparator = ";"
+        Menu_Tools_SeparatorComma.Checked = SpectrumFileSeparator = ","
+    End Sub
+
     ' =======================================================================================
     '   MENU LANGUAGE
     ' =======================================================================================
@@ -310,6 +329,9 @@ Public Class Form_Main
     ' =======================================================================================
     '   TOOLSTRIP
     ' =======================================================================================
+    Private Sub Tool_VideoInControls_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tool_VideoControls.Click
+        OpenCloseFormVideoInControls()
+    End Sub
     Private Sub Tool_SaveSpectrum_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tools_SaveSpectrum.Click
         Tools_SaveSpectrum.Visible = False
         Tools_SaveSpectrum.Visible = True
@@ -330,8 +352,8 @@ Public Class Form_Main
         SaveImage(Me)
         StatusStrip1.Visible = True
     End Sub
-    Private Sub Tool_VideoInControls_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tool_VideoControls.Click
-        OpenCloseFormVideoInControls()
+    Private Sub Tools_SpectrumToFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tools_SaveDataFile.Click
+        SaveSpectrumToFile()
     End Sub
     Private Sub ToolStrip1_MouseEnter(ByVal sender As Object, ByVal e As System.EventArgs) Handles ToolStrip1.MouseEnter
         Me.Focus() ' with this the toolstrip responds always at the first click

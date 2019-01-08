@@ -8,11 +8,13 @@ Module Theremino
     Friend NAN_Reset As Single
     Friend NAN_Run As Single
     Friend NAN_Stop As Single
-    ' ----------------------------------- use slot zero to communicate with HAL (todo in the HAL)
+    ' -----------------------------------
     Friend NAN_Recognize As Single
     Friend NAN_ReconnectUSB As Single
     Friend NAN_Calibrate As Single
+    '  ----------------------------------
     Friend NAN_MasterError As Single
+    Friend NAN_NoMasters As Single
     ' ----------------------------------- 
     Friend OperatingSystemIsWindows As Boolean
     Friend OperatingSystemIs_XP_or_Vista As Boolean
@@ -22,22 +24,24 @@ Module Theremino
     Friend Sub InitNanValues()
         ' ------------------------------------------------------- initializing QUIET NAN base values 
         Dim b() As Byte = {&H0, &H0, &HC0, &H7F} ' LSB...MSB
-        ' ------------------------------------------------------- QNAN 1 = SLEEP (unpower Servo Motors)
+        ' ------------------------------------------------------- QNAN 1 = SLEEP (unpower Servo Motors)(unimplemented in HAL)
         b(0) = 1 : NAN_Sleep = BitConverter.ToSingle(b, 0)
-        ' ------------------------------------------------------- QNAN 2 = ZERO (reset Stepper destination to zero)
+        ' ------------------------------------------------------- QNAN 2 = ZERO  (reset Stepper destination to zero)(unimplemented in HAL)
         b(0) = 2 : NAN_Reset = BitConverter.ToSingle(b, 0)
-        ' ------------------------------------------------------- QNAN 3 = RUN
+        ' ------------------------------------------------------- QNAN 3 = RUN   (unimplemented in HAL)
         b(0) = 3 : NAN_Run = BitConverter.ToSingle(b, 0)
-        ' ------------------------------------------------------- QNAN 4 = STOP
+        ' ------------------------------------------------------- QNAN 4 = STOP  (unimplemented in HAL)
         b(0) = 4 : NAN_Stop = BitConverter.ToSingle(b, 0)
         ' ------------------------------------------------------- QNAN 5 = RECOGNIZE
         b(0) = 5 : NAN_Recognize = BitConverter.ToSingle(b, 0)
-        ' ------------------------------------------------------- QNAN 6 = RECONNECT_USB
+        ' ------------------------------------------------------- QNAN 6 = RECONNECT_USB (unimplemented in HAL)
         b(0) = 6 : NAN_ReconnectUSB = BitConverter.ToSingle(b, 0)
         ' ------------------------------------------------------- QNAN 7 = CALIBRATE
         b(0) = 7 : NAN_Calibrate = BitConverter.ToSingle(b, 0)
         ' ------------------------------------------------------- QNAN 100 = MASTER ERROR (one or more master disconneected)
         b(0) = 100 : NAN_MasterError = BitConverter.ToSingle(b, 0)
+        ' ------------------------------------------------------- QNAN 101 = NO MASTERS (no Master has been found by Recognize)
+        b(0) = 101 : NAN_NoMasters = BitConverter.ToSingle(b, 0)
     End Sub
 
     Friend Function IsNanSleep(ByVal n As Single) As Boolean
@@ -51,6 +55,27 @@ Module Theremino
         If Not Single.IsNaN(n) Then Return False
         Dim b() As Byte = BitConverter.GetBytes(n)
         If b(0) = 2 Then Return True
+        Return False
+    End Function
+
+    Friend Function IsNanRecognize(ByVal n As Single) As Boolean
+        If Not Single.IsNaN(n) Then Return False
+        Dim b() As Byte = BitConverter.GetBytes(n)
+        If b(0) = 5 Then Return True
+        Return False
+    End Function
+
+    Friend Function IsNanReconnectUSB(ByVal n As Single) As Boolean
+        If Not Single.IsNaN(n) Then Return False
+        Dim b() As Byte = BitConverter.GetBytes(n)
+        If b(0) = 6 Then Return True
+        Return False
+    End Function
+
+    Friend Function IsNanCalibrate(ByVal n As Single) As Boolean
+        If Not Single.IsNaN(n) Then Return False
+        Dim b() As Byte = BitConverter.GetBytes(n)
+        If b(0) = 7 Then Return True
         Return False
     End Function
 
@@ -74,6 +99,8 @@ Module Theremino
             Case 5 : Return "Recognize"
             Case 6 : Return "ReconnectUSB"
             Case 7 : Return "Calibrate"
+            Case 100 : Return "Master disconnected ERROR"
+            Case 101 : Return "No Masters"
             Case Else : Return "Unknown NAN"
         End Select
     End Function

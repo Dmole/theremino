@@ -464,7 +464,7 @@ Public Class MyTextBox
                 If e.Control Then n *= 10
                 If e.Alt Then n /= 10
                 ' ------------------------------------------------- 
-                Me.NumericValue += n
+                Me.NumericValue += _ArrowsIncrement * n
                 HideCaret()
             End If
         End If

@@ -191,6 +191,7 @@ Module Module_SaveLoad
             f.WriteLine(TabString("MaxNm", NanometersMax.ToString))
             f.WriteLine(TabString("TrimPoint1", TrimPoint1.ToString))
             f.WriteLine(TabString("TrimPoint2", TrimPoint2.ToString))
+            f.WriteLine(TabString("SpectrumFileSeparator", SpectrumFileSeparator))
         Catch
         End Try
         Try
@@ -258,6 +259,7 @@ Module Module_SaveLoad
                     Case "MaxNm" : NanometersMax = Val_Single(l)
                     Case "TrimPoint1" : TrimPoint1 = Val_Single(l)
                     Case "TrimPoint2" : TrimPoint2 = Val_Single(l)
+                    Case "SpectrumFileSeparator" : SpectrumFileSeparator = l
                 End Select
             Loop
             f.Close()
@@ -371,6 +373,49 @@ Module Module_SaveLoad
         Dim bmp As Bitmap = New Bitmap(s.Width, s.Height)
         cnt.DrawToBitmap(bmp, New Rectangle(0, 0, s.Width, s.Height))
         Return bmp
+    End Function
+
+
+    ' ==================================================================================================
+    '  SAVE SPECTRUM TO FILE
+    ' ==================================================================================================
+    Friend Sub SaveSpectrumToFile()
+        If Not FolderExists(Form_Main.txt_FilePath.Text & "\") Then
+            Form_Main.SelectSaveFolder()
+        End If
+        ' ---------------------------------------------------------------------
+        Form_Main.txt_FilePath.Text = Trim(Form_Main.txt_FilePath.Text)
+
+        'Dim fname As String = Filename_WithDateTime(Form_Main.txt_FilePath.Text, "SpectrumFile", ".txt")
+        Dim fname As String = Filename_WithFirstFreeIndex(Form_Main.txt_FilePath.Text, "SpectrumFile", ".txt")
+
+        Dim writer As System.IO.StreamWriter
+        writer = My.Computer.FileSystem.OpenTextFileWriter(fname, _
+                                                           False, _
+                                                           New System.Text.UTF8Encoding(False))
+        writer.Write(GetSpectrumText())
+        writer.Close()
+    End Sub
+
+    'Friend Function Filename_WithDateTime(ByVal path As String, _
+    '                                      ByVal name As String, _
+    '                                      ByVal ext As String) As String
+
+    '    Return path + "\" + name + "_" + Date.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ext
+    'End Function
+
+    Friend Function Filename_WithFirstFreeIndex(ByVal path As String, _
+                                                ByVal name As String, _
+                                                ByVal ext As String) As String
+        Dim index As Int32 = 1
+        Dim completeFileName As String
+        '
+        Do
+            completeFileName = path + "\" + name + "_" + index.ToString("000") + ext
+            index += 1
+        Loop Until Not IO.File.Exists(completeFileName)
+        '
+        Return completeFileName
     End Function
 
 End Module

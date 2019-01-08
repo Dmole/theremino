@@ -536,4 +536,40 @@ Module Spectrometer
         Next
     End Sub
 
+    ' ======================================================================================
+    '  SPECTRUM FILE
+    ' ======================================================================================
+    Friend SpectrumFileSeparator As String = vbTab
+
+    Friend Function GetSpectrumText() As String
+        Dim GCI As Globalization.CultureInfo = Globalization.CultureInfo.InvariantCulture
+        Dim s As String = ""
+        If SpectrumFileSeparator = vbTab Then
+            s += " nm      %" + vbCrLf
+            s += "------------" + vbCrLf
+            For i As Int32 = 0 To SpecArrayFiltered.Length - 1
+                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + vbTab + _
+                     CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI) + vbCrLf
+            Next
+        Else
+            s += "Nanometers   Percentual" + vbCrLf
+            s += "-----------------------" + vbCrLf
+            For i As Int32 = 0 To SpecArrayFiltered.Length - 1
+                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + SpectrumFileSeparator + _
+                     CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI).PadLeft(12) + vbCrLf
+            Next
+        End If
+        Return s
+    End Function
+
+    Private Function CalcPercentual(ByVal value As Single) As Single
+        Dim perc As Single
+        If ReferenceScale Then
+            perc = value * 110 / MaxValue
+        Else
+            perc = value * 100 / MaxValue
+        End If
+        Return perc
+    End Function
+
 End Module
