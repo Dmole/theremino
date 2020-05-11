@@ -137,9 +137,10 @@ Module Spectrometer
         KSpeed = Speed / 100.0F
     End Sub
 
+    ' TODO - Version 2.9 - CHANGED from 2000 to 4000
     Friend Sub Spectrometer_SetScaleTrimParams()
         If NanometersMin < 50 Then NanometersMin = 50
-        If NanometersMax > 2000 Then NanometersMax = 2000
+        If NanometersMax > 4000 Then NanometersMax = 4000
         If NanometersMax < NanometersMin + 50 Then NanometersMax = NanometersMin + 50
         NanometersDelta = NanometersMax - NanometersMin
         ' ---------------------------------------------------------------------

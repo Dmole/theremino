@@ -6,6 +6,8 @@ Module Module_SaveLoad
     Friend VideoInDevice As String = ""
     Friend FileFormat As String = ""
 
+    Friend GCI As Globalization.CultureInfo = Globalization.CultureInfo.InvariantCulture
+
     ' =======================================================================================================
     '   APP TITLE AND VERSION
     ' =======================================================================================================
@@ -76,14 +78,14 @@ Module Module_SaveLoad
     '  Private Read-Write functions
     ' ================================================================================================
     Private Function TabString(ByVal Name As String, _
-                              Optional ByVal Value As Double = Double.NaN, _
-                              Optional ByVal fmt As String = "") As String
+                               Optional ByVal Value As Double = Double.NaN, _
+                               Optional ByVal fmt As String = "") As String
 
         Dim nTab As Int32 = Math.Max(0, 22 - Name.Length)
         If Double.IsNaN(Value) Then
             Return Name
         Else
-            Return Name & "=" & Strings.StrDup(nTab, " ") & Value.ToString(fmt)
+            Return Name & "=" & Strings.StrDup(nTab, " ") & Value.ToString(fmt, GCI)
         End If
     End Function
     Private Function TabString(ByVal Name As String, _

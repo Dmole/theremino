@@ -521,7 +521,8 @@ Public Class Form_Main
                             err = X_From_Nanometers(TrimPoint2) - InitialTP2_X
                             NanometersMax += err * 0.01F
                             Spectrometer_SetScaleTrimParams()
-                        Loop Until Math.Abs(err) < 0.01 Or NanometersMax > 1999
+                        Loop Until Math.Abs(err) < 0.03 Or NanometersMax > 3999
+                        ' TODO - Version 2.9 - CHANGED frim 0.01 and 1999 to 0.05 and 3999
                     Case 2
                         NanometersMax = InitialMaxNm - dx * zoom * TrimPoint2
                         If NanometersMax < TrimPoint2 Then NanometersMax = TrimPoint2
