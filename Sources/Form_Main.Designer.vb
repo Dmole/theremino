@@ -24,6 +24,10 @@ Partial Class Form_Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form_Main))
+        Dim DesignerRectTracker11 As Theremino_Spectrometer.DesignerRectTracker = New Theremino_Spectrometer.DesignerRectTracker
+        Dim CBlendItems11 As Theremino_Spectrometer.cBlendItems = New Theremino_Spectrometer.cBlendItems
+        Dim CBlendItems12 As Theremino_Spectrometer.cBlendItems = New Theremino_Spectrometer.cBlendItems
+        Dim DesignerRectTracker12 As Theremino_Spectrometer.DesignerRectTracker = New Theremino_Spectrometer.DesignerRectTracker
         Dim DesignerRectTracker1 As Theremino_Spectrometer.DesignerRectTracker = New Theremino_Spectrometer.DesignerRectTracker
         Dim CBlendItems1 As Theremino_Spectrometer.cBlendItems = New Theremino_Spectrometer.cBlendItems
         Dim CBlendItems2 As Theremino_Spectrometer.cBlendItems = New Theremino_Spectrometer.cBlendItems
@@ -50,7 +54,6 @@ Partial Class Form_Main
         Me.GroupBox_VideoInDevice = New System.Windows.Forms.GroupBox
         Me.Label_Millisec = New System.Windows.Forms.Label
         Me.Label_Resolution = New System.Windows.Forms.Label
-        Me.ComboBox_VideoInputDevice = New Theremino_Spectrometer.MyComboBox
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip
         Me.Menu_File = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
@@ -91,42 +94,54 @@ Partial Class Form_Main
         Me.Tools_SaveCamera = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator
         Me.Tools_SaveTotal = New System.Windows.Forms.ToolStripButton
+        Me.Tools_Run = New System.Windows.Forms.ToolStripButton
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator
         Me.Tools_SaveDataFile = New System.Windows.Forms.ToolStripButton
         Me.Timer_1Hz = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox_Input = New System.Windows.Forms.GroupBox
-        Me.txt_SizeY = New Theremino_Spectrometer.MyTextBox
-        Me.txt_StartX = New Theremino_Spectrometer.MyTextBox
-        Me.txt_EndX = New Theremino_Spectrometer.MyTextBox
-        Me.txt_StartY = New Theremino_Spectrometer.MyTextBox
         Me.Label_SizeY = New System.Windows.Forms.Label
         Me.Label_StartX = New System.Windows.Forms.Label
         Me.Label_StartY = New System.Windows.Forms.Label
         Me.Label_EndX = New System.Windows.Forms.Label
         Me.chk_Flip = New System.Windows.Forms.CheckBox
-        Me.Label_Speed = New System.Windows.Forms.Label
+        Me.Label_RisingSpeed = New System.Windows.Forms.Label
         Me.Label_JpegQuality = New System.Windows.Forms.Label
         Me.Label_Path = New System.Windows.Forms.Label
         Me.Label_Name = New System.Windows.Forms.Label
         Me.LabelDot = New System.Windows.Forms.Label
         Me.GroupBox_SaveImage = New System.Windows.Forms.GroupBox
-        Me.txt_JpegQuality = New Theremino_Spectrometer.MyTextBox
-        Me.txt_FilePath = New Theremino_Spectrometer.MyTextBox
-        Me.txt_FileName = New Theremino_Spectrometer.MyTextBox
-        Me.ComboBox_FileType = New Theremino_Spectrometer.MyComboBox
         Me.PBox_Spectrum = New System.Windows.Forms.PictureBox
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
         Me.PictureBox3 = New System.Windows.Forms.PictureBox
         Me.Label_Filter = New System.Windows.Forms.Label
         Me.Panel1 = New System.Windows.Forms.Panel
-        Me.txt_Filter = New Theremino_Spectrometer.MyTextBox
-        Me.txt_Speed = New Theremino_Spectrometer.MyTextBox
-        Me.btn_Reference = New Theremino_Spectrometer.MyButton
+        Me.Label_FallingSpeed = New System.Windows.Forms.Label
         Me.Label_MaxPeak = New System.Windows.Forms.Label
+        Me.Label_SlotWriteFile = New System.Windows.Forms.Label
+        Me.Label_SlotRun = New System.Windows.Forms.Label
+        Me.Label_SlotStop = New System.Windows.Forms.Label
+        Me.GroupBox_SyncAndIntegration = New System.Windows.Forms.GroupBox
+        Me.txt_FallingSpeed = New Theremino_Spectrometer.MyTextBox
+        Me.txt_SlotStop = New Theremino_Spectrometer.MyTextBox
+        Me.txt_SlotRun = New Theremino_Spectrometer.MyTextBox
+        Me.txt_SlotWriteFile = New Theremino_Spectrometer.MyTextBox
+        Me.btn_ResetSpectrumData = New Theremino_Spectrometer.MyButton
+        Me.txt_RisingSpeed = New Theremino_Spectrometer.MyTextBox
+        Me.txt_Filter = New Theremino_Spectrometer.MyTextBox
+        Me.btn_Reference = New Theremino_Spectrometer.MyButton
         Me.btn_Dips = New Theremino_Spectrometer.MyButton
         Me.btn_Colors = New Theremino_Spectrometer.MyButton
         Me.btn_Peaks = New Theremino_Spectrometer.MyButton
         Me.btn_TrimScale = New Theremino_Spectrometer.MyButton
+        Me.txt_JpegQuality = New Theremino_Spectrometer.MyTextBox
+        Me.txt_FilePath = New Theremino_Spectrometer.MyTextBox
+        Me.txt_FileName = New Theremino_Spectrometer.MyTextBox
+        Me.ComboBox_FileType = New Theremino_Spectrometer.MyComboBox
+        Me.txt_SizeY = New Theremino_Spectrometer.MyTextBox
+        Me.txt_StartX = New Theremino_Spectrometer.MyTextBox
+        Me.txt_EndX = New Theremino_Spectrometer.MyTextBox
+        Me.txt_StartY = New Theremino_Spectrometer.MyTextBox
+        Me.ComboBox_VideoInputDevice = New Theremino_Spectrometer.MyComboBox
         CType(Me.PBox_Camera, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_VideoInDevice.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -136,11 +151,13 @@ Partial Class Form_Main
         CType(Me.PBox_Spectrum, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.GroupBox_SyncAndIntegration.SuspendLayout()
         Me.SuspendLayout()
         '
         'PBox_Camera
         '
-        Me.PBox_Camera.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.PBox_Camera.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PBox_Camera.BackColor = System.Drawing.Color.DimGray
         Me.PBox_Camera.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
@@ -148,7 +165,7 @@ Partial Class Form_Main
         Me.PBox_Camera.InitialImage = Nothing
         Me.PBox_Camera.Location = New System.Drawing.Point(58, 14)
         Me.PBox_Camera.Name = "PBox_Camera"
-        Me.PBox_Camera.Size = New System.Drawing.Size(245, 170)
+        Me.PBox_Camera.Size = New System.Drawing.Size(272, 254)
         Me.PBox_Camera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PBox_Camera.TabIndex = 0
         Me.PBox_Camera.TabStop = False
@@ -158,7 +175,7 @@ Partial Class Form_Main
         Me.Label_FramesPerSec.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label_FramesPerSec.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label_FramesPerSec.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_FramesPerSec.Location = New System.Drawing.Point(85, 54)
+        Me.Label_FramesPerSec.Location = New System.Drawing.Point(85, 51)
         Me.Label_FramesPerSec.Name = "Label_FramesPerSec"
         Me.Label_FramesPerSec.Size = New System.Drawing.Size(44, 16)
         Me.Label_FramesPerSec.TabIndex = 65
@@ -178,7 +195,7 @@ Partial Class Form_Main
         Me.GroupBox_VideoInDevice.ForeColor = System.Drawing.Color.DarkBlue
         Me.GroupBox_VideoInDevice.Location = New System.Drawing.Point(6, 52)
         Me.GroupBox_VideoInDevice.Name = "GroupBox_VideoInDevice"
-        Me.GroupBox_VideoInDevice.Size = New System.Drawing.Size(297, 80)
+        Me.GroupBox_VideoInDevice.Size = New System.Drawing.Size(297, 77)
         Me.GroupBox_VideoInDevice.TabIndex = 70
         Me.GroupBox_VideoInDevice.TabStop = False
         Me.GroupBox_VideoInDevice.Text = "Video Input Device"
@@ -188,7 +205,7 @@ Partial Class Form_Main
         Me.Label_Millisec.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label_Millisec.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label_Millisec.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_Millisec.Location = New System.Drawing.Point(131, 54)
+        Me.Label_Millisec.Location = New System.Drawing.Point(131, 51)
         Me.Label_Millisec.Name = "Label_Millisec"
         Me.Label_Millisec.Size = New System.Drawing.Size(54, 16)
         Me.Label_Millisec.TabIndex = 69
@@ -199,48 +216,18 @@ Partial Class Form_Main
         Me.Label_Resolution.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Label_Resolution.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label_Resolution.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_Resolution.Location = New System.Drawing.Point(12, 54)
+        Me.Label_Resolution.Location = New System.Drawing.Point(12, 51)
         Me.Label_Resolution.Name = "Label_Resolution"
         Me.Label_Resolution.Size = New System.Drawing.Size(70, 16)
         Me.Label_Resolution.TabIndex = 66
         Me.Label_Resolution.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ComboBox_VideoInputDevice
-        '
-        Me.ComboBox_VideoInputDevice.ArrowButtonColor = System.Drawing.Color.Transparent
-        Me.ComboBox_VideoInputDevice.ArrowColor = System.Drawing.Color.DarkGray
-        Me.ComboBox_VideoInputDevice.BackColor = System.Drawing.Color.FloralWhite
-        Me.ComboBox_VideoInputDevice.BackColor_Focused = System.Drawing.Color.FloralWhite
-        Me.ComboBox_VideoInputDevice.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.ComboBox_VideoInputDevice.BorderColor = System.Drawing.Color.DarkGray
-        Me.ComboBox_VideoInputDevice.BorderSize = 1
-        Me.ComboBox_VideoInputDevice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBox_VideoInputDevice.DropDown_BackColor = System.Drawing.Color.Cornsilk
-        Me.ComboBox_VideoInputDevice.DropDown_BackSelected = System.Drawing.Color.Moccasin
-        Me.ComboBox_VideoInputDevice.DropDown_BorderColor = System.Drawing.Color.Cornsilk
-        Me.ComboBox_VideoInputDevice.DropDown_ForeColor = System.Drawing.SystemColors.WindowText
-        Me.ComboBox_VideoInputDevice.DropDown_ForeSelected = System.Drawing.SystemColors.WindowText
-        Me.ComboBox_VideoInputDevice.DropDownHeight = 318
-        Me.ComboBox_VideoInputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_VideoInputDevice.DropDownWidth = 280
-        Me.ComboBox_VideoInputDevice.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox_VideoInputDevice.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox_VideoInputDevice.ForeColor = System.Drawing.Color.Black
-        Me.ComboBox_VideoInputDevice.IntegralHeight = False
-        Me.ComboBox_VideoInputDevice.Items.AddRange(New Object() {"Auto"})
-        Me.ComboBox_VideoInputDevice.Location = New System.Drawing.Point(12, 23)
-        Me.ComboBox_VideoInputDevice.Name = "ComboBox_VideoInputDevice"
-        Me.ComboBox_VideoInputDevice.ShadowColor = System.Drawing.Color.LightGray
-        Me.ComboBox_VideoInputDevice.Size = New System.Drawing.Size(278, 22)
-        Me.ComboBox_VideoInputDevice.TabIndex = 32
-        Me.ComboBox_VideoInputDevice.TextPosition = 4
         '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_File, Me.Menu_Tools, Me.Menu_Language, Me.Menu_Help, Me.Menu_About})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(624, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(651, 24)
         Me.MenuStrip1.TabIndex = 72
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -337,56 +324,56 @@ Partial Class Form_Main
         '
         Me.Menu_Language_ENG.Image = CType(resources.GetObject("Menu_Language_ENG.Image"), System.Drawing.Image)
         Me.Menu_Language_ENG.Name = "Menu_Language_ENG"
-        Me.Menu_Language_ENG.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_ENG.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ENG.Text = "English"
         '
         'Menu_Language_ITA
         '
         Me.Menu_Language_ITA.Image = CType(resources.GetObject("Menu_Language_ITA.Image"), System.Drawing.Image)
         Me.Menu_Language_ITA.Name = "Menu_Language_ITA"
-        Me.Menu_Language_ITA.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_ITA.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ITA.Text = "Italiano"
         '
         'Menu_Language_FRA
         '
         Me.Menu_Language_FRA.Image = CType(resources.GetObject("Menu_Language_FRA.Image"), System.Drawing.Image)
         Me.Menu_Language_FRA.Name = "Menu_Language_FRA"
-        Me.Menu_Language_FRA.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_FRA.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_FRA.Text = "Francais"
         '
         'Menu_Language_ESP
         '
         Me.Menu_Language_ESP.Image = CType(resources.GetObject("Menu_Language_ESP.Image"), System.Drawing.Image)
         Me.Menu_Language_ESP.Name = "Menu_Language_ESP"
-        Me.Menu_Language_ESP.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_ESP.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_ESP.Text = "Espanol"
         '
         'Menu_Language_POR
         '
         Me.Menu_Language_POR.Image = CType(resources.GetObject("Menu_Language_POR.Image"), System.Drawing.Image)
         Me.Menu_Language_POR.Name = "Menu_Language_POR"
-        Me.Menu_Language_POR.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_POR.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_POR.Text = "Portoguese"
         '
         'Menu_Language_DEU
         '
         Me.Menu_Language_DEU.Image = CType(resources.GetObject("Menu_Language_DEU.Image"), System.Drawing.Image)
         Me.Menu_Language_DEU.Name = "Menu_Language_DEU"
-        Me.Menu_Language_DEU.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_DEU.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_DEU.Text = "Deutsch"
         '
         'Menu_Language_JPN
         '
         Me.Menu_Language_JPN.Image = CType(resources.GetObject("Menu_Language_JPN.Image"), System.Drawing.Image)
         Me.Menu_Language_JPN.Name = "Menu_Language_JPN"
-        Me.Menu_Language_JPN.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_JPN.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_JPN.Text = "Japanese"
         '
         'Menu_Language_CHI
         '
         Me.Menu_Language_CHI.Image = CType(resources.GetObject("Menu_Language_CHI.Image"), System.Drawing.Image)
         Me.Menu_Language_CHI.Name = "Menu_Language_CHI"
-        Me.Menu_Language_CHI.Size = New System.Drawing.Size(152, 22)
+        Me.Menu_Language_CHI.Size = New System.Drawing.Size(134, 22)
         Me.Menu_Language_CHI.Text = "Chinese"
         '
         'Menu_Help
@@ -449,16 +436,17 @@ Partial Class Form_Main
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Tool_VideoControls, Me.ToolStripSeparator2, Me.Tools_SaveSpectrum, Me.ToolStripSeparator1, Me.Tools_SaveCamera, Me.ToolStripSeparator5, Me.Tools_SaveTotal, Me.ToolStripSeparator7, Me.Tools_SaveDataFile})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Tool_VideoControls, Me.ToolStripSeparator2, Me.Tools_SaveSpectrum, Me.ToolStripSeparator1, Me.Tools_SaveCamera, Me.ToolStripSeparator5, Me.Tools_SaveTotal, Me.Tools_Run, Me.ToolStripSeparator7, Me.Tools_SaveDataFile})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(624, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(651, 25)
         Me.ToolStrip1.TabIndex = 73
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'Tool_VideoControls
         '
+        Me.Tool_VideoControls.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Tool_VideoControls.Image = CType(resources.GetObject("Tool_VideoControls.Image"), System.Drawing.Image)
         Me.Tool_VideoControls.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tool_VideoControls.Name = "Tool_VideoControls"
@@ -472,6 +460,7 @@ Partial Class Form_Main
         '
         'Tools_SaveSpectrum
         '
+        Me.Tools_SaveSpectrum.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Tools_SaveSpectrum.Image = CType(resources.GetObject("Tools_SaveSpectrum.Image"), System.Drawing.Image)
         Me.Tools_SaveSpectrum.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveSpectrum.Name = "Tools_SaveSpectrum"
@@ -485,6 +474,7 @@ Partial Class Form_Main
         '
         'Tools_SaveCamera
         '
+        Me.Tools_SaveCamera.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Tools_SaveCamera.Image = CType(resources.GetObject("Tools_SaveCamera.Image"), System.Drawing.Image)
         Me.Tools_SaveCamera.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveCamera.Name = "Tools_SaveCamera"
@@ -498,11 +488,27 @@ Partial Class Form_Main
         '
         'Tools_SaveTotal
         '
+        Me.Tools_SaveTotal.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Tools_SaveTotal.Image = CType(resources.GetObject("Tools_SaveTotal.Image"), System.Drawing.Image)
         Me.Tools_SaveTotal.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveTotal.Name = "Tools_SaveTotal"
         Me.Tools_SaveTotal.Size = New System.Drawing.Size(88, 22)
         Me.Tools_SaveTotal.Text = "Total image"
+        '
+        'Tools_Run
+        '
+        Me.Tools_Run.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.Tools_Run.Checked = True
+        Me.Tools_Run.CheckOnClick = True
+        Me.Tools_Run.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.Tools_Run.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Tools_Run.Image = CType(resources.GetObject("Tools_Run.Image"), System.Drawing.Image)
+        Me.Tools_Run.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tools_Run.Margin = New System.Windows.Forms.Padding(4, 1, 10, 2)
+        Me.Tools_Run.Name = "Tools_Run"
+        Me.Tools_Run.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.Tools_Run.Size = New System.Drawing.Size(56, 22)
+        Me.Tools_Run.Text = "Run"
         '
         'ToolStripSeparator7
         '
@@ -511,6 +517,7 @@ Partial Class Form_Main
         '
         'Tools_SaveDataFile
         '
+        Me.Tools_SaveDataFile.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Tools_SaveDataFile.Image = CType(resources.GetObject("Tools_SaveDataFile.Image"), System.Drawing.Image)
         Me.Tools_SaveDataFile.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tools_SaveDataFile.Name = "Tools_SaveDataFile"
@@ -539,114 +546,17 @@ Partial Class Form_Main
         Me.GroupBox_Input.ForeColor = System.Drawing.Color.DarkBlue
         Me.GroupBox_Input.Location = New System.Drawing.Point(309, 52)
         Me.GroupBox_Input.Name = "GroupBox_Input"
-        Me.GroupBox_Input.Size = New System.Drawing.Size(309, 210)
+        Me.GroupBox_Input.Size = New System.Drawing.Size(336, 297)
         Me.GroupBox_Input.TabIndex = 92
         Me.GroupBox_Input.TabStop = False
         Me.GroupBox_Input.Text = "Input"
         '
-        'txt_SizeY
-        '
-        Me.txt_SizeY.ArrowsIncrement = 1
-        Me.txt_SizeY.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_SizeY.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_SizeY.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_SizeY.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_SizeY.Increment = 0.2
-        Me.txt_SizeY.Location = New System.Drawing.Point(12, 95)
-        Me.txt_SizeY.MaxValue = 50
-        Me.txt_SizeY.MinValue = 1
-        Me.txt_SizeY.Multiline = True
-        Me.txt_SizeY.Name = "txt_SizeY"
-        Me.txt_SizeY.NumericValue = 40
-        Me.txt_SizeY.NumericValueInteger = 40
-        Me.txt_SizeY.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_SizeY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_SizeY.RoundingStep = 0
-        Me.txt_SizeY.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_SizeY.Size = New System.Drawing.Size(36, 16)
-        Me.txt_SizeY.SuppressZeros = True
-        Me.txt_SizeY.TabIndex = 100
-        Me.txt_SizeY.Text = "40"
-        Me.txt_SizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txt_StartX
-        '
-        Me.txt_StartX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txt_StartX.ArrowsIncrement = 1
-        Me.txt_StartX.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_StartX.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_StartX.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_StartX.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_StartX.Increment = 1
-        Me.txt_StartX.Location = New System.Drawing.Point(102, 187)
-        Me.txt_StartX.MaxValue = 1000
-        Me.txt_StartX.MinValue = 0
-        Me.txt_StartX.Multiline = True
-        Me.txt_StartX.Name = "txt_StartX"
-        Me.txt_StartX.NumericValue = 0
-        Me.txt_StartX.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_StartX.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_StartX.RoundingStep = 0
-        Me.txt_StartX.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_StartX.Size = New System.Drawing.Size(36, 16)
-        Me.txt_StartX.TabIndex = 98
-        Me.txt_StartX.Text = "0"
-        Me.txt_StartX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txt_EndX
-        '
-        Me.txt_EndX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_EndX.ArrowsIncrement = 1
-        Me.txt_EndX.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_EndX.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_EndX.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_EndX.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_EndX.Increment = 1
-        Me.txt_EndX.Location = New System.Drawing.Point(259, 187)
-        Me.txt_EndX.MaxValue = 1000
-        Me.txt_EndX.MinValue = 0
-        Me.txt_EndX.Multiline = True
-        Me.txt_EndX.Name = "txt_EndX"
-        Me.txt_EndX.NumericValue = 1000
-        Me.txt_EndX.NumericValueInteger = 1000
-        Me.txt_EndX.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_EndX.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_EndX.RoundingStep = 0
-        Me.txt_EndX.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_EndX.Size = New System.Drawing.Size(36, 16)
-        Me.txt_EndX.TabIndex = 94
-        Me.txt_EndX.Text = "1000"
-        Me.txt_EndX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txt_StartY
-        '
-        Me.txt_StartY.ArrowsIncrement = 1
-        Me.txt_StartY.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_StartY.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_StartY.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_StartY.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_StartY.Increment = 0.2
-        Me.txt_StartY.Location = New System.Drawing.Point(12, 153)
-        Me.txt_StartY.MaxValue = 100
-        Me.txt_StartY.MinValue = 0
-        Me.txt_StartY.Multiline = True
-        Me.txt_StartY.Name = "txt_StartY"
-        Me.txt_StartY.NumericValue = 30
-        Me.txt_StartY.NumericValueInteger = 30
-        Me.txt_StartY.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_StartY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_StartY.RoundingStep = 0
-        Me.txt_StartY.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_StartY.Size = New System.Drawing.Size(36, 16)
-        Me.txt_StartY.SuppressZeros = True
-        Me.txt_StartY.TabIndex = 96
-        Me.txt_StartY.Text = "30"
-        Me.txt_StartY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Label_SizeY
         '
+        Me.Label_SizeY.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label_SizeY.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_SizeY.Location = New System.Drawing.Point(3, 78)
+        Me.Label_SizeY.ForeColor = System.Drawing.Color.Black
+        Me.Label_SizeY.Location = New System.Drawing.Point(3, 103)
         Me.Label_SizeY.Name = "Label_SizeY"
         Me.Label_SizeY.Size = New System.Drawing.Size(53, 13)
         Me.Label_SizeY.TabIndex = 101
@@ -657,7 +567,8 @@ Partial Class Form_Main
         '
         Me.Label_StartX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label_StartX.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_StartX.Location = New System.Drawing.Point(29, 189)
+        Me.Label_StartX.ForeColor = System.Drawing.Color.Black
+        Me.Label_StartX.Location = New System.Drawing.Point(29, 276)
         Me.Label_StartX.Name = "Label_StartX"
         Me.Label_StartX.Size = New System.Drawing.Size(72, 13)
         Me.Label_StartX.TabIndex = 99
@@ -666,8 +577,10 @@ Partial Class Form_Main
         '
         'Label_StartY
         '
+        Me.Label_StartY.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label_StartY.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_StartY.Location = New System.Drawing.Point(5, 137)
+        Me.Label_StartY.ForeColor = System.Drawing.Color.Black
+        Me.Label_StartY.Location = New System.Drawing.Point(5, 162)
         Me.Label_StartY.Name = "Label_StartY"
         Me.Label_StartY.Size = New System.Drawing.Size(52, 13)
         Me.Label_StartY.TabIndex = 97
@@ -678,7 +591,8 @@ Partial Class Form_Main
         '
         Me.Label_EndX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label_EndX.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_EndX.Location = New System.Drawing.Point(192, 189)
+        Me.Label_EndX.ForeColor = System.Drawing.Color.Black
+        Me.Label_EndX.Location = New System.Drawing.Point(219, 276)
         Me.Label_EndX.Name = "Label_EndX"
         Me.Label_EndX.Size = New System.Drawing.Size(67, 13)
         Me.Label_EndX.TabIndex = 95
@@ -689,6 +603,7 @@ Partial Class Form_Main
         '
         Me.chk_Flip.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.chk_Flip.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chk_Flip.ForeColor = System.Drawing.Color.Black
         Me.chk_Flip.Location = New System.Drawing.Point(6, 33)
         Me.chk_Flip.Name = "chk_Flip"
         Me.chk_Flip.Size = New System.Drawing.Size(46, 17)
@@ -697,22 +612,23 @@ Partial Class Form_Main
         Me.chk_Flip.TextAlign = System.Drawing.ContentAlignment.TopRight
         Me.chk_Flip.UseVisualStyleBackColor = True
         '
-        'Label_Speed
+        'Label_RisingSpeed
         '
-        Me.Label_Speed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label_Speed.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_Speed.Location = New System.Drawing.Point(442, 5)
-        Me.Label_Speed.Name = "Label_Speed"
-        Me.Label_Speed.Size = New System.Drawing.Size(47, 13)
-        Me.Label_Speed.TabIndex = 103
-        Me.Label_Speed.Text = "Speed"
-        Me.Label_Speed.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Label_RisingSpeed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_RisingSpeed.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_RisingSpeed.ForeColor = System.Drawing.Color.Black
+        Me.Label_RisingSpeed.Location = New System.Drawing.Point(155, 20)
+        Me.Label_RisingSpeed.Name = "Label_RisingSpeed"
+        Me.Label_RisingSpeed.Size = New System.Drawing.Size(96, 13)
+        Me.Label_RisingSpeed.TabIndex = 103
+        Me.Label_RisingSpeed.Text = "Rising speed"
+        Me.Label_RisingSpeed.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'Label_JpegQuality
         '
         Me.Label_JpegQuality.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_JpegQuality.ForeColor = System.Drawing.Color.Black
-        Me.Label_JpegQuality.Location = New System.Drawing.Point(154, 21)
+        Me.Label_JpegQuality.Location = New System.Drawing.Point(154, 15)
         Me.Label_JpegQuality.Name = "Label_JpegQuality"
         Me.Label_JpegQuality.Size = New System.Drawing.Size(93, 13)
         Me.Label_JpegQuality.TabIndex = 101
@@ -723,7 +639,7 @@ Partial Class Form_Main
         '
         Me.Label_Path.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_Path.ForeColor = System.Drawing.Color.Black
-        Me.Label_Path.Location = New System.Drawing.Point(16, 69)
+        Me.Label_Path.Location = New System.Drawing.Point(16, 62)
         Me.Label_Path.Name = "Label_Path"
         Me.Label_Path.Size = New System.Drawing.Size(260, 13)
         Me.Label_Path.TabIndex = 100
@@ -733,7 +649,7 @@ Partial Class Form_Main
         '
         Me.Label_Name.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_Name.ForeColor = System.Drawing.Color.Black
-        Me.Label_Name.Location = New System.Drawing.Point(16, 28)
+        Me.Label_Name.Location = New System.Drawing.Point(16, 22)
         Me.Label_Name.Name = "Label_Name"
         Me.Label_Name.Size = New System.Drawing.Size(65, 13)
         Me.Label_Name.TabIndex = 98
@@ -743,7 +659,7 @@ Partial Class Form_Main
         '
         Me.LabelDot.AutoSize = True
         Me.LabelDot.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelDot.Location = New System.Drawing.Point(198, 45)
+        Me.LabelDot.Location = New System.Drawing.Point(198, 39)
         Me.LabelDot.Name = "LabelDot"
         Me.LabelDot.Size = New System.Drawing.Size(13, 16)
         Me.LabelDot.TabIndex = 96
@@ -762,115 +678,12 @@ Partial Class Form_Main
         Me.GroupBox_SaveImage.Controls.Add(Me.Label_Path)
         Me.GroupBox_SaveImage.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox_SaveImage.ForeColor = System.Drawing.Color.DarkBlue
-        Me.GroupBox_SaveImage.Location = New System.Drawing.Point(6, 138)
+        Me.GroupBox_SaveImage.Location = New System.Drawing.Point(6, 135)
         Me.GroupBox_SaveImage.Name = "GroupBox_SaveImage"
-        Me.GroupBox_SaveImage.Size = New System.Drawing.Size(297, 124)
+        Me.GroupBox_SaveImage.Size = New System.Drawing.Size(297, 114)
         Me.GroupBox_SaveImage.TabIndex = 95
         Me.GroupBox_SaveImage.TabStop = False
         Me.GroupBox_SaveImage.Text = "Save image"
-        '
-        'txt_JpegQuality
-        '
-        Me.txt_JpegQuality.ArrowsIncrement = 1
-        Me.txt_JpegQuality.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_JpegQuality.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_JpegQuality.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_JpegQuality.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_JpegQuality.Increment = 0.2
-        Me.txt_JpegQuality.Location = New System.Drawing.Point(245, 19)
-        Me.txt_JpegQuality.MaxValue = 100
-        Me.txt_JpegQuality.MinValue = 1
-        Me.txt_JpegQuality.Multiline = True
-        Me.txt_JpegQuality.Name = "txt_JpegQuality"
-        Me.txt_JpegQuality.NumericValue = 100
-        Me.txt_JpegQuality.NumericValueInteger = 100
-        Me.txt_JpegQuality.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_JpegQuality.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_JpegQuality.RoundingStep = 0
-        Me.txt_JpegQuality.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_JpegQuality.Size = New System.Drawing.Size(41, 19)
-        Me.txt_JpegQuality.SuppressZeros = True
-        Me.txt_JpegQuality.TabIndex = 102
-        Me.txt_JpegQuality.Text = "100"
-        Me.txt_JpegQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txt_FilePath
-        '
-        Me.txt_FilePath.ArrowsIncrement = 0
-        Me.txt_FilePath.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_FilePath.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_FilePath.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_FilePath.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_FilePath.Increment = 0
-        Me.txt_FilePath.Location = New System.Drawing.Point(12, 84)
-        Me.txt_FilePath.MaxValue = 0
-        Me.txt_FilePath.MinValue = 0
-        Me.txt_FilePath.Multiline = True
-        Me.txt_FilePath.Name = "txt_FilePath"
-        Me.txt_FilePath.NumericValue = 0
-        Me.txt_FilePath.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_FilePath.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Solid
-        Me.txt_FilePath.RoundingStep = 0
-        Me.txt_FilePath.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_FilePath.Size = New System.Drawing.Size(277, 28)
-        Me.txt_FilePath.TabIndex = 97
-        Me.txt_FilePath.Text = "   "
-        Me.txt_FilePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'txt_FileName
-        '
-        Me.txt_FileName.ArrowsIncrement = 0
-        Me.txt_FileName.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_FileName.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_FileName.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_FileName.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_FileName.Increment = 0
-        Me.txt_FileName.Location = New System.Drawing.Point(12, 44)
-        Me.txt_FileName.MaxValue = -1
-        Me.txt_FileName.MinValue = -1
-        Me.txt_FileName.Multiline = True
-        Me.txt_FileName.Name = "txt_FileName"
-        Me.txt_FileName.NumericValue = -1
-        Me.txt_FileName.NumericValueInteger = -1
-        Me.txt_FileName.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_FileName.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_FileName.RoundingStep = 0
-        Me.txt_FileName.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_FileName.Size = New System.Drawing.Size(184, 16)
-        Me.txt_FileName.SuppressZeros = True
-        Me.txt_FileName.TabIndex = 99
-        Me.txt_FileName.Text = "0"
-        Me.txt_FileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.txt_FileName.WordWrap = False
-        '
-        'ComboBox_FileType
-        '
-        Me.ComboBox_FileType.ArrowButtonColor = System.Drawing.Color.Transparent
-        Me.ComboBox_FileType.ArrowColor = System.Drawing.Color.DarkGray
-        Me.ComboBox_FileType.BackColor = System.Drawing.Color.FloralWhite
-        Me.ComboBox_FileType.BackColor_Focused = System.Drawing.SystemColors.Window
-        Me.ComboBox_FileType.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.ComboBox_FileType.BorderColor = System.Drawing.Color.PowderBlue
-        Me.ComboBox_FileType.BorderSize = 1
-        Me.ComboBox_FileType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.ComboBox_FileType.DropDown_BackColor = System.Drawing.Color.Cornsilk
-        Me.ComboBox_FileType.DropDown_BackSelected = System.Drawing.Color.Moccasin
-        Me.ComboBox_FileType.DropDown_BorderColor = System.Drawing.Color.Cornsilk
-        Me.ComboBox_FileType.DropDown_ForeColor = System.Drawing.SystemColors.WindowText
-        Me.ComboBox_FileType.DropDown_ForeSelected = System.Drawing.SystemColors.WindowText
-        Me.ComboBox_FileType.DropDownHeight = 318
-        Me.ComboBox_FileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_FileType.DropDownWidth = 80
-        Me.ComboBox_FileType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ComboBox_FileType.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox_FileType.ForeColor = System.Drawing.Color.Black
-        Me.ComboBox_FileType.IntegralHeight = False
-        Me.ComboBox_FileType.Location = New System.Drawing.Point(215, 41)
-        Me.ComboBox_FileType.Name = "ComboBox_FileType"
-        Me.ComboBox_FileType.ShadowColor = System.Drawing.Color.LightGray
-        Me.ComboBox_FileType.Size = New System.Drawing.Size(73, 21)
-        Me.ComboBox_FileType.TabIndex = 95
-        Me.ComboBox_FileType.TextPosition = 4
         '
         'PBox_Spectrum
         '
@@ -881,9 +694,9 @@ Partial Class Form_Main
         Me.PBox_Spectrum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PBox_Spectrum.ErrorImage = Nothing
         Me.PBox_Spectrum.InitialImage = Nothing
-        Me.PBox_Spectrum.Location = New System.Drawing.Point(6, 268)
+        Me.PBox_Spectrum.Location = New System.Drawing.Point(6, 355)
         Me.PBox_Spectrum.Name = "PBox_Spectrum"
-        Me.PBox_Spectrum.Size = New System.Drawing.Size(595, 152)
+        Me.PBox_Spectrum.Size = New System.Drawing.Size(622, 180)
         Me.PBox_Spectrum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PBox_Spectrum.TabIndex = 96
         Me.PBox_Spectrum.TabStop = False
@@ -892,10 +705,10 @@ Partial Class Form_Main
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.LightYellow
         Me.StatusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 424)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 539)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.StatusStrip1.Size = New System.Drawing.Size(624, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(651, 22)
         Me.StatusStrip1.TabIndex = 97
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -907,9 +720,9 @@ Partial Class Form_Main
         Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PictureBox3.ErrorImage = Nothing
         Me.PictureBox3.InitialImage = Nothing
-        Me.PictureBox3.Location = New System.Drawing.Point(605, 268)
+        Me.PictureBox3.Location = New System.Drawing.Point(632, 355)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(13, 153)
+        Me.PictureBox3.Size = New System.Drawing.Size(13, 181)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox3.TabIndex = 104
         Me.PictureBox3.TabStop = False
@@ -918,7 +731,8 @@ Partial Class Form_Main
         '
         Me.Label_Filter.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label_Filter.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_Filter.Location = New System.Drawing.Point(366, 5)
+        Me.Label_Filter.ForeColor = System.Drawing.Color.Black
+        Me.Label_Filter.Location = New System.Drawing.Point(458, 5)
         Me.Label_Filter.Name = "Label_Filter"
         Me.Label_Filter.Size = New System.Drawing.Size(39, 13)
         Me.Label_Filter.TabIndex = 106
@@ -931,7 +745,6 @@ Partial Class Form_Main
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.LightYellow
         Me.Panel1.Controls.Add(Me.txt_Filter)
-        Me.Panel1.Controls.Add(Me.txt_Speed)
         Me.Panel1.Controls.Add(Me.btn_Reference)
         Me.Panel1.Controls.Add(Me.Label_MaxPeak)
         Me.Panel1.Controls.Add(Me.btn_Dips)
@@ -939,11 +752,282 @@ Partial Class Form_Main
         Me.Panel1.Controls.Add(Me.btn_Peaks)
         Me.Panel1.Controls.Add(Me.btn_TrimScale)
         Me.Panel1.Controls.Add(Me.Label_Filter)
-        Me.Panel1.Controls.Add(Me.Label_Speed)
-        Me.Panel1.Location = New System.Drawing.Point(1, 422)
+        Me.Panel1.Location = New System.Drawing.Point(1, 537)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(605, 24)
+        Me.Panel1.Size = New System.Drawing.Size(632, 24)
         Me.Panel1.TabIndex = 112
+        '
+        'Label_FallingSpeed
+        '
+        Me.Label_FallingSpeed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_FallingSpeed.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_FallingSpeed.ForeColor = System.Drawing.Color.Black
+        Me.Label_FallingSpeed.Location = New System.Drawing.Point(155, 42)
+        Me.Label_FallingSpeed.Name = "Label_FallingSpeed"
+        Me.Label_FallingSpeed.Size = New System.Drawing.Size(96, 13)
+        Me.Label_FallingSpeed.TabIndex = 115
+        Me.Label_FallingSpeed.Text = "Falling speed"
+        Me.Label_FallingSpeed.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label_MaxPeak
+        '
+        Me.Label_MaxPeak.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_MaxPeak.ForeColor = System.Drawing.Color.Black
+        Me.Label_MaxPeak.Location = New System.Drawing.Point(6, 6)
+        Me.Label_MaxPeak.Name = "Label_MaxPeak"
+        Me.Label_MaxPeak.Size = New System.Drawing.Size(128, 13)
+        Me.Label_MaxPeak.TabIndex = 112
+        '
+        'Label_SlotWriteFile
+        '
+        Me.Label_SlotWriteFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_SlotWriteFile.BackColor = System.Drawing.Color.Transparent
+        Me.Label_SlotWriteFile.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_SlotWriteFile.ForeColor = System.Drawing.Color.Black
+        Me.Label_SlotWriteFile.Location = New System.Drawing.Point(6, 68)
+        Me.Label_SlotWriteFile.Name = "Label_SlotWriteFile"
+        Me.Label_SlotWriteFile.Size = New System.Drawing.Size(88, 16)
+        Me.Label_SlotWriteFile.TabIndex = 114
+        Me.Label_SlotWriteFile.Text = "Slot WriteFile"
+        Me.Label_SlotWriteFile.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label_SlotRun
+        '
+        Me.Label_SlotRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_SlotRun.BackColor = System.Drawing.Color.Transparent
+        Me.Label_SlotRun.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_SlotRun.ForeColor = System.Drawing.Color.Black
+        Me.Label_SlotRun.Location = New System.Drawing.Point(6, 24)
+        Me.Label_SlotRun.Name = "Label_SlotRun"
+        Me.Label_SlotRun.Size = New System.Drawing.Size(89, 16)
+        Me.Label_SlotRun.TabIndex = 116
+        Me.Label_SlotRun.Text = "Slot Run"
+        Me.Label_SlotRun.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'Label_SlotStop
+        '
+        Me.Label_SlotStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label_SlotStop.BackColor = System.Drawing.Color.Transparent
+        Me.Label_SlotStop.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_SlotStop.ForeColor = System.Drawing.Color.Black
+        Me.Label_SlotStop.Location = New System.Drawing.Point(6, 46)
+        Me.Label_SlotStop.Name = "Label_SlotStop"
+        Me.Label_SlotStop.Size = New System.Drawing.Size(89, 16)
+        Me.Label_SlotStop.TabIndex = 118
+        Me.Label_SlotStop.Text = "Slot Stop"
+        Me.Label_SlotStop.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'GroupBox_SyncAndIntegration
+        '
+        Me.GroupBox_SyncAndIntegration.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(210, Byte), Integer))
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.txt_FallingSpeed)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.txt_SlotStop)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.Label_SlotStop)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.txt_SlotRun)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.txt_SlotWriteFile)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.btn_ResetSpectrumData)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.Label_SlotRun)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.Label_FallingSpeed)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.Label_RisingSpeed)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.txt_RisingSpeed)
+        Me.GroupBox_SyncAndIntegration.Controls.Add(Me.Label_SlotWriteFile)
+        Me.GroupBox_SyncAndIntegration.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_SyncAndIntegration.ForeColor = System.Drawing.Color.DarkBlue
+        Me.GroupBox_SyncAndIntegration.Location = New System.Drawing.Point(6, 255)
+        Me.GroupBox_SyncAndIntegration.Name = "GroupBox_SyncAndIntegration"
+        Me.GroupBox_SyncAndIntegration.Size = New System.Drawing.Size(297, 94)
+        Me.GroupBox_SyncAndIntegration.TabIndex = 119
+        Me.GroupBox_SyncAndIntegration.TabStop = False
+        Me.GroupBox_SyncAndIntegration.Text = "Sync and integration controls"
+        '
+        'txt_FallingSpeed
+        '
+        Me.txt_FallingSpeed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_FallingSpeed.ArrowsIncrement = 1
+        Me.txt_FallingSpeed.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_FallingSpeed.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_FallingSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_FallingSpeed.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_FallingSpeed.ForeColor = System.Drawing.Color.Black
+        Me.txt_FallingSpeed.Increment = 0.2
+        Me.txt_FallingSpeed.Location = New System.Drawing.Point(254, 40)
+        Me.txt_FallingSpeed.MaxValue = 100
+        Me.txt_FallingSpeed.MinValue = 0
+        Me.txt_FallingSpeed.Multiline = True
+        Me.txt_FallingSpeed.Name = "txt_FallingSpeed"
+        Me.txt_FallingSpeed.NumericValue = 30
+        Me.txt_FallingSpeed.NumericValueInteger = 30
+        Me.txt_FallingSpeed.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_FallingSpeed.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_FallingSpeed.RoundingStep = 0
+        Me.txt_FallingSpeed.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_FallingSpeed.Size = New System.Drawing.Size(30, 16)
+        Me.txt_FallingSpeed.SuppressZeros = True
+        Me.txt_FallingSpeed.TabIndex = 114
+        Me.txt_FallingSpeed.Text = "30"
+        Me.txt_FallingSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_SlotStop
+        '
+        Me.txt_SlotStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_SlotStop.ArrowsIncrement = 1
+        Me.txt_SlotStop.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_SlotStop.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_SlotStop.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_SlotStop.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SlotStop.ForeColor = System.Drawing.Color.Black
+        Me.txt_SlotStop.Increment = 0.2
+        Me.txt_SlotStop.Location = New System.Drawing.Point(97, 44)
+        Me.txt_SlotStop.MaxValue = 999
+        Me.txt_SlotStop.MinValue = -1
+        Me.txt_SlotStop.Multiline = True
+        Me.txt_SlotStop.Name = "txt_SlotStop"
+        Me.txt_SlotStop.NumericValue = -1
+        Me.txt_SlotStop.NumericValueInteger = -1
+        Me.txt_SlotStop.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_SlotStop.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_SlotStop.RoundingStep = 0
+        Me.txt_SlotStop.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_SlotStop.Size = New System.Drawing.Size(36, 17)
+        Me.txt_SlotStop.SuppressZeros = True
+        Me.txt_SlotStop.TabIndex = 117
+        Me.txt_SlotStop.Text = "-1"
+        Me.txt_SlotStop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_SlotRun
+        '
+        Me.txt_SlotRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_SlotRun.ArrowsIncrement = 1
+        Me.txt_SlotRun.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_SlotRun.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_SlotRun.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_SlotRun.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SlotRun.ForeColor = System.Drawing.Color.Black
+        Me.txt_SlotRun.Increment = 0.2
+        Me.txt_SlotRun.Location = New System.Drawing.Point(97, 22)
+        Me.txt_SlotRun.MaxValue = 999
+        Me.txt_SlotRun.MinValue = -1
+        Me.txt_SlotRun.Multiline = True
+        Me.txt_SlotRun.Name = "txt_SlotRun"
+        Me.txt_SlotRun.NumericValue = -1
+        Me.txt_SlotRun.NumericValueInteger = -1
+        Me.txt_SlotRun.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_SlotRun.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_SlotRun.RoundingStep = 0
+        Me.txt_SlotRun.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_SlotRun.Size = New System.Drawing.Size(36, 17)
+        Me.txt_SlotRun.SuppressZeros = True
+        Me.txt_SlotRun.TabIndex = 115
+        Me.txt_SlotRun.Text = "-1"
+        Me.txt_SlotRun.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_SlotWriteFile
+        '
+        Me.txt_SlotWriteFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_SlotWriteFile.ArrowsIncrement = 1
+        Me.txt_SlotWriteFile.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_SlotWriteFile.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_SlotWriteFile.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_SlotWriteFile.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SlotWriteFile.ForeColor = System.Drawing.Color.Black
+        Me.txt_SlotWriteFile.Increment = 0.2
+        Me.txt_SlotWriteFile.Location = New System.Drawing.Point(97, 66)
+        Me.txt_SlotWriteFile.MaxValue = 999
+        Me.txt_SlotWriteFile.MinValue = -1
+        Me.txt_SlotWriteFile.Multiline = True
+        Me.txt_SlotWriteFile.Name = "txt_SlotWriteFile"
+        Me.txt_SlotWriteFile.NumericValue = -1
+        Me.txt_SlotWriteFile.NumericValueInteger = -1
+        Me.txt_SlotWriteFile.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_SlotWriteFile.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_SlotWriteFile.RoundingStep = 0
+        Me.txt_SlotWriteFile.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_SlotWriteFile.Size = New System.Drawing.Size(36, 17)
+        Me.txt_SlotWriteFile.SuppressZeros = True
+        Me.txt_SlotWriteFile.TabIndex = 113
+        Me.txt_SlotWriteFile.Text = "-1"
+        Me.txt_SlotWriteFile.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'btn_ResetSpectrumData
+        '
+        Me.btn_ResetSpectrumData.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_ResetSpectrumData.BorderShow = False
+        DesignerRectTracker11.IsActive = False
+        DesignerRectTracker11.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker11.TrackerRectangle"), System.Drawing.RectangleF)
+        Me.btn_ResetSpectrumData.CenterPtTracker = DesignerRectTracker11
+        CBlendItems11.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(220, Byte), Integer), CType(CType(192, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(140, Byte), Integer), CType(CType(140, Byte), Integer))}
+        CBlendItems11.iPoint = New Single() {0.0!, 0.5017921!, 1.0!}
+        Me.btn_ResetSpectrumData.ColorFillBlend = CBlendItems11
+        CBlendItems12.iColor = New System.Drawing.Color() {System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(0, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(231, Byte), Integer), CType(CType(32, Byte), Integer)), System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(120, Byte), Integer))}
+        CBlendItems12.iPoint = New Single() {0.0!, 0.5!, 1.0!}
+        Me.btn_ResetSpectrumData.ColorFillBlendChecked = CBlendItems12
+        Me.btn_ResetSpectrumData.ColorFillSolid = System.Drawing.SystemColors.Control
+        Me.btn_ResetSpectrumData.ColorFillSolidChecked = System.Drawing.SystemColors.Control
+        Me.btn_ResetSpectrumData.Corners.All = CType(4, Short)
+        Me.btn_ResetSpectrumData.Corners.LowerLeft = CType(4, Short)
+        Me.btn_ResetSpectrumData.Corners.LowerRight = CType(4, Short)
+        Me.btn_ResetSpectrumData.Corners.UpperLeft = CType(4, Short)
+        Me.btn_ResetSpectrumData.Corners.UpperRight = CType(4, Short)
+        Me.btn_ResetSpectrumData.DimFactorOver = 30
+        Me.btn_ResetSpectrumData.FillType = Theremino_Spectrometer.MyButton.eFillType.LinearVertical
+        Me.btn_ResetSpectrumData.FillTypeChecked = Theremino_Spectrometer.MyButton.eFillType.GradientPath
+        Me.btn_ResetSpectrumData.FocalPoints.CenterPtX = 0.8285714!
+        Me.btn_ResetSpectrumData.FocalPoints.CenterPtY = 1.0!
+        Me.btn_ResetSpectrumData.FocalPoints.FocusPtX = 0.0!
+        Me.btn_ResetSpectrumData.FocalPoints.FocusPtY = 0.0!
+        Me.btn_ResetSpectrumData.FocalPointsChecked.CenterPtX = 0.492163!
+        Me.btn_ResetSpectrumData.FocalPointsChecked.CenterPtY = 0.4722222!
+        Me.btn_ResetSpectrumData.FocalPointsChecked.FocusPtX = 0.8996865!
+        Me.btn_ResetSpectrumData.FocalPointsChecked.FocusPtY = 0.4444444!
+        DesignerRectTracker12.IsActive = False
+        DesignerRectTracker12.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker12.TrackerRectangle"), System.Drawing.RectangleF)
+        Me.btn_ResetSpectrumData.FocusPtTracker = DesignerRectTracker12
+        Me.btn_ResetSpectrumData.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_ResetSpectrumData.ForeColor = System.Drawing.Color.Black
+        Me.btn_ResetSpectrumData.Image = Nothing
+        Me.btn_ResetSpectrumData.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btn_ResetSpectrumData.ImageIndex = 0
+        Me.btn_ResetSpectrumData.ImageSize = New System.Drawing.Size(48, 48)
+        Me.btn_ResetSpectrumData.Location = New System.Drawing.Point(149, 64)
+        Me.btn_ResetSpectrumData.Name = "btn_ResetSpectrumData"
+        Me.btn_ResetSpectrumData.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
+        Me.btn_ResetSpectrumData.SideImage = Nothing
+        Me.btn_ResetSpectrumData.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_ResetSpectrumData.SideImageSize = New System.Drawing.Size(32, 32)
+        Me.btn_ResetSpectrumData.Size = New System.Drawing.Size(136, 21)
+        Me.btn_ResetSpectrumData.TabIndex = 103
+        Me.btn_ResetSpectrumData.Text = "Reset spectrum data"
+        Me.btn_ResetSpectrumData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.btn_ResetSpectrumData.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        Me.btn_ResetSpectrumData.TextMargin = New System.Windows.Forms.Padding(0)
+        Me.btn_ResetSpectrumData.TextShadow = System.Drawing.Color.Transparent
+        '
+        'txt_RisingSpeed
+        '
+        Me.txt_RisingSpeed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_RisingSpeed.ArrowsIncrement = 1
+        Me.txt_RisingSpeed.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_RisingSpeed.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_RisingSpeed.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_RisingSpeed.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_RisingSpeed.ForeColor = System.Drawing.Color.Black
+        Me.txt_RisingSpeed.Increment = 0.2
+        Me.txt_RisingSpeed.Location = New System.Drawing.Point(254, 18)
+        Me.txt_RisingSpeed.MaxValue = 100
+        Me.txt_RisingSpeed.MinValue = 1
+        Me.txt_RisingSpeed.Multiline = True
+        Me.txt_RisingSpeed.Name = "txt_RisingSpeed"
+        Me.txt_RisingSpeed.NumericValue = 30
+        Me.txt_RisingSpeed.NumericValueInteger = 30
+        Me.txt_RisingSpeed.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_RisingSpeed.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_RisingSpeed.RoundingStep = 0
+        Me.txt_RisingSpeed.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_RisingSpeed.Size = New System.Drawing.Size(30, 16)
+        Me.txt_RisingSpeed.SuppressZeros = True
+        Me.txt_RisingSpeed.TabIndex = 102
+        Me.txt_RisingSpeed.Text = "30"
+        Me.txt_RisingSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txt_Filter
         '
@@ -954,7 +1038,7 @@ Partial Class Form_Main
         Me.txt_Filter.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txt_Filter.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_Filter.Increment = 0.2
-        Me.txt_Filter.Location = New System.Drawing.Point(404, 3)
+        Me.txt_Filter.Location = New System.Drawing.Point(499, 3)
         Me.txt_Filter.MaxValue = 100
         Me.txt_Filter.MinValue = 0
         Me.txt_Filter.Multiline = True
@@ -965,43 +1049,17 @@ Partial Class Form_Main
         Me.txt_Filter.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
         Me.txt_Filter.RoundingStep = 0
         Me.txt_Filter.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_Filter.Size = New System.Drawing.Size(36, 16)
+        Me.txt_Filter.Size = New System.Drawing.Size(34, 16)
         Me.txt_Filter.SuppressZeros = True
         Me.txt_Filter.TabIndex = 105
         Me.txt_Filter.Text = "30"
         Me.txt_Filter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'txt_Speed
-        '
-        Me.txt_Speed.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txt_Speed.ArrowsIncrement = 1
-        Me.txt_Speed.BackColor = System.Drawing.Color.FloralWhite
-        Me.txt_Speed.BackColor_Over = System.Drawing.Color.Moccasin
-        Me.txt_Speed.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txt_Speed.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_Speed.Increment = 0.2
-        Me.txt_Speed.Location = New System.Drawing.Point(488, 3)
-        Me.txt_Speed.MaxValue = 100
-        Me.txt_Speed.MinValue = 1
-        Me.txt_Speed.Multiline = True
-        Me.txt_Speed.Name = "txt_Speed"
-        Me.txt_Speed.NumericValue = 30
-        Me.txt_Speed.NumericValueInteger = 30
-        Me.txt_Speed.RectangleColor = System.Drawing.Color.PowderBlue
-        Me.txt_Speed.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
-        Me.txt_Speed.RoundingStep = 0
-        Me.txt_Speed.ShadowColor = System.Drawing.Color.LightGray
-        Me.txt_Speed.Size = New System.Drawing.Size(36, 16)
-        Me.txt_Speed.SuppressZeros = True
-        Me.txt_Speed.TabIndex = 102
-        Me.txt_Speed.Text = "30"
-        Me.txt_Speed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'btn_Reference
         '
         Me.btn_Reference.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Reference.BorderShow = False
-        DesignerRectTracker1.IsActive = False
+        DesignerRectTracker1.IsActive = True
         DesignerRectTracker1.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker1.TrackerRectangle"), System.Drawing.RectangleF)
         Me.btn_Reference.CenterPtTracker = DesignerRectTracker1
         Me.btn_Reference.CheckButton = True
@@ -1038,28 +1096,19 @@ Partial Class Form_Main
         Me.btn_Reference.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_Reference.ImageIndex = 0
         Me.btn_Reference.ImageSize = New System.Drawing.Size(48, 48)
-        Me.btn_Reference.Location = New System.Drawing.Point(139, 5)
+        Me.btn_Reference.Location = New System.Drawing.Point(197, 5)
         Me.btn_Reference.Name = "btn_Reference"
         Me.btn_Reference.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
         Me.btn_Reference.SideImage = Nothing
         Me.btn_Reference.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Reference.SideImageSize = New System.Drawing.Size(32, 32)
-        Me.btn_Reference.Size = New System.Drawing.Size(69, 16)
+        Me.btn_Reference.Size = New System.Drawing.Size(73, 16)
         Me.btn_Reference.TabIndex = 113
         Me.btn_Reference.Text = "Reference"
         Me.btn_Reference.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_Reference.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
         Me.btn_Reference.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btn_Reference.TextShadow = System.Drawing.Color.Transparent
-        '
-        'Label_MaxPeak
-        '
-        Me.Label_MaxPeak.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_MaxPeak.ForeColor = System.Drawing.Color.Black
-        Me.Label_MaxPeak.Location = New System.Drawing.Point(6, 6)
-        Me.Label_MaxPeak.Name = "Label_MaxPeak"
-        Me.Label_MaxPeak.Size = New System.Drawing.Size(128, 13)
-        Me.Label_MaxPeak.TabIndex = 112
         '
         'btn_Dips
         '
@@ -1102,13 +1151,13 @@ Partial Class Form_Main
         Me.btn_Dips.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_Dips.ImageIndex = 0
         Me.btn_Dips.ImageSize = New System.Drawing.Size(48, 48)
-        Me.btn_Dips.Location = New System.Drawing.Point(212, 5)
+        Me.btn_Dips.Location = New System.Drawing.Point(275, 5)
         Me.btn_Dips.Name = "btn_Dips"
         Me.btn_Dips.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
         Me.btn_Dips.SideImage = Nothing
         Me.btn_Dips.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Dips.SideImageSize = New System.Drawing.Size(32, 32)
-        Me.btn_Dips.Size = New System.Drawing.Size(42, 16)
+        Me.btn_Dips.Size = New System.Drawing.Size(46, 16)
         Me.btn_Dips.TabIndex = 110
         Me.btn_Dips.Text = "Dips"
         Me.btn_Dips.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1149,7 +1198,7 @@ Partial Class Form_Main
         Me.btn_Colors.FocalPointsChecked.CenterPtY = 0.3125!
         Me.btn_Colors.FocalPointsChecked.FocusPtX = 0.8996865!
         Me.btn_Colors.FocalPointsChecked.FocusPtY = 0.4444444!
-        DesignerRectTracker6.IsActive = True
+        DesignerRectTracker6.IsActive = False
         DesignerRectTracker6.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker6.TrackerRectangle"), System.Drawing.RectangleF)
         Me.btn_Colors.FocusPtTracker = DesignerRectTracker6
         Me.btn_Colors.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1158,13 +1207,13 @@ Partial Class Form_Main
         Me.btn_Colors.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_Colors.ImageIndex = 0
         Me.btn_Colors.ImageSize = New System.Drawing.Size(48, 48)
-        Me.btn_Colors.Location = New System.Drawing.Point(308, 5)
+        Me.btn_Colors.Location = New System.Drawing.Point(381, 5)
         Me.btn_Colors.Name = "btn_Colors"
         Me.btn_Colors.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
         Me.btn_Colors.SideImage = Nothing
         Me.btn_Colors.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Colors.SideImageSize = New System.Drawing.Size(32, 32)
-        Me.btn_Colors.Size = New System.Drawing.Size(52, 16)
+        Me.btn_Colors.Size = New System.Drawing.Size(56, 16)
         Me.btn_Colors.TabIndex = 111
         Me.btn_Colors.Text = "Colors"
         Me.btn_Colors.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1201,10 +1250,10 @@ Partial Class Form_Main
         Me.btn_Peaks.FocalPoints.CenterPtY = 1.0!
         Me.btn_Peaks.FocalPoints.FocusPtX = 0.0!
         Me.btn_Peaks.FocalPoints.FocusPtY = 0.0!
-        Me.btn_Peaks.FocalPointsChecked.CenterPtX = 0.6304348!
-        Me.btn_Peaks.FocalPointsChecked.CenterPtY = 0.375!
-        Me.btn_Peaks.FocalPointsChecked.FocusPtX = 0.6086956!
-        Me.btn_Peaks.FocalPointsChecked.FocusPtY = 0.6875!
+        Me.btn_Peaks.FocalPointsChecked.CenterPtX = 0.5869565!
+        Me.btn_Peaks.FocalPointsChecked.CenterPtY = 0.125!
+        Me.btn_Peaks.FocalPointsChecked.FocusPtX = 0.6!
+        Me.btn_Peaks.FocalPointsChecked.FocusPtY = 0.4375!
         DesignerRectTracker8.IsActive = False
         DesignerRectTracker8.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker8.TrackerRectangle"), System.Drawing.RectangleF)
         Me.btn_Peaks.FocusPtTracker = DesignerRectTracker8
@@ -1214,13 +1263,13 @@ Partial Class Form_Main
         Me.btn_Peaks.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_Peaks.ImageIndex = 0
         Me.btn_Peaks.ImageSize = New System.Drawing.Size(48, 48)
-        Me.btn_Peaks.Location = New System.Drawing.Point(258, 5)
+        Me.btn_Peaks.Location = New System.Drawing.Point(326, 5)
         Me.btn_Peaks.Name = "btn_Peaks"
         Me.btn_Peaks.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
         Me.btn_Peaks.SideImage = Nothing
         Me.btn_Peaks.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_Peaks.SideImageSize = New System.Drawing.Size(32, 32)
-        Me.btn_Peaks.Size = New System.Drawing.Size(46, 16)
+        Me.btn_Peaks.Size = New System.Drawing.Size(50, 16)
         Me.btn_Peaks.TabIndex = 108
         Me.btn_Peaks.Text = "Peaks"
         Me.btn_Peaks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1253,14 +1302,14 @@ Partial Class Form_Main
         Me.btn_TrimScale.FillType = Theremino_Spectrometer.MyButton.eFillType.LinearVertical
         Me.btn_TrimScale.FillTypeChecked = Theremino_Spectrometer.MyButton.eFillType.GradientPath
         Me.btn_TrimScale.FocalPoints.CenterPtX = 0.5857143!
-        Me.btn_TrimScale.FocalPoints.CenterPtY = 0.75!
+        Me.btn_TrimScale.FocalPoints.CenterPtY = 0.5!
         Me.btn_TrimScale.FocalPoints.FocusPtX = 0.0!
         Me.btn_TrimScale.FocalPoints.FocusPtY = 0.0!
         Me.btn_TrimScale.FocalPointsChecked.CenterPtX = 0.492163!
         Me.btn_TrimScale.FocalPointsChecked.CenterPtY = 0.4722222!
         Me.btn_TrimScale.FocalPointsChecked.FocusPtX = 0.8996865!
         Me.btn_TrimScale.FocalPointsChecked.FocusPtY = 0.4444444!
-        DesignerRectTracker10.IsActive = False
+        DesignerRectTracker10.IsActive = True
         DesignerRectTracker10.TrackerRectangle = CType(resources.GetObject("DesignerRectTracker10.TrackerRectangle"), System.Drawing.RectangleF)
         Me.btn_TrimScale.FocusPtTracker = DesignerRectTracker10
         Me.btn_TrimScale.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1269,13 +1318,13 @@ Partial Class Form_Main
         Me.btn_TrimScale.ImageAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.btn_TrimScale.ImageIndex = 0
         Me.btn_TrimScale.ImageSize = New System.Drawing.Size(48, 48)
-        Me.btn_TrimScale.Location = New System.Drawing.Point(530, 5)
+        Me.btn_TrimScale.Location = New System.Drawing.Point(551, 5)
         Me.btn_TrimScale.Name = "btn_TrimScale"
         Me.btn_TrimScale.Shape = Theremino_Spectrometer.MyButton.eShape.Rectangle
         Me.btn_TrimScale.SideImage = Nothing
         Me.btn_TrimScale.SideImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_TrimScale.SideImageSize = New System.Drawing.Size(32, 32)
-        Me.btn_TrimScale.Size = New System.Drawing.Size(70, 16)
+        Me.btn_TrimScale.Size = New System.Drawing.Size(76, 16)
         Me.btn_TrimScale.TabIndex = 102
         Me.btn_TrimScale.Text = "Trim scale"
         Me.btn_TrimScale.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1283,12 +1332,252 @@ Partial Class Form_Main
         Me.btn_TrimScale.TextMargin = New System.Windows.Forms.Padding(0)
         Me.btn_TrimScale.TextShadow = System.Drawing.Color.Transparent
         '
+        'txt_JpegQuality
+        '
+        Me.txt_JpegQuality.ArrowsIncrement = 1
+        Me.txt_JpegQuality.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_JpegQuality.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_JpegQuality.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_JpegQuality.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_JpegQuality.ForeColor = System.Drawing.Color.Black
+        Me.txt_JpegQuality.Increment = 0.2
+        Me.txt_JpegQuality.Location = New System.Drawing.Point(245, 13)
+        Me.txt_JpegQuality.MaxValue = 100
+        Me.txt_JpegQuality.MinValue = 1
+        Me.txt_JpegQuality.Multiline = True
+        Me.txt_JpegQuality.Name = "txt_JpegQuality"
+        Me.txt_JpegQuality.NumericValue = 100
+        Me.txt_JpegQuality.NumericValueInteger = 100
+        Me.txt_JpegQuality.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_JpegQuality.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_JpegQuality.RoundingStep = 0
+        Me.txt_JpegQuality.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_JpegQuality.Size = New System.Drawing.Size(41, 19)
+        Me.txt_JpegQuality.SuppressZeros = True
+        Me.txt_JpegQuality.TabIndex = 102
+        Me.txt_JpegQuality.Text = "100"
+        Me.txt_JpegQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_FilePath
+        '
+        Me.txt_FilePath.ArrowsIncrement = 0
+        Me.txt_FilePath.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_FilePath.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_FilePath.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_FilePath.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_FilePath.Increment = 0
+        Me.txt_FilePath.Location = New System.Drawing.Point(15, 77)
+        Me.txt_FilePath.MaxValue = 0
+        Me.txt_FilePath.MinValue = 0
+        Me.txt_FilePath.Multiline = True
+        Me.txt_FilePath.Name = "txt_FilePath"
+        Me.txt_FilePath.NumericValue = 0
+        Me.txt_FilePath.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_FilePath.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Solid
+        Me.txt_FilePath.RoundingStep = 0
+        Me.txt_FilePath.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_FilePath.Size = New System.Drawing.Size(273, 28)
+        Me.txt_FilePath.TabIndex = 97
+        Me.txt_FilePath.Text = "   "
+        Me.txt_FilePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_FileName
+        '
+        Me.txt_FileName.ArrowsIncrement = 0
+        Me.txt_FileName.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_FileName.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_FileName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_FileName.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_FileName.Increment = 0
+        Me.txt_FileName.Location = New System.Drawing.Point(12, 38)
+        Me.txt_FileName.MaxValue = -1
+        Me.txt_FileName.MinValue = -1
+        Me.txt_FileName.Multiline = True
+        Me.txt_FileName.Name = "txt_FileName"
+        Me.txt_FileName.NumericValue = -1
+        Me.txt_FileName.NumericValueInteger = -1
+        Me.txt_FileName.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_FileName.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_FileName.RoundingStep = 0
+        Me.txt_FileName.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_FileName.Size = New System.Drawing.Size(183, 16)
+        Me.txt_FileName.SuppressZeros = True
+        Me.txt_FileName.TabIndex = 99
+        Me.txt_FileName.Text = "0"
+        Me.txt_FileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txt_FileName.WordWrap = False
+        '
+        'ComboBox_FileType
+        '
+        Me.ComboBox_FileType.ArrowButtonColor = System.Drawing.Color.Transparent
+        Me.ComboBox_FileType.ArrowColor = System.Drawing.Color.DarkGray
+        Me.ComboBox_FileType.BackColor = System.Drawing.Color.FloralWhite
+        Me.ComboBox_FileType.BackColor_Focused = System.Drawing.SystemColors.Window
+        Me.ComboBox_FileType.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.ComboBox_FileType.BorderColor = System.Drawing.Color.PowderBlue
+        Me.ComboBox_FileType.BorderSize = 1
+        Me.ComboBox_FileType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBox_FileType.DropDown_BackColor = System.Drawing.Color.Cornsilk
+        Me.ComboBox_FileType.DropDown_BackSelected = System.Drawing.Color.Moccasin
+        Me.ComboBox_FileType.DropDown_BorderColor = System.Drawing.Color.Cornsilk
+        Me.ComboBox_FileType.DropDown_ForeColor = System.Drawing.SystemColors.WindowText
+        Me.ComboBox_FileType.DropDown_ForeSelected = System.Drawing.SystemColors.WindowText
+        Me.ComboBox_FileType.DropDownHeight = 318
+        Me.ComboBox_FileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_FileType.DropDownWidth = 80
+        Me.ComboBox_FileType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBox_FileType.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox_FileType.ForeColor = System.Drawing.Color.Black
+        Me.ComboBox_FileType.IntegralHeight = False
+        Me.ComboBox_FileType.Location = New System.Drawing.Point(215, 35)
+        Me.ComboBox_FileType.Name = "ComboBox_FileType"
+        Me.ComboBox_FileType.ShadowColor = System.Drawing.Color.LightGray
+        Me.ComboBox_FileType.Size = New System.Drawing.Size(73, 21)
+        Me.ComboBox_FileType.TabIndex = 95
+        Me.ComboBox_FileType.TextPosition = 4
+        '
+        'txt_SizeY
+        '
+        Me.txt_SizeY.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.txt_SizeY.ArrowsIncrement = 1
+        Me.txt_SizeY.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_SizeY.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_SizeY.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_SizeY.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_SizeY.ForeColor = System.Drawing.Color.Black
+        Me.txt_SizeY.Increment = 0.2
+        Me.txt_SizeY.Location = New System.Drawing.Point(12, 120)
+        Me.txt_SizeY.MaxValue = 50
+        Me.txt_SizeY.MinValue = 1
+        Me.txt_SizeY.Multiline = True
+        Me.txt_SizeY.Name = "txt_SizeY"
+        Me.txt_SizeY.NumericValue = 40
+        Me.txt_SizeY.NumericValueInteger = 40
+        Me.txt_SizeY.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_SizeY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_SizeY.RoundingStep = 0
+        Me.txt_SizeY.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_SizeY.Size = New System.Drawing.Size(36, 16)
+        Me.txt_SizeY.SuppressZeros = True
+        Me.txt_SizeY.TabIndex = 100
+        Me.txt_SizeY.Text = "40"
+        Me.txt_SizeY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_StartX
+        '
+        Me.txt_StartX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.txt_StartX.ArrowsIncrement = 1
+        Me.txt_StartX.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_StartX.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_StartX.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_StartX.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_StartX.ForeColor = System.Drawing.Color.Black
+        Me.txt_StartX.Increment = 1
+        Me.txt_StartX.Location = New System.Drawing.Point(102, 274)
+        Me.txt_StartX.MaxValue = 1000
+        Me.txt_StartX.MinValue = 0
+        Me.txt_StartX.Multiline = True
+        Me.txt_StartX.Name = "txt_StartX"
+        Me.txt_StartX.NumericValue = 0
+        Me.txt_StartX.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_StartX.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_StartX.RoundingStep = 0
+        Me.txt_StartX.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_StartX.Size = New System.Drawing.Size(36, 16)
+        Me.txt_StartX.TabIndex = 98
+        Me.txt_StartX.Text = "0"
+        Me.txt_StartX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_EndX
+        '
+        Me.txt_EndX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txt_EndX.ArrowsIncrement = 1
+        Me.txt_EndX.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_EndX.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_EndX.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_EndX.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_EndX.ForeColor = System.Drawing.Color.Black
+        Me.txt_EndX.Increment = 1
+        Me.txt_EndX.Location = New System.Drawing.Point(286, 274)
+        Me.txt_EndX.MaxValue = 1000
+        Me.txt_EndX.MinValue = 0
+        Me.txt_EndX.Multiline = True
+        Me.txt_EndX.Name = "txt_EndX"
+        Me.txt_EndX.NumericValue = 1000
+        Me.txt_EndX.NumericValueInteger = 1000
+        Me.txt_EndX.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_EndX.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_EndX.RoundingStep = 0
+        Me.txt_EndX.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_EndX.Size = New System.Drawing.Size(36, 16)
+        Me.txt_EndX.TabIndex = 94
+        Me.txt_EndX.Text = "1000"
+        Me.txt_EndX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'txt_StartY
+        '
+        Me.txt_StartY.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.txt_StartY.ArrowsIncrement = 1
+        Me.txt_StartY.BackColor = System.Drawing.Color.FloralWhite
+        Me.txt_StartY.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.txt_StartY.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txt_StartY.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_StartY.ForeColor = System.Drawing.Color.Black
+        Me.txt_StartY.Increment = 0.2
+        Me.txt_StartY.Location = New System.Drawing.Point(12, 178)
+        Me.txt_StartY.MaxValue = 100
+        Me.txt_StartY.MinValue = 0
+        Me.txt_StartY.Multiline = True
+        Me.txt_StartY.Name = "txt_StartY"
+        Me.txt_StartY.NumericValue = 30
+        Me.txt_StartY.NumericValueInteger = 30
+        Me.txt_StartY.RectangleColor = System.Drawing.Color.PowderBlue
+        Me.txt_StartY.RectangleStyle = System.Windows.Forms.ButtonBorderStyle.Dashed
+        Me.txt_StartY.RoundingStep = 0
+        Me.txt_StartY.ShadowColor = System.Drawing.Color.LightGray
+        Me.txt_StartY.Size = New System.Drawing.Size(36, 16)
+        Me.txt_StartY.SuppressZeros = True
+        Me.txt_StartY.TabIndex = 96
+        Me.txt_StartY.Text = "30"
+        Me.txt_StartY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ComboBox_VideoInputDevice
+        '
+        Me.ComboBox_VideoInputDevice.ArrowButtonColor = System.Drawing.Color.Transparent
+        Me.ComboBox_VideoInputDevice.ArrowColor = System.Drawing.Color.DarkGray
+        Me.ComboBox_VideoInputDevice.BackColor = System.Drawing.Color.FloralWhite
+        Me.ComboBox_VideoInputDevice.BackColor_Focused = System.Drawing.Color.FloralWhite
+        Me.ComboBox_VideoInputDevice.BackColor_Over = System.Drawing.Color.Moccasin
+        Me.ComboBox_VideoInputDevice.BorderColor = System.Drawing.Color.DarkGray
+        Me.ComboBox_VideoInputDevice.BorderSize = 1
+        Me.ComboBox_VideoInputDevice.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.ComboBox_VideoInputDevice.DropDown_BackColor = System.Drawing.Color.Cornsilk
+        Me.ComboBox_VideoInputDevice.DropDown_BackSelected = System.Drawing.Color.Moccasin
+        Me.ComboBox_VideoInputDevice.DropDown_BorderColor = System.Drawing.Color.Cornsilk
+        Me.ComboBox_VideoInputDevice.DropDown_ForeColor = System.Drawing.SystemColors.WindowText
+        Me.ComboBox_VideoInputDevice.DropDown_ForeSelected = System.Drawing.SystemColors.WindowText
+        Me.ComboBox_VideoInputDevice.DropDownHeight = 318
+        Me.ComboBox_VideoInputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_VideoInputDevice.DropDownWidth = 280
+        Me.ComboBox_VideoInputDevice.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ComboBox_VideoInputDevice.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox_VideoInputDevice.ForeColor = System.Drawing.Color.Black
+        Me.ComboBox_VideoInputDevice.IntegralHeight = False
+        Me.ComboBox_VideoInputDevice.Items.AddRange(New Object() {"Auto"})
+        Me.ComboBox_VideoInputDevice.Location = New System.Drawing.Point(12, 21)
+        Me.ComboBox_VideoInputDevice.Name = "ComboBox_VideoInputDevice"
+        Me.ComboBox_VideoInputDevice.ShadowColor = System.Drawing.Color.LightGray
+        Me.ComboBox_VideoInputDevice.Size = New System.Drawing.Size(278, 22)
+        Me.ComboBox_VideoInputDevice.TabIndex = 32
+        Me.ComboBox_VideoInputDevice.TextPosition = 4
+        '
         'Form_Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.AliceBlue
-        Me.ClientSize = New System.Drawing.Size(624, 446)
+        Me.ClientSize = New System.Drawing.Size(651, 561)
+        Me.Controls.Add(Me.GroupBox_SyncAndIntegration)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.GroupBox_SaveImage)
@@ -1299,7 +1588,7 @@ Partial Class Form_Main
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.PBox_Spectrum)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(640, 480)
+        Me.MinimumSize = New System.Drawing.Size(640, 600)
         Me.Name = "Form_Main"
         Me.Opacity = 0
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
@@ -1318,6 +1607,8 @@ Partial Class Form_Main
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.GroupBox_SyncAndIntegration.ResumeLayout(False)
+        Me.GroupBox_SyncAndIntegration.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1359,8 +1650,8 @@ Partial Class Form_Main
     Friend WithEvents Label_SizeY As System.Windows.Forms.Label
     Friend WithEvents txt_SizeY As MyTextBox
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents txt_Speed As MyTextBox
-    Friend WithEvents Label_Speed As System.Windows.Forms.Label
+    Friend WithEvents txt_RisingSpeed As MyTextBox
+    Friend WithEvents Label_RisingSpeed As System.Windows.Forms.Label
     Friend WithEvents btn_TrimScale As MyButton
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents txt_Filter As MyTextBox
@@ -1405,5 +1696,16 @@ Partial Class Form_Main
     Friend WithEvents Menu_Tools_SeparatorTab As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_SeparatorSemicolon As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Menu_Tools_SeparatorComma As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Tools_Run As System.Windows.Forms.ToolStripButton
+    Friend WithEvents txt_SlotWriteFile As Theremino_Spectrometer.MyTextBox
+    Friend WithEvents Label_SlotWriteFile As System.Windows.Forms.Label
+    Friend WithEvents Label_SlotRun As System.Windows.Forms.Label
+    Friend WithEvents txt_SlotRun As Theremino_Spectrometer.MyTextBox
+    Friend WithEvents Label_SlotStop As System.Windows.Forms.Label
+    Friend WithEvents txt_SlotStop As Theremino_Spectrometer.MyTextBox
+    Friend WithEvents txt_FallingSpeed As Theremino_Spectrometer.MyTextBox
+    Friend WithEvents Label_FallingSpeed As System.Windows.Forms.Label
+    Friend WithEvents btn_ResetSpectrumData As Theremino_Spectrometer.MyButton
+    Friend WithEvents GroupBox_SyncAndIntegration As System.Windows.Forms.GroupBox
 
 End Class

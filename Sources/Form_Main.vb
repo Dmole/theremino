@@ -448,6 +448,10 @@ Public Class Form_Main
         End With
     End Sub
 
+    Private Sub btn_ResetSpectrumData_ClickButtonArea(ByVal Sender As System.Object, ByVal e As System.EventArgs) Handles btn_ResetSpectrumData.ClickButtonArea
+        Spectrometer_SetSourceParams()
+    End Sub
+
     ' =======================================================================================
     '   MOUSE CURSOR
     ' =======================================================================================
@@ -462,6 +466,7 @@ Public Class Form_Main
     Private InitialTP2_X As Single
 
     Private Sub PBox_Spectrum_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PBox_Spectrum.MouseDown
+        If Not Tools_Run.Checked Then Return
         If e.Button = Windows.Forms.MouseButtons.Left Or _
            e.Button = Windows.Forms.MouseButtons.Right Then
             TrimmingPoint = 0
@@ -499,6 +504,7 @@ Public Class Form_Main
         PBox_Spectrum.Focus()
     End Sub
     Private Sub PBox_Spectrum_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PBox_Spectrum.MouseMove
+        If Not Tools_Run.Checked Then Return
         If e.Button = Windows.Forms.MouseButtons.Left Or _
            e.Button = Windows.Forms.MouseButtons.Right Then
             Dim dx As Int32
@@ -522,7 +528,7 @@ Public Class Form_Main
                             NanometersMax += err * 0.01F
                             Spectrometer_SetScaleTrimParams()
                         Loop Until Math.Abs(err) < 0.03 Or NanometersMax > 3999
-                        ' TODO - Version 2.9 - CHANGED frim 0.01 and 1999 to 0.05 and 3999
+                        ' Version 2.9 - CHANGED frim 0.01 and 1999 to 0.05 and 3999
                     Case 2
                         NanometersMax = InitialMaxNm - dx * zoom * TrimPoint2
                         If NanometersMax < TrimPoint2 Then NanometersMax = TrimPoint2
@@ -558,6 +564,7 @@ Public Class Form_Main
         End If
     End Sub
     Private Sub PBox_Spectrum_MouseWheel(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PBox_Spectrum.MouseWheel
+        If Not Tools_Run.Checked Then Return
         Dim StartX As Single = txt_StartX.NumericValueInteger
         Dim EndX As Single = txt_EndX.NumericValueInteger
         ' --------------------------------------------------------------------- zoom quantity
@@ -588,7 +595,8 @@ Public Class Form_Main
                                                                                                      txt_EndX.LostFocus, _
                                                                                                      txt_SizeY.LostFocus, _
                                                                                                      txt_Filter.LostFocus, _
-                                                                                                     txt_Speed.LostFocus, _
+                                                                                                     txt_RisingSpeed.LostFocus, _
+                                                                                                     txt_FallingSpeed.LostFocus, _
                                                                                                      txt_FileName.LostFocus
         If Not EventsAreEnabled Then Return
         Save_INI()
@@ -607,7 +615,8 @@ Public Class Form_Main
         Spectrometer_SetSourceParams()
     End Sub
     Private Sub Filter_Params_Changed(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txt_Filter.TextChanged, _
-                                                                                                          txt_Speed.TextChanged
+                                                                                                          txt_RisingSpeed.TextChanged, _
+                                                                                                          txt_FallingSpeed.TextChanged
         If Not EventsAreEnabled Then Return
         Spectrometer_SetRunningModeParams()
     End Sub
@@ -658,8 +667,48 @@ Public Class Form_Main
     '   CAPTURE TIMER
     ' ==============================================================================================================
     Private Timer1_Working As Boolean = False
+    Private SlotRunArmed As Boolean = False
+    Private SlotStopArmed As Boolean = False
+    Private SlotWriteFileArmed As Boolean = False
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         If Not EventsAreEnabled Then Return
+        ' -------------------------------------------------------- Slots for RUN / STOP / WRITEFILE
+        Dim n As Int32
+        n = txt_SlotRun.NumericValueInteger
+        If n > 0 Then
+            If Slots.ReadSlot_NoNan(n) > 500 Then
+                If SlotRunArmed Then
+                    SlotRunArmed = False
+                    Tools_Run.Checked = True
+                End If
+            Else
+                SlotRunArmed = True
+            End If
+        End If
+        n = txt_SlotStop.NumericValueInteger
+        If n > 0 Then
+            If Slots.ReadSlot_NoNan(n) > 500 Then
+                If SlotStopArmed Then
+                    SlotStopArmed = False
+                    Tools_Run.Checked = False
+                End If
+            Else
+                SlotStopArmed = True
+            End If
+        End If
+        n = txt_SlotWriteFile.NumericValueInteger
+        If n > 0 Then
+            If Slots.ReadSlot_NoNan(n) > 500 Then
+                If SlotWriteFileArmed Then
+                    SlotWriteFileArmed = False
+                    SaveSpectrumToFile()
+                End If
+            Else
+                SlotWriteFileArmed = True
+            End If
+        End If
+        ' -------------------------------------------------------- Capture image
+        If Not Tools_Run.Checked Then Return
         If Capture_Image Is Nothing OrElse Capture_Image.PixelFormat = Imaging.PixelFormat.Undefined Then
             Capture_NewImageIsReady = False
             Return

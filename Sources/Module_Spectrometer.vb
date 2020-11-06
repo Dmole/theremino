@@ -45,11 +45,13 @@ Module Spectrometer
     Private MaxValueX As Int32
 
     Private Filter As Int32
-    Private Speed As Int32
+    Private SpeedUP As Int32
+    Private SpeedDW As Int32
     Private Flip As Boolean
 
     Private KFilter As Single
-    Private KSpeed As Single
+    Private KSpeedUP As Single
+    Private KSpeedDW As Single
     Private Kred As Single
     Private Kgreen As Single
     Private Kblue As Single
@@ -92,7 +94,6 @@ Module Spectrometer
 
     Friend Sub Spectrometer_SetSourceParams()
         If SrcImage Is Nothing Then Return
-
         ' ---------------------------------------------------------------------
         SrcW = SrcImage.Width
         SrcH = SrcImage.Height
@@ -133,11 +134,13 @@ Module Spectrometer
         TrimScale = Form_Main.btn_TrimScale.Checked()
         Filter = Form_Main.txt_Filter.NumericValueInteger
         KFilter = (100 - Filter) / 100.0F + 0.1F
-        Speed = Form_Main.txt_Speed.NumericValueInteger
-        KSpeed = Speed / 100.0F
+        SpeedUP = Form_Main.txt_RisingSpeed.NumericValueInteger
+        KSpeedUP = SpeedUP / 100.0F
+        SpeedDW = Form_Main.txt_FallingSpeed.NumericValueInteger
+        KSpeedDW = SpeedDW / 100.0F
     End Sub
 
-    ' TODO - Version 2.9 - CHANGED from 2000 to 4000
+    ' Version 2.9 - CHANGED from 2000 to 4000
     Friend Sub Spectrometer_SetScaleTrimParams()
         If NanometersMin < 50 Then NanometersMin = 50
         If NanometersMax > 4000 Then NanometersMax = 4000
@@ -274,7 +277,11 @@ Module Spectrometer
                 disp = disp + SourceStride
             Next
             v = sumr * Kred + sumg * Kgreen + sumb * Kblue
-            SpecArray(x) += (v - SpecArray(x)) * KSpeed
+            If v > SpecArray(x) Then
+                SpecArray(x) += (v - SpecArray(x)) * KSpeedUP
+            Else
+                SpecArray(x) += (v - SpecArray(x)) * KSpeedDW
+            End If
         Next
         AddFilter()
         AddReference()

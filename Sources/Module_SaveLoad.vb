@@ -169,6 +169,16 @@ Module Module_SaveLoad
             f.WriteLine(TabString("JpegQuality", Form_Main.txt_JpegQuality.NumericValueInteger.ToString))
             '
             f.WriteLine(TabString(""))
+            f.WriteLine(TabString(" Tools"))
+            f.WriteLine(TabString("==========================================="))
+            'f.WriteLine(TabString("Tools_Run", Form_Main.Tools_Run.Checked.ToString))
+            f.WriteLine(TabString("SlotRun", Form_Main.txt_SlotRun.Text))
+            f.WriteLine(TabString("SlotStop", Form_Main.txt_SlotStop.Text))
+            f.WriteLine(TabString("SlotWriteFile", Form_Main.txt_SlotWriteFile.Text))
+            f.WriteLine(TabString("RisingSpeed", Form_Main.txt_RisingSpeed.NumericValueInteger.ToString))
+            f.WriteLine(TabString("FallingSpeed", Form_Main.txt_FallingSpeed.NumericValueInteger.ToString))
+            '
+            f.WriteLine(TabString(""))
             f.WriteLine(TabString(" Video Input Params"))
             f.WriteLine(TabString("==========================================="))
             f.WriteLine(TabString("VideoInDevice", VideoInDevice))
@@ -188,7 +198,6 @@ Module Module_SaveLoad
             f.WriteLine(TabString("Peaks", Form_Main.btn_Peaks.Checked.ToString))
             f.WriteLine(TabString("Colors", Form_Main.btn_Colors.Checked.ToString))
             f.WriteLine(TabString("Filter", Form_Main.txt_Filter.NumericValueInteger.ToString))
-            f.WriteLine(TabString("Speed", Form_Main.txt_Speed.NumericValueInteger.ToString))
             f.WriteLine(TabString("MinNm", NanometersMin.ToString))
             f.WriteLine(TabString("MaxNm", NanometersMax.ToString))
             f.WriteLine(TabString("TrimPoint1", TrimPoint1.ToString))
@@ -210,6 +219,7 @@ Module Module_SaveLoad
         VideoFormatParams.VideoFormat = "RGB42"
         VideoFormatParams.VideoSize = "320 x 240"
         VideoFormatParams.VideoFPS = "30"
+        Form_Main.Tools_Run.Checked = True
         ' -------------------------------------------------------------------------------
         ' ------------------------------------------------------------------------------- 
         ' With "Resume Next" subsequent parameters are loaded and f.Close() is executed
@@ -234,7 +244,14 @@ Module Module_SaveLoad
                     Case "Form_VideoInControls_Top" : Form_VideoInControls.Top = Val_Int(l)
                     Case "Form_VideoInControls_Left" : Form_VideoInControls.Left = Val_Int(l)
                     Case "Form_VideoInControls_VisibleAtStart" : Form_VideoInControls_VisibleAtStart = l = "True"
-                        ' ------------------------------------------------------------------------------ Video in device
+                        ' ------------------------------------------------------------------------------
+                        'Case "Tools_Run" : Form_Main.Tools_Run.Checked = l = "True"
+                    Case "SlotRun" : Form_Main.txt_SlotRun.Text = l
+                    Case "SlotStop" : Form_Main.txt_SlotStop.Text = l
+                    Case "SlotWriteFile" : Form_Main.txt_SlotWriteFile.Text = l
+                    Case "RisingSpeed" : Form_Main.txt_RisingSpeed.NumericValueInteger = Val_Int(l)
+                    Case "FallingSpeed" : Form_Main.txt_FallingSpeed.NumericValueInteger = Val_Int(l)
+                        ' ------------------------------------------------------------------------------
                     Case "VideoInDevice" : VideoInDevice = l
                     Case "VideoFormat" : VideoFormatParams.VideoFormat = l
                     Case "VideoSize" : VideoFormatParams.VideoSize = l
@@ -256,7 +273,6 @@ Module Module_SaveLoad
                     Case "Peaks" : Form_Main.btn_Peaks.Checked = l = "True"
                     Case "Colors" : Form_Main.btn_Colors.Checked = l = "True"
                     Case "Filter" : Form_Main.txt_Filter.NumericValueInteger = Val_Int(l)
-                    Case "Speed" : Form_Main.txt_Speed.NumericValueInteger = Val_Int(l)
                     Case "MinNm" : NanometersMin = Val_Single(l)
                     Case "MaxNm" : NanometersMax = Val_Single(l)
                     Case "TrimPoint1" : TrimPoint1 = Val_Single(l)
@@ -382,9 +398,7 @@ Module Module_SaveLoad
     '  SAVE SPECTRUM TO FILE
     ' ==================================================================================================
     Friend Sub SaveSpectrumToFile()
-        If Not FolderExists(Form_Main.txt_FilePath.Text & "\") Then
-            Form_Main.SelectSaveFolder()
-        End If
+        If Not FolderExists(Form_Main.txt_FilePath.Text & "\") Then Return
         ' ---------------------------------------------------------------------
         Form_Main.txt_FilePath.Text = Trim(Form_Main.txt_FilePath.Text)
 

@@ -13,7 +13,6 @@ Public Module DirecShow_Utils
                                           ByVal hwnd As IntPtr) As Boolean
 
         Dim comObj As Object = Nothing
-        ' TODO
         ''
         'Dim iid As Guid = GetType(IAMVfwCaptureDialogs).GUID
         'CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, iid, comObj)
@@ -34,7 +33,6 @@ Public Module DirecShow_Utils
                                           ByVal hwnd As IntPtr) As Boolean
 
         Dim comObj As Object = Nothing
-        ' TODO
         '
         'CaptureGraphBuilder.FindInterface(Nothing, Nothing, captureFilter, GetType(IAMVfwCaptureDialogs).GUID, comObj)
         'Dim VfwDialogs As IAMVfwCaptureDialogs = CType(comObj, IAMVfwCaptureDialogs)

@@ -65,7 +65,7 @@ Module Module_DirectShow_VideoInput
             ' --------------------------------------------------------------------- START
             MediaControl.Run()
 
-            ' TODO - USING BmiHeader - Needs a accurate test
+            ' USING BmiHeader - Needs a accurate test
             'Capture_GetVideoFormatParams()
 
         Catch ex As Exception
@@ -315,7 +315,7 @@ Module Module_DirectShow_VideoInput
         Marshal.PtrToStructure(AMMedia.formatPtr, vih)
 
         ' ----------------------------------------------------- set SampleGrabbeeCallBack Width and Height 
-        ' TODO - USING BmiHeader - Needs a accurate test
+        ' USING BmiHeader - Needs a accurate test
         sgcb.Width = vih.BmiHeader.Width
         sgcb.Height = vih.BmiHeader.Height
 
