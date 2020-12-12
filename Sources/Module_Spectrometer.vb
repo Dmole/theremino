@@ -144,7 +144,7 @@ Module Spectrometer
     Friend Sub Spectrometer_SetScaleTrimParams()
         If NanometersMin < 50 Then NanometersMin = 50
         If NanometersMax > 4000 Then NanometersMax = 4000
-        If NanometersMax < NanometersMin + 50 Then NanometersMax = NanometersMin + 50
+        If NanometersMax < NanometersMin + 20 Then NanometersMax = NanometersMin + 20
         NanometersDelta = NanometersMax - NanometersMin
         ' ---------------------------------------------------------------------
         NmStart = NanometersMin + NanometersDelta * SrcX0 / SrcW

@@ -483,9 +483,16 @@ Public Class Form_Main
                 '    End If
                 'End If
 
-                If e.X < X_From_Nanometers(TrimPoint1 + 50) Then
+                'If e.X < X_From_Nanometers(TrimPoint1 + 20) Then
+                '    TrimmingPoint = 1
+                'ElseIf e.X > X_From_Nanometers(TrimPoint2 - 20) Then
+                '    TrimmingPoint = 2
+                'End If
+
+
+                If e.X < 0.5 * (X_From_Nanometers(TrimPoint1) + X_From_Nanometers(TrimPoint2)) Then
                     TrimmingPoint = 1
-                ElseIf e.X > X_From_Nanometers(TrimPoint2 - 50) Then
+                Else
                     TrimmingPoint = 2
                 End If
 
@@ -522,22 +529,43 @@ Public Class Form_Main
                 Select Case TrimmingPoint
                     Case 1
                         NanometersMin = InitialMinNm - dx * zoom * TrimPoint1
-                        If NanometersMin > TrimPoint1 Then NanometersMin = TrimPoint1
-                        Do
+
+                        'Do
+                        '    err = X_From_Nanometers(TrimPoint2) - InitialTP2_X
+                        '    NanometersMax += err * 0.01F
+                        '    Spectrometer_SetScaleTrimParams()
+                        'Loop Until Math.Abs(err) < 0.03 Or NanometersMax > 3999
+                        ''Loop Until Math.Abs(err) < GetNmCoeff() / 100 Or NanometersMax > 3999 Or Math.Abs(err) > 1
+                        '' Version 2.9 - CHANGED from 0.01 and 1999 to 0.05 and 3999
+
+                        For i As Int32 = 1 To 1000
                             err = X_From_Nanometers(TrimPoint2) - InitialTP2_X
                             NanometersMax += err * 0.01F
                             Spectrometer_SetScaleTrimParams()
-                        Loop Until Math.Abs(err) < 0.03 Or NanometersMax > 3999
-                        ' Version 2.9 - CHANGED frim 0.01 and 1999 to 0.05 and 3999
+                        Next
+                        ' Version 3.1 - CHANGED from Loop to For and removed the exit test
+
                     Case 2
                         NanometersMax = InitialMaxNm - dx * zoom * TrimPoint2
-                        If NanometersMax < TrimPoint2 Then NanometersMax = TrimPoint2
-                        Do
+
+                        'Do
+                        '    err = X_From_Nanometers(TrimPoint1) - InitialTP1_X
+                        '    NanometersMin += err * 0.01F
+                        '    Spectrometer_SetScaleTrimParams()
+                        'Loop Until Math.Abs(err) < 0.01 Or NanometersMin < 51
+
+                        For i As Int32 = 1 To 1000
                             err = X_From_Nanometers(TrimPoint1) - InitialTP1_X
                             NanometersMin += err * 0.01F
                             Spectrometer_SetScaleTrimParams()
-                        Loop Until Math.Abs(err) < 0.01 Or NanometersMin < 51
+                        Next
+                        ' Version 3.1 - CHANGED from Loop to For and removed the exit test
+
                 End Select
+
+                If NanometersMin > TrimPoint1 - 1 Then NanometersMin = TrimPoint1 - 1
+                If NanometersMax < TrimPoint2 + 1 Then NanometersMax = TrimPoint2 + 1
+
                 Spectrometer_SetScaleTrimParams()
                 ShowSpectrumGraph()
                 PBox_Spectrum.Refresh()
