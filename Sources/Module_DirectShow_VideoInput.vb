@@ -266,7 +266,7 @@ Module Module_DirectShow_VideoInput
         Dim CameraControl As IAMCameraControl = Capture_GetIAMCameraControl()
         If CameraControl Is Nothing Then Exit Sub
         If param._AutoChecked Then
-            CameraControl.Set(prop, param._Value, CameraControlFlags.Auto)
+            CameraControl.Set(prop, param._Value, CameraControlFlags.Auto) '前值CameraControlFlags.Auto
         Else
             CameraControl.Set(prop, param._Value, CameraControlFlags.Manual)
         End If
@@ -292,7 +292,7 @@ Module Module_DirectShow_VideoInput
         Dim VideoProcAmp As IAMVideoProcAmp = Capture_GetIAMVideoProcAmp()
         If VideoProcAmp Is Nothing Then Exit Sub
         If param._AutoChecked Then
-            VideoProcAmp.Set(prop, param._Value, VideoProcAmpFlags.Auto)
+            VideoProcAmp.Set(prop, param._Value, VideoProcAmpFlags.Auto) '前值VideoProcAmpFlags.Auto,调整这里没用
         Else
             VideoProcAmp.Set(prop, param._Value, VideoProcAmpFlags.Manual)
         End If

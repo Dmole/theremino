@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Drawing2D
 
-Public Class MeterBar
+Public Class MeterBar    '米尺，这个Class指的是右下角的光照强度指示条！
 
     Private WithEvents pbox As PictureBox
     Private m_graphics As Graphics
@@ -16,12 +16,12 @@ Public Class MeterBar
     Friend Sub New(ByRef p As PictureBox, ByVal colors As Int32)
         If p Is Nothing Then Return
         pbox = p
-        pbox.BackColor = Color.Beige ' Color.FromArgb(60, 70, 80)
+        pbox.BackColor = Color.Beige   '米色，淡棕色； Color.FromArgb(60, 70, 80)
         m_colors = colors
         SetAspect()
     End Sub
 
-    Friend Sub SetAspect()
+    Friend Sub SetAspect()   '设置外观、横纵比
         InitPictureboxImage(pbox)
         If pbox.Image Is Nothing Then Return
         w = pbox.Image.Width
@@ -47,7 +47,7 @@ Public Class MeterBar
         pbox.Invalidate()
     End Sub
 
-    Friend Sub SetValue(ByVal value As Single)
+    Friend Sub SetValue(ByVal value As Single)   'value需要 Spectrometer 来计算得出
         If value < 0 Then value = 0
         If value > 1 Then value = 1
         'value = CSng(Math.Sqrt(value))

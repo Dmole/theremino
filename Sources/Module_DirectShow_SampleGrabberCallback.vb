@@ -31,14 +31,12 @@ Friend Class SamplegrabberCallback
         If bufferlen = 0 Then Return 0
         '
         Dim nBytes As Int32 = Width * Height * 3
-        Dim stride As Int32 = Width * 3
+        Dim stride As Int32 = Width * 3 '步幅
 
         If bufferlen = nBytes Then
             Dim pbuffer As IntPtr = Nothing
             pSample.GetPointer(pbuffer)
-            Capture_Image = New Bitmap(Width, Height, stride, _
-                                       Imaging.PixelFormat.Format24bppRgb, _
-                                       pbuffer)
+            Capture_Image = New Bitmap(Width, Height, stride, Imaging.PixelFormat.Format24bppRgb, pbuffer)
         End If
         ' ------------------------------------------------- without this could lock
         Runtime.InteropServices.Marshal.ReleaseComObject(pSample)

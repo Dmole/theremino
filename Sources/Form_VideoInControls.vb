@@ -287,11 +287,7 @@ Public Class Form_VideoInControls
     End Sub
 
 
-    Private Sub InitTrackBarAndLabel(ByVal button As MyButton, _
-                                     ByVal chkbox As CheckBox, _
-                                     ByVal tbar As TrackBar, _
-                                     ByVal lbl As Label, _
-                                     ByVal param As Capture_VideoInputParam)
+    Private Sub InitTrackBarAndLabel(ByVal button As MyButton, ByVal chkbox As CheckBox, ByVal tbar As TrackBar, ByVal lbl As Label, ByVal param As Capture_VideoInputParam)
 
         button.Top = Yposition
         chkbox.Top = Yposition + 7
@@ -300,10 +296,10 @@ Public Class Form_VideoInControls
 
         If param._AutoValid Then
             chkbox.Visible = True
-            chkbox.Checked = param._AutoChecked
+            chkbox.Checked = param._AutoChecked             '前值param._AutoChecked，这个地方起效果了，取消选中了
             If param._AutoChecked Then
-                tbar.Enabled = False
-                lbl.Enabled = False
+                tbar.Enabled = False '前值False,改成True之后，滑动条确实是解锁了，但没有办法控制
+                lbl.Enabled = False  '前值False
             Else
                 tbar.Enabled = True
                 lbl.Enabled = True
@@ -489,7 +485,7 @@ Public Class Form_VideoInControls
     End Sub
 
     Private Sub SetAllAuto()
-        VideoInputParams.Exposure._AutoChecked = CheckBox_Exposure.Checked
+        VideoInputParams.Exposure._AutoChecked = CheckBox_Exposure.Checked      'Gets a value indicating whether the CheckBox is in the checked state.
         VideoInputParams.Gain._AutoChecked = CheckBox_Gain.Checked
         VideoInputParams.Brightness._AutoChecked = CheckBox_Brightness.Checked
         VideoInputParams.Contrast._AutoChecked = CheckBox_Contrast.Checked

@@ -4,54 +4,48 @@ Imports System.Management
 
 Module Module_Utils
 
-    Friend Function CreateFillBrush(ByVal pbox As PictureBox, _
-                                ByVal angle As Single, _
-                                ByVal blend As Int32) As LinearGradientBrush
-        If pbox.ClientRectangle.Width < 1 Or _
-           pbox.ClientRectangle.Height < 1 Then
+    Friend Function CreateFillBrush(ByVal pbox As PictureBox, ByVal angle As Single, ByVal blend As Int32) As LinearGradientBrush   '创建线性渐变画笔;blend混合
+        If pbox.ClientRectangle.Width < 1 Or pbox.ClientRectangle.Height < 1 Then
             Return Nothing
         End If
-        CreateFillBrush = New LinearGradientBrush(pbox.ClientRectangle, _
-                                                  Color.Black, _
-                                                  Color.Black, _
-                                                  angle)
+        CreateFillBrush = New LinearGradientBrush(pbox.ClientRectangle, Color.Black, Color.Black, angle)
         Dim myBlend As ColorBlend = New ColorBlend()
         Select Case blend
             Case 1 ' multicolor
                 myBlend.Positions = New Single() {0.0F, 0.4F, 0.5F, 0.6F, 1.0F}
-                myBlend.Colors = New Color() {Color.FromArgb(255, 0, 0), _
-                                              Color.FromArgb(255, 230, 0), _
-                                              Color.FromArgb(250, 250, 0), _
-                                              Color.FromArgb(230, 230, 0), _
+                myBlend.Colors = New Color() {Color.FromArgb(255, 0, 0),
+                                              Color.FromArgb(255, 230, 0),
+                                              Color.FromArgb(250, 250, 0),
+                                              Color.FromArgb(230, 230, 0),
                                               Color.FromArgb(0, 100, 0)}
 
             Case 2 ' multicolor reverse
                 myBlend.Positions = New Single() {0.0F, 0.4F, 0.5F, 0.6F, 1.0F}
-                myBlend.Colors = New Color() {Color.FromArgb(0, 200, 0), _
-                                              Color.FromArgb(230, 230, 0), _
-                                              Color.FromArgb(250, 250, 0), _
-                                              Color.FromArgb(255, 230, 0), _
+                myBlend.Colors = New Color() {Color.FromArgb(0, 200, 0),
+                                              Color.FromArgb(230, 230, 0),
+                                              Color.FromArgb(250, 250, 0),
+                                              Color.FromArgb(255, 230, 0),
                                               Color.FromArgb(255, 0, 0)}
             Case 3 ' green
                 myBlend.Positions = New Single() {0.0F, 0.4F, 0.5F, 0.9F, 1.0F}
-                myBlend.Colors = New Color() {Color.FromArgb(200, 250, 150), _
-                                              Color.FromArgb(80, 150, 100), _
-                                              Color.FromArgb(80, 150, 0), _
-                                              Color.FromArgb(80, 150, 0), _
+                myBlend.Colors = New Color() {Color.FromArgb(200, 250, 150),
+                                              Color.FromArgb(80, 150, 100),
+                                              Color.FromArgb(80, 150, 0),
+                                              Color.FromArgb(80, 150, 0),
                                               Color.FromArgb(250, 0, 0)}
             Case 4 ' red
                 myBlend.Positions = New Single() {0.0F, 0.4F, 0.5F, 0.9F, 1.0F}
-                myBlend.Colors = New Color() {Color.FromArgb(255, 200, 160), _
-                                              Color.FromArgb(255, 150, 0), _
-                                              Color.FromArgb(250, 120, 0), _
-                                              Color.FromArgb(230, 80, 0), _
+                myBlend.Colors = New Color() {Color.FromArgb(255, 200, 160),
+                                              Color.FromArgb(255, 150, 0),
+                                              Color.FromArgb(250, 120, 0),
+                                              Color.FromArgb(230, 80, 0),
                                               Color.FromArgb(60, 0, 0)}
             Case 5 ' blue
                 myBlend.Positions = New Single() {0.0F, 0.4F, 0.5F, 0.9F, 1.0F}
-                myBlend.Colors = New Color() {Color.FromArgb(110, 190, 220), _
-                                              Color.FromArgb(60, 130, 180), _
-                                              Color.FromArgb(0, 120, 160), _
-                                              Color.FromArgb(0, 100, 140), _
+                myBlend.Colors = New Color() {Color.FromArgb(110, 190, 220),
+                                              Color.FromArgb(60, 130, 180),
+                                              Color.FromArgb(0, 120, 160),
+                                              Color.FromArgb(0, 100, 140),
                                               Color.FromArgb(0, 20, 80)}
         End Select
         CreateFillBrush.InterpolationColors = myBlend

@@ -3,7 +3,7 @@ Public Class Form_Main
 
     Private Sub Form_Main_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ' ----------------------------------------------------------------
-        Me.Text = AppTitleAndVersion()
+        'Me.Text = AppTitleAndVersion()  '直接用定义的名字
         ' ---------------------------------------------------------------- 
         Load_INI()
         Menu_Tools_Separator_UpdateChecks()
@@ -103,29 +103,21 @@ Public Class Form_Main
     End Sub
 
     ' ===================================================================================
-    '   MenuStrip and ToolStrip Gradients
+    '   MenuStrip and ToolStrip Gradients，用渐变色填充菜单栏和工具栏
     ' ===================================================================================
     Private Sub MenuStrip1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MenuStrip1.Paint
-        Dim bounds As New Rectangle(0, 0, _
-                                    MenuStrip1.Width, MenuStrip1.Height)
-        Dim brush As New Drawing2D.LinearGradientBrush(bounds, _
-                                                       Color.FromArgb(230, 230, 230), _
-                                                       Color.FromArgb(200, 200, 200), _
-                                                       Drawing2D.LinearGradientMode.Horizontal)
+        Dim bounds As New Rectangle(0, 0, MenuStrip1.Width, MenuStrip1.Height)
+        Dim brush As New Drawing2D.LinearGradientBrush(bounds, Color.FromArgb(230, 230, 230), Color.FromArgb(100, 100, 100), Drawing2D.LinearGradientMode.Horizontal)
         e.Graphics.FillRectangle(brush, bounds)
     End Sub
     Private Sub ToolStrip1_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles ToolStrip1.Paint
-        Dim bounds As New Rectangle(0, 0, _
-                                    ToolStrip1.Width, ToolStrip1.Height)
-        Dim brush As New Drawing2D.LinearGradientBrush(bounds, _
-                                                       Color.White, _
-                                                       Color.FromArgb(200, 200, 200), _
-                                                       Drawing2D.LinearGradientMode.Vertical)
+        Dim bounds As New Rectangle(0, 0, ToolStrip1.Width, ToolStrip1.Height)
+        Dim brush As New Drawing2D.LinearGradientBrush(bounds, Color.White, Color.FromArgb(200, 200, 200), Drawing2D.LinearGradientMode.Vertical)
         e.Graphics.FillRectangle(brush, bounds)
     End Sub
 
     ' ===================================================================================
-    '   ToolStrip PressedButton color
+    '   ToolStrip PressedButton color，这个地方好像定义的 RUN 按钮
     ' ===================================================================================
     Class ToolStripButtonRenderer
         Inherits System.Windows.Forms.ToolStripProfessionalRenderer
@@ -133,10 +125,7 @@ Public Class Form_Main
             Dim btn As ToolStripButton = CType(e.Item, ToolStripButton)
             If btn IsNot Nothing AndAlso btn.CheckOnClick AndAlso btn.Checked Then
                 Dim bounds As Rectangle = New Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 1)
-                Dim brush As New Drawing2D.LinearGradientBrush(bounds, _
-                                                               Color.Gold, _
-                                                               Color.FromArgb(250, 250, 250), _
-                                                               Drawing2D.LinearGradientMode.Vertical)
+                Dim brush As New Drawing2D.LinearGradientBrush(bounds, Color.Gold, Color.FromArgb(250, 250, 250), Drawing2D.LinearGradientMode.Vertical)
                 e.Graphics.FillRectangle(brush, bounds)
                 e.Graphics.DrawRectangle(Pens.Orange, bounds)
             Else
@@ -159,6 +148,7 @@ Public Class Form_Main
 
 
     ' =======================================================================================
+    '接下来是挨个介绍菜单栏的功能
     '   MENU FILE
     ' =======================================================================================
     Private Sub Menu_Exit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Menu_File_Exit.Click
@@ -467,8 +457,7 @@ Public Class Form_Main
 
     Private Sub PBox_Spectrum_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PBox_Spectrum.MouseDown
         If Not Tools_Run.Checked Then Return
-        If e.Button = Windows.Forms.MouseButtons.Left Or _
-           e.Button = Windows.Forms.MouseButtons.Right Then
+        If e.Button = Windows.Forms.MouseButtons.Left Or e.Button = Windows.Forms.MouseButtons.Right Then
             TrimmingPoint = 0
             If btn_TrimScale.Checked AndAlso e.Y < 15 Then
                 'If Math.Abs(e.X - X_From_Nanometers(TrimPoint1)) < 15 Then
@@ -512,8 +501,7 @@ Public Class Form_Main
     End Sub
     Private Sub PBox_Spectrum_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PBox_Spectrum.MouseMove
         If Not Tools_Run.Checked Then Return
-        If e.Button = Windows.Forms.MouseButtons.Left Or _
-           e.Button = Windows.Forms.MouseButtons.Right Then
+        If e.Button = Windows.Forms.MouseButtons.Left Or e.Button = Windows.Forms.MouseButtons.Right Then
             Dim dx As Int32
             If TrimmingPoint <> 0 Then
                 dx = e.X - CursorStartX
@@ -747,4 +735,11 @@ Public Class Form_Main
         Timer1_Working = False
     End Sub
 
+    Private Sub txt_FilePath_TextChanged(sender As Object, e As EventArgs) Handles txt_FilePath.TextChanged
+
+    End Sub
+
+    Private Sub PBox_Spectrum_Click(sender As Object, e As EventArgs) Handles PBox_Spectrum.Click
+
+    End Sub
 End Class

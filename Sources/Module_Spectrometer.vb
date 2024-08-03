@@ -7,22 +7,13 @@ Imports System.Runtime.InteropServices
 Module Spectrometer
 
     Private MeterBar1 As MeterBar = New MeterBar(Form_Main.PictureBox3, 4)
-
-    'Friend Sub InitPictureboxImage(ByVal pbox As PictureBox)
-    '    With pbox
-    '        If .ClientSize.Height < 1 Then Return
-    '        .Image = New Bitmap(.ClientSize.Width, .ClientSize.Height)
-    '    End With
-    'End Sub
+    'm_fillbrush = CreateFillBrush(pbox, 0, 4)  angle=0  blend=4 red
 
     Friend Sub InitPictureboxImage(ByVal pbox As PictureBox)
         With pbox
             If .ClientSize.Height < 1 Then Return
-            If .Image Is Nothing OrElse .Image.Width <> .ClientRectangle.Width _
-                                 OrElse .Image.Height <> .ClientRectangle.Height Then
-                .Image = New Bitmap(.ClientRectangle.Width, _
-                                    .ClientRectangle.Height, _
-                                    Imaging.PixelFormat.Format24bppRgb)
+            If .Image Is Nothing OrElse .Image.Width <> .ClientRectangle.Width OrElse .Image.Height <> .ClientRectangle.Height Then
+                .Image = New Bitmap(.ClientRectangle.Width, .ClientRectangle.Height, Imaging.PixelFormat.Format24bppRgb)
             End If
         End With
     End Sub
@@ -39,16 +30,22 @@ Module Spectrometer
     Private UseColors As Boolean
     Private TrimScale As Boolean
 
-    Private SpecArray(-1) As Single
-    Private SpecArrayFiltered(-1) As Single
+    Private SpecV(-1) As Single '增加一个数组，存储原始的像素灰度值
+    Private SpecArray(-1) As Single 'A zero-length array is declared with a dimension of -1.光谱阵列，Spec - spectrum，这里是积分之后数值
+    Private SpecArrayFiltered(-1) As Single '过滤后的数值
     Private MaxValue As Single
     Private MaxValueX As Int32
+
+    '我增加的变量，用来定义光谱能显示的最大值，每个px的三个颜色通道的和最大是765，
+    '但增加一些积分时间或滤波系数后，可能会大一些
+    Private MaxV As Single = 800.0
 
     Private Filter As Int32
     Private SpeedUP As Int32
     Private SpeedDW As Int32
     Private Flip As Boolean
 
+    '下面这些参数都是加权值
     Private KFilter As Single
     Private KSpeedUP As Single
     Private KSpeedDW As Single
@@ -56,12 +53,13 @@ Module Spectrometer
     Private Kgreen As Single
     Private Kblue As Single
 
+    '这些是橘色选择框的尺寸和位置
     Private SrcY0 As Int32
     Private SrcDY As Int32
     Private SrcX0 As Int32
     Private SrcDX As Int32
 
-    Private SrcImage As Image
+    Private SrcImage As Image     'source 来源
     Private SrcBmp As Bitmap
     Private SrcW As Int32
     Private SrcH As Int32
@@ -79,12 +77,12 @@ Module Spectrometer
 
     Friend NanometersMin As Single = 270
     Friend NanometersMax As Single = 1200
-    Private NanometersDelta As Single
+    Private NanometersDelta As Single  'Delta（Δ）在微积分中，Δ通常用来表示增量
 
     Private NmStart As Single
     Private NmEnd As Single
     Private NmStartDiv As Int32
-    Private NmCoeff As Single
+    Private NmCoeff As Single 'Coeff，系数
 
     Private gfx As Graphics
     Private kx As Single
@@ -97,34 +95,40 @@ Module Spectrometer
         ' ---------------------------------------------------------------------
         SrcW = SrcImage.Width
         SrcH = SrcImage.Height
-        ' ---------------------------------------------------------------------
+
+        '获取Filp的状态
         Flip = Form_Main.chk_Flip.Checked
+
+        'CInt(n),将文本框输入的字符转换成Int类型；
         Dim StartY As Int32 = Form_Main.txt_StartY.NumericValueInteger
         Dim SizeY As Int32 = Form_Main.txt_SizeY.NumericValueInteger
         Dim StartX As Int32 = Form_Main.txt_StartX.NumericValueInteger
         Dim EndX As Int32 = Form_Main.txt_EndX.NumericValueInteger
-        ' ---------------------------------------------------------------------
-        SrcX0 = (SrcW * StartX) \ 1000
-        SrcDX = SrcW - SrcX0 + (SrcW * (EndX - 1000)) \ 1000
-        SrcDY = (SrcH * SizeY) \ 100
+
+        '获取橘色选择框的位置和尺寸
+        SrcX0 = (SrcW * StartX) \ 1000   'StartX-EndX范围是1000，所以相当于换算成实际的像素尺寸
+        SrcDX = SrcW - SrcX0 + (SrcW * (EndX - 1000)) \ 1000  '得出获取相机图像的像素长度，也就是橘色选择框的长度
+        SrcDY = (SrcH * SizeY) \ 100    '橘色选择框的高度
         SrcY0 = SrcH - (SrcH * StartY \ 100) - SrcDY
         ' ---------------------------------------------------------------------
         If SrcX0 + SrcDX > SrcImage.Width Then SrcDX = SrcW - SrcX0
-        If SrcDX <= 0 Then SrcX0 += (SrcDX - 1) : SrcDX = 1
+        If SrcDX <= 0 Then SrcX0 += (SrcDX - 1) : SrcDX = 1  '顺序执行以冒号分隔的语句
         If SrcX0 < 0 Then SrcX0 = 0
         If SrcY0 + SrcDY > SrcH Then SrcDY = SrcH - SrcY0
         If SrcDY <= 0 Then SrcY0 += (SrcDY - 1) : SrcDY = 1
         If SrcY0 < 0 Then SrcY0 = 0
         ' ---------------------------------------------------------------------
-        ReDim SpecArray(SrcDX - 1)
+        ReDim SpecV(SrcDX - 1)
+        ReDim SpecArray(SrcDX - 1)  '重新定义数组的长度
         ReDim SpecArrayFiltered(SrcDX - 1)
-        Kred = 0.299F / SrcDY
-        Kgreen = 0.587F / SrcDY
-        Kblue = 0.114F / SrcDY
-        SrcPen = New Pen(Color.FromArgb(200, 120, 0), SrcH \ 100)
+
+        Kred = 1.0F / SrcDY     '前值是0.5F，去拜尔后改成1.0F
+        Kgreen = 1.0F / SrcDY   '前值是0.45F，去拜尔后改成1.0F
+        Kblue = 1.0F / SrcDY    '前值是0.5F，去拜尔后改成1.0F
+        SrcPen = New Pen(Color.FromArgb(200, 120, 0), SrcH \ 100) '绘制橘色选择框
         ' ---------------------------------------------------------------------
         Spectrometer_SetScaleTrimParams()
-        Spectrometer_ResetReference()
+        Spectrometer_ResetReference() '取消参考光谱，Form_Main.btn_Reference.Checked = False
     End Sub
 
     Friend Sub Spectrometer_SetRunningModeParams()
@@ -147,7 +151,7 @@ Module Spectrometer
         If NanometersMax < NanometersMin + 20 Then NanometersMax = NanometersMin + 20
         NanometersDelta = NanometersMax - NanometersMin
         ' ---------------------------------------------------------------------
-        NmStart = NanometersMin + NanometersDelta * SrcX0 / SrcW
+        NmStart = NanometersMin + NanometersDelta * SrcX0 / SrcW  '光谱的起始波长，跟图像采集区域挂钩了
         NmEnd = NanometersMax - NanometersDelta * (1.0F - CSng(SrcX0 + SrcDX - 1) / SrcW)
         ' ---------------------------------------------------------------------
         NmStartDiv = 10 * CInt(NmStart / 10.0F)
@@ -155,8 +159,8 @@ Module Spectrometer
         SetNmCoeff()
     End Sub
 
-    Private Sub Spectrometer_SetDestParams()
-        DestW = DestPbox.Image.Width
+    Private Sub Spectrometer_SetDestParams() '设置目标参数 DestPbox As PictureBox = Form_Main.PBox_Spectrum, dest - destination
+        DestW = DestPbox.Image.Width         'DestPbox As PictureBox = Form_Main.PBox_Spectrum
         DestH = DestPbox.Image.Height
         DestRight = DestW - 1
         DestBottom = DestH - 2
@@ -165,7 +169,7 @@ Module Spectrometer
 
     Private Sub SetNmCoeff()
         If NmEnd > NmStart Then
-            NmCoeff = DestW / (NmEnd - NmStart)
+            NmCoeff = DestW / (NmEnd - NmStart) '光谱的缩放系数，将DestW与波长挂钩
         Else
             NmCoeff = 1
         End If
@@ -203,7 +207,6 @@ Module Spectrometer
         ' ----------------------------------------------------------------------- FLIP
         If Flip Then
             SrcImage.RotateFlip(RotateFlipType.RotateNoneFlipX)
-            'SrcImage.RotateFlip(RotateFlipType.RotateNoneFlipXY)
         Else
             'SrcImage.RotateFlip(RotateFlipType.RotateNoneFlipNone)
             'SrcImage.RotateFlip(RotateFlipType.RotateNoneFlipY)
@@ -214,26 +217,29 @@ Module Spectrometer
         If SrcImage.Width <> SrcW Or SrcImage.Height <> SrcH Then
             Spectrometer_SetSourceParams()
         End If
-        ' ----------------------------------------------------------------------- EXTRACT SPECTRUM
+
+        '这是最最关键的函数，EXTRACT SPECTRUM
         BitmapToSpectrum()
-        ' ----------------------------------------------------------------------- SHOW AREA
+
+        'SHOW AREA，绘制橘色选择框
         Dim SrcGraphics As Graphics = Graphics.FromImage(SrcBmp)
-        SrcGraphics.DrawRectangle(SrcPen, SrcX0, SrcY0, SrcDX, SrcDY)
-        ' ----------------------------------------------------------------------- SHOW SOURCE IMAGE
+        SrcGraphics.DrawRectangle(SrcPen, SrcX0, SrcY0, SrcDX, SrcDY) 'SrcPen = New Pen(Color.FromArgb(200, 120, 0), SrcH \ 100)
+
+        ' SHOW SOURCE IMAGE
         Form_Main.PBox_Camera.Image = SrcImage
-        'Form_Main.PBox_Camera.Image = CType(SrcImage.Clone, Image)
-        ' ----------------------------------------------------------------------- IMAGE INFO
-        Form_Main.Label_Resolution.Text = Capture_Image.Width.ToString & _
-                                          " x " & Capture_Image.Height.ToString
+
+        'IMAGE INFO，图像的尺寸和帧率
+        Form_Main.Label_Resolution.Text = Capture_Image.Width.ToString & " x " & Capture_Image.Height.ToString
         Form_Main.Label_FramesPerSec.Text = Capture_FramesPerSecond.ToString("0") & " fps"
+        Form_Main.Label_Millisec.Text = (t.GetTimeMicrosec / 1000.0F).ToString("0") & " mS"
         ' -----------------------------------------------------------------------
         ShowSpectrumGraph()
         ' ----------------------------------------------------------------------- 
         MeterBar1.SetValue(MaxValue / 256.0F)
-        ' ----------------------------------------------------------------------- STATUS BAR INDICATIONS
+        ' 左下角的状态栏， STATUS BAR INDICATIONS
         If Not CursorInside Then
             If MaxValue > 0.11 Then
-                Dim nm As Int32 = CInt(X_To_Nanometers((MaxValueX * DestW) \ SrcDX))
+                Dim nm As Int32 = CInt(X_To_Nanometers((MaxValueX * DestW) \ SrcDX)) 'NmStart + (x / NmCoeff)，NmCoeff = DestW / (NmEnd - NmStart)
                 If nm <> MaxNanometers_OldValue Then
                     MaxNanometers_OldValue = nm
                     Form_Main.Label_MaxPeak.Text = "Max: " & nm.ToString & " nm"
@@ -243,42 +249,46 @@ Module Spectrometer
                 Form_Main.Label_MaxPeak.Text = ""
             End If
         End If
-        ' -----------------------------------------------------------------------
-        Form_Main.Label_Millisec.Text = (t.GetTimeMicrosec / 1000.0F).ToString("0") & " mS"
+
     End Sub
 
     Private Sub BitmapToSpectrum()
         If SrcBmp Is Nothing Then Return
-        Dim SourceData As BitmapData = SrcBmp.LockBits(New Rectangle(SrcX0, SrcY0, SrcDX, SrcDY), _
-                                                       ImageLockMode.ReadWrite, _
-                                                       PixelFormat.Format24bppRgb)
-        Dim SourceStride As Int32 = SourceData.Stride
-        Dim byteCount As Integer = (SourceData.Stride * SourceData.Height)
+        Dim SourceData As BitmapData = SrcBmp.LockBits(New Rectangle(SrcX0, SrcY0, SrcDX, SrcDY), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
+        Dim SourceStride As Int32 = SourceData.Stride  '这里应该是  SrcDX * 3
+        Dim byteCount As Integer = (SourceData.Stride * SourceData.Height) '就是所有的像素数量
         Dim bmpBytes(byteCount - 1) As Byte
         Try
-            Marshal.Copy(SourceData.Scan0, bmpBytes, 0, byteCount)
+            Marshal.Copy(SourceData.Scan0, bmpBytes, 0, byteCount)  '复制到这个数组bmpBytes[]中来，组成了一个三维矩阵
         Catch
         End Try
         SrcBmp.UnlockBits(SourceData)
+
         Dim sumr As Int32 = 0
         Dim sumg As Int32 = 0
         Dim sumb As Int32 = 0
-        Dim disp As Integer
+        Dim disp As Integer 'display
         Dim v As Single
-        For x As Int32 = 0 To SrcDX - 1
-            sumr = 0
-            sumg = 0
+        For x As Int32 = 0 To SrcDX - 1  '针对每个像素，来处理Y的值
+            sumr = 0                    '每个pixel中每个颜色通道的取值范围是0 - 255，也就是2^8=256
+            sumg = 0                    '
             sumb = 0
-            disp = x * 3
+            disp = x * 3  '每一个像素是占用了3个字节，所以需要每隔3个字节取一次数据
             For y As Int32 = 0 To SrcDY - 1
                 sumr += bmpBytes(disp + 2)
                 sumg += bmpBytes(disp + 1)
-                sumb += bmpBytes(disp)
-                disp = disp + SourceStride
+                sumb += bmpBytes(disp)      'opencv 里图像的存储为 BGR 格式，刚好和现在流行的 RGB 反过来了
+                disp = disp + SourceStride  '这个地方控制换行了，换到下一行了
             Next
-            v = sumr * Kred + sumg * Kgreen + sumb * Kblue
-            If v > SpecArray(x) Then
-                SpecArray(x) += (v - SpecArray(x)) * KSpeedUP
+
+            '相当于对每一列像素的三个颜色通道的强度进行求和，Kred = 1.0F / SrcDY，这个系数已经除以SrcDY了
+            v = sumr * Kred + sumg * Kgreen + sumb * Kblue      '所以v的取值范围就是0-765，255x3 = 765
+
+            SpecV(x) = v
+
+            If v > SpecArray(x) Then   '需要处理的是这个数组SpecArray(x)里面的数据
+                SpecArray(x) += (v - SpecArray(x)) * KSpeedUP 'txt_RisingSpeed KSpeedUP = SpeedUP / 100.0F，相当于取pixel前后两次数值的平均值
+                '---------------------------------------------这个数组的范围还是按照最大值765计算
             Else
                 SpecArray(x) += (v - SpecArray(x)) * KSpeedDW
             End If
@@ -287,31 +297,32 @@ Module Spectrometer
         AddReference()
     End Sub
 
-    Private Sub AddFilter()
+    Private Sub AddFilter() 'Noise filtering of the graph.
         MaxValue = 0.1
-        Dim v, vnew As Single
+        Dim v, vnew As Single 'v - Value
         For i As Int32 = 0 To SrcDX - 1
             vnew = SpecArray(i)
-            ' ----------------------------------------- filter
+            ' ----------------------------------------- filter，KFilter = (100 - Filter) / 100.0F + 0.1F
             v += (vnew - v) * KFilter
             ' ----------------------------------------- store filtered value
-            SpecArrayFiltered(i) = v
+            SpecArrayFiltered(i) = v    '这个数组的范围还是按照最大值765计算，可以适当扩大到800？
         Next
         For i As Int32 = SrcDX - 1 To 0 Step -1
             vnew = SpecArray(i)
             ' ----------------------------------------- filter
             v += (vnew - v) * KFilter
             ' ----------------------------------------- add up and down filter passes
-            SpecArrayFiltered(i) += v
+            'SpecArrayFiltered(i) += v
+            SpecArrayFiltered(i) = v
             ' ----------------------------------------- update Max
-            If SpecArrayFiltered(i) > MaxValue Then
+            If SpecArrayFiltered(i) > MaxValue Then '在这个地方获取峰值以及峰值波长，显示在软件的左下角
                 MaxValue = SpecArrayFiltered(i)
                 MaxValueX = i
             End If
         Next
     End Sub
 
-    Private Sub AddReference()
+    Private Sub AddReference() '设置参考光谱，就是测吸收光谱的时候用的
         If Reference.Length = 0 Then Return
         Dim v As Single
         For i As Int32 = 0 To SrcDX - 1
@@ -331,29 +342,30 @@ Module Spectrometer
         If DestPbox.Image Is Nothing Then Return
         If DestPbox.Image.Width <> DestW Or DestPbox.Image.Height <> DestH Then
             Spectrometer_SetDestParams()
-            gfx = Graphics.FromImage(DestPbox.Image)
+            gfx = Graphics.FromImage(DestPbox.Image)   'Creates a new Graphics from the specified Image.
         End If
         ' --------------------------------------------------------------------
-        gfx.Clear(Color.AliceBlue)
+        gfx.Clear(Color.AliceBlue) 'Clears the entire drawing surface and fills it with the specified background color.
         Dim x As Single
         Dim y As Single
         Dim drawText As Boolean
-        ' --------------------------------------------------------------------- scale X
-        For i As Int32 = NmStartDiv To CInt(NmEnd) Step 10
+        ' --------------------------------------------------------------------- scale X，X轴比例尺，10个一格
+        For i As Int32 = NmStartDiv To CInt(NmEnd) Step 10    'NmStartDiv = 10 * CInt(NmStart / 10.0F)，转换成整数，还是绘制光谱的起始波长
             drawText = False
             x = (i - NmStart) * NmCoeff
             If i Mod 100 = 0 Then
-                gfx.DrawLine(ScalePen1, x, 15, x, DestBottom)
+                gfx.DrawLine(ScalePen1, x, 15, x, DestBottom)   'ScalePen1 = New Pen(Color.FromArgb(140, 140, 140))
+                'Draws a line connecting the two points specified by the coordinate pairs.
                 drawText = True
             ElseIf i Mod 50 = 0 Then
-                gfx.DrawLine(ScalePen2, x, 15, x, DestBottom)
+                gfx.DrawLine(ScalePen2, x, 15, x, DestBottom)   'ScalePen2 = New Pen(Color.FromArgb(200, 200, 200))
                 If NmCoeff > 2 Then drawText = True
             Else
-                gfx.DrawLine(ScalePen3, x, 15, x, DestBottom)
+                gfx.DrawLine(ScalePen3, x, 15, x, DestBottom)   'ScalePen3 = New Pen(Color.FromArgb(220, 220, 220))
                 If NmCoeff > 5 Then drawText = True
             End If
             If drawText Then
-                gfx.DrawString(i.ToString, ScaleFont, Brushes.Black, x - 4, 1)
+                gfx.DrawString(i.ToString, ScaleFont, Brushes.Black, x - 4, 1)  'ScaleFont = New Font("Arial", 8)
             End If
         Next
         ' --------------------------------------------------------------------- scale Y
@@ -384,12 +396,16 @@ Module Spectrometer
                 End If
             Next
         End If
+        '上面的部分是画网格线
+
         ' --------------------------------------------------------------------- graph vars
         Dim oldx As Single = -99
         Dim oldy As Single = 0
+        '每一个像素分配的X轴长度，DestW = DestPbox.Image.Width, DestRight = DestW - 1, DestBottom = DestH - 2
         kx = CSng(DestRight) / (SpecArrayFiltered.Length - 1)
-        'ky = (DestBottom - 15) / (300.0F / Scale) ' Yscale manual
-        ky = (DestBottom - 15) / MaxValue
+
+        '每一个相对强度分配的Y轴高度,修改的话，把最大值设为255，光照强度的范围就是从0-255，当然，需要减去背景噪音
+        ky = (DestBottom - 15) / MaxV   '前值是MaxValue
         ' --------------------------------------------------------------------- graph color fill
         Dim xnew As Int32
         Dim xold As Int32
@@ -398,11 +414,11 @@ Module Spectrometer
         Dim y2 As Single
         If UseColors Then
             For i As Int32 = 0 To SpecArrayFiltered.Length - 1
-                xnew = CInt(BinToX(i))
-                If xnew = xold + 1 Then
-                    y = SpecArrayFiltered(CInt(i)) * ky
-                    If y > 2 Then
-                        Pen_Graph.Color = WavelengthToColor(X_To_Nanometers(xnew))
+                xnew = CInt(BinToX(i))                                              'i * kx，实际的波长
+                If xnew = xold + 1 Then                                              '1nm对应1个像素点
+                    y = SpecArrayFiltered(CInt(i)) * ky                             'y就是绘图时纵坐标的值，代表强度，从0-（DestBottom - 15）
+                    If y > 2 Then                                                    '就是有一点点强度就算，就开始绘制
+                        Pen_Graph.Color = WavelengthToColor(X_To_Nanometers(xnew))  'X_To_Nanometers = NmStart + (xnew / NmCoeff), NmCoeff = DestW / (NmEnd - NmStart)
                         gfx.DrawLine(Pen_Graph, xnew, DestBottom, xnew, DestBottom - y)
                     End If
                 ElseIf xnew > xold Then
@@ -410,7 +426,7 @@ Module Spectrometer
                     y1 = SpecArrayFiltered(CInt(i - 1)) * ky
                     y2 = SpecArrayFiltered(CInt(i)) * ky
                     If y1 > 2 Or y2 > 2 Then
-                        For x3 = xold + 1 To xnew
+                        For x3 = xold + 1 To xnew                               '这个地方是为了每nm都有一个光照强度值，可能是为了更连续吧
                             y = y1 + (y2 - y1) * (x3 - xold) / (xnew - xold)
                             gfx.DrawLine(Pen_Graph, x3, DestBottom, x3, DestBottom - y)
                         Next
@@ -464,11 +480,11 @@ Module Spectrometer
     Private Font_Peaks As Font = New Font("Arial", 9)
     Private Pen_Trim1 As Pen = New Pen(Color.White)
 
-    Private Sub MarkTrimPoint(ByVal nm As Single)
+    Private Sub MarkTrimPoint(ByVal nm As Single)   '红色外框，填充黄色
         Pen_Trim1.DashStyle = DashStyle.Dot
         Dim x As Single
         Dim w As Int32 = 26
-        x = X_From_Nanometers(nm)
+        x = X_From_Nanometers(nm)               'Single  Return (nm - NmStart) * NmCoeff
         If x >= 0 And x < DestW Then
             Dim s As String = nm.ToString("0")
             If s.Length > 3 Then w = 34
@@ -480,7 +496,7 @@ Module Spectrometer
         End If
     End Sub
 
-    Private Sub MarkPeak(ByVal bin As Int32, ByVal IsPeak As Boolean)
+    Private Sub MarkPeak(ByVal bin As Int32, ByVal IsPeak As Boolean)  '显示峰值和峰谷
         Dim x As Single
         Dim y1 As Int32
         Dim y2 As Int32
@@ -490,18 +506,18 @@ Module Spectrometer
             If x >= 0 And x < DestW Then
                 Dim s As String = X_To_Nanometers(x).ToString("0")
                 If s.Length > 3 Then w = 34
-                y1 = 15 + CInt((DestH - 15) * (1 - SpecArrayFiltered(bin) / MaxValue))
-                If IsPeak Then
-                    y2 = y1 - 20
+                y1 = 15 + CInt((DestH - 15) * (1 - SpecArrayFiltered(bin) / MaxV)) '前值是MaxValue
+                If IsPeak Then                                      '被MarkAllPeaks()调用，峰值的情况，红线
+                    y2 = y1 - 20                                    '文字显示的位置
                     If y2 < DestH - 50 Then y2 = DestH - 20
                     gfx.DrawLine(Pens.Red, x, y1 + 1, x, DestH)
-                Else
-                    y2 = 30
+                Else                                                 '被MarkAllPeaks()调用，峰谷的情况，绿线
+                    y2 = 30                                          '文字显示的位置
                     gfx.DrawLine(Pens.Green, x, 40, x, y1 - 3)
                 End If
                 gfx.FillRectangle(Brushes.Yellow, x - 14, y2, w, 14)
                 gfx.DrawRectangle(Pens.Green, x - 14, y2, w, 14)
-                gfx.DrawString(s, Font_Peaks, Brushes.Black, x - 13, y2)
+                gfx.DrawString(s, Font_Peaks, Brushes.Black, x - 13, y2) 'Private Font_Peaks As Font = New Font("Arial", 9)
             End If
         End If
     End Sub
@@ -514,9 +530,7 @@ Module Spectrometer
         For i As Int32 = delta To SpecArrayFiltered.Length - delta - 1
             v = SpecArrayFiltered(i)
             If ShowPeaks Then
-                If v > SpecArrayFiltered(i + 1) AndAlso _
-                   v > SpecArrayFiltered(i - 1) AndAlso _
-                   v * 100 > MaxValue Then
+                If v > SpecArrayFiltered(i + 1) AndAlso v > SpecArrayFiltered(i - 1) AndAlso v * 100 > MaxValue Then
                     valid = True
                     For d As Int32 = 2 To delta
                         If v < SpecArrayFiltered(i + d) OrElse v < SpecArrayFiltered(i - d) Then
@@ -528,9 +542,7 @@ Module Spectrometer
                 End If
             End If
             If ShowDips Then
-                If v < SpecArrayFiltered(i + 1) AndAlso _
-                   v < SpecArrayFiltered(i - 1) AndAlso _
-                   v * 10000000 > MaxValue Then
+                If v < SpecArrayFiltered(i + 1) AndAlso v < SpecArrayFiltered(i - 1) AndAlso v * 10000000 > MaxValue Then
                     valid = True
                     For d As Int32 = 2 To delta
                         If v > SpecArrayFiltered(i + d) OrElse v > SpecArrayFiltered(i - d) Then
@@ -549,22 +561,22 @@ Module Spectrometer
     ' ======================================================================================
     Friend SpectrumFileSeparator As String = vbTab
 
-    Friend Function GetSpectrumText() As String
+    Friend Function GetSpectrumText() As String   '导出数据表
         Dim GCI As Globalization.CultureInfo = Globalization.CultureInfo.InvariantCulture
         Dim s As String = ""
         If SpectrumFileSeparator = vbTab Then
-            s += " nm      %" + vbCrLf
-            s += "------------" + vbCrLf
+            s += " nm 原始灰度值 积分灰度值 滤波灰度值" + vbCrLf
+            s += "原始灰度值和积分灰度值主要是调试用，以最后一列的滤波灰度值为最终结果" + vbCrLf
             For i As Int32 = 0 To SpecArrayFiltered.Length - 1
-                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + vbTab + _
-                     CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI) + vbCrLf
+                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + vbTab + CalcPercentual(SpecV(i)).ToString("0.0", GCI) +
+                    vbTab + CalcPercentual(SpecArray(i)).ToString("0.0", GCI) + vbTab + CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI) _
+                    + vbCrLf
             Next
         Else
             s += "Nanometers   Percentual" + vbCrLf
             s += "-----------------------" + vbCrLf
             For i As Int32 = 0 To SpecArrayFiltered.Length - 1
-                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + SpectrumFileSeparator + _
-                     CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI).PadLeft(12) + vbCrLf
+                s += X_To_Nanometers(BinToX(i)).ToString("0.0", GCI) + SpectrumFileSeparator + CalcPercentual(SpecArrayFiltered(i)).ToString("0.0", GCI).PadLeft(12) + vbCrLf
             Next
         End If
         Return s
@@ -575,7 +587,8 @@ Module Spectrometer
         If ReferenceScale Then
             perc = value * 110 / MaxValue
         Else
-            perc = value * 100 / MaxValue
+            'perc = value * 100 / MaxValue
+            perc = value * 100 / 100
         End If
         Return perc
     End Function

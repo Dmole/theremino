@@ -261,9 +261,7 @@ Public Class MyTextBox
         End Set
     End Property
 
-    <Category("Mouse and Arrows edit"), _
-    Description("Get or Set the numeric value (integer)"), _
-    DefaultValue(0)> _
+    <Category("Mouse and Arrows edit"), Description("Get or Set the numeric value (integer)"), DefaultValue(0)>
     Public Property NumericValueInteger() As Int32
         Get
             Dim n As Double = Val(Me.Text)

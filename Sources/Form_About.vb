@@ -1,7 +1,7 @@
 ﻿Public Class Form_About
 
     Private Sub Form_About_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.Text = AppTitleAndVersion()
+        'Me.Text = AppTitleAndVersion() '直接用定义的名字
     End Sub
 
     Private Sub Form_About_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
