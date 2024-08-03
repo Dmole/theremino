@@ -1,0 +1,10 @@
+Sources/CustomControlsLib.dll
+Sources/DirectShowLib.dll
+Sources/obj/Debug/*
+Sources/obj/x86/Debug/*
+Sources/obj/x86/Release/*
+Sources/.vs/*
+Theremino_Spectrometer
+Theremino_Spectrometer.sln
+Theremino_Spectrometer.suo
+.vs/*
